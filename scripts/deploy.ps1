@@ -105,7 +105,7 @@ function Start-BackgroundProcess {
         return $process
     }
     catch {
-        Write-Error "Failed to start $ProcessName`: $_"
+        Write-Error "Failed to start $ProcessName : $_"
         return $null
     }
 }
@@ -567,11 +567,21 @@ function Stop-AllProcesses {
     Get-Process -Name "node" -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
     
     # Kill specific processes if we have their IDs
-    if ($Global:FrontendPID) { $Global:FrontendPID.Kill() }
-    if ($Global:BackendPID) { $Global:BackendPID.Kill() }
-    if ($Global:GanachePID) { $Global:GanachePID.Kill() }
-    if ($Global:MongoPID) { $Global:MongoPID.Kill() }
-    if ($Global:RedisPID) { $Global:RedisPID.Kill() }
+    if ($Global:FrontendPID) { 
+        try { $Global:FrontendPID.Kill() } catch { }
+    }
+    if ($Global:BackendPID) { 
+        try { $Global:BackendPID.Kill() } catch { }
+    }
+    if ($Global:GanachePID) { 
+        try { $Global:GanachePID.Kill() } catch { }
+    }
+    if ($Global:MongoPID) { 
+        try { $Global:MongoPID.Kill() } catch { }
+    }
+    if ($Global:RedisPID) { 
+        try { $Global:RedisPID.Kill() } catch { }
+    }
     
     # Cleanup ports
     Stop-ProcessByPort 3000
@@ -697,8 +707,8 @@ function Start-DevMode {
     Write-Success "Development environment ready!"
     Write-Host ""
     Write-Host "🚀 Quick start commands:"
-    Write-Host "   Backend:  cd backend && npm run dev"
-    Write-Host "   Frontend: cd frontend && npm start"
+    Write-Host "   Backend:  cd backend; npm run dev"
+    Write-Host "   Frontend: cd frontend; npm start"
     Write-Host ""
 }
 
