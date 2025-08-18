@@ -6,7 +6,7 @@ contract SupplyChain {
     address public Owner;
 
     //note this constructor will be called when smart contract will be deployed on blockchain
-    constructor() public {
+    constructor() {
         Owner = msg.sender;
     }
 

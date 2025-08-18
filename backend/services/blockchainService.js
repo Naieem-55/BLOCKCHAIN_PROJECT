@@ -37,9 +37,10 @@ class BlockchainService {
     }
   }
 
+  // issue here
   async loadContracts() {
     try {
-      const contractsPath = path.join(__dirname, '../../build/contracts');
+      const contractsPath = path.join(__dirname, '../../contracts');
       
       // Load SupplyChainTraceability contract
       const traceabilityArtifact = JSON.parse(
