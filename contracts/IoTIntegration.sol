@@ -10,7 +10,7 @@ import "./AccessControl.sol";
 contract IoTIntegration is AccessControl {
     
     // Events
-    event SensorRegistered(uint256 sensorId, address owner, SensorType sensorType, string description);
+    event SensorRegistered(string sensorId, address owner, SensorType sensorType, string description);
     event SensorDataRecorded(string indexed sensorId, uint256 indexed productId, bytes data, uint256 timestamp);
     event AlertTriggered(uint256 indexed productId, string alertType, string message, uint256 timestamp);
     event ThresholdSet(SensorType sensorType, int256 minValue, int256 maxValue);
