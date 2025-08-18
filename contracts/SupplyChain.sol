@@ -63,7 +63,7 @@ contract SupplyChain {
     function showStage(uint256 _medicineID)
         public
         view
-        returns (string memory)
+        returns (string memory result)
     {
         require(medicineCtr > 0);
         if (MedicineStock[_medicineID].stage == STAGE.Init)
@@ -78,6 +78,9 @@ contract SupplyChain {
             return "Retail Stage";
         else if (MedicineStock[_medicineID].stage == STAGE.sold)
             return "Medicine Sold";
+
+        result = "";
+        return result;
     }
 
     //To store information about raw material supplier
