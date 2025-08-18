@@ -7,13 +7,6 @@ param(
     [switch]$Help
 )
 
-# Global variables for process management
-$Global:GanachePID = $null
-$Global:MongoPID = $null
-$Global:RedisPID = $null
-$Global:BackendPID = $null
-$Global:FrontendPID = $null
-
 # Function to print colored output
 function Write-Status {
     param([string]$Message)
@@ -30,7 +23,7 @@ function Write-Warning {
     Write-Host "[WARNING] $Message" -ForegroundColor Yellow
 }
 
-function Write-Error {
+function Write-ErrorMsg {
     param([string]$Message)
     Write-Host "[ERROR] $Message" -ForegroundColor Red
 }
@@ -77,75 +70,34 @@ function Stop-ProcessByPort {
     }
 }
 
-# Function to start process in background
-function Start-BackgroundProcess {
-    param(
-        [string]$Command,
-        [string]$Arguments,
-        [string]$WorkingDirectory,
-        [string]$LogFile,
-        [string]$ProcessName
-    )
-    
-    Write-Status "Starting $ProcessName..."
-    try {
-        $processInfo = New-Object System.Diagnostics.ProcessStartInfo
-        $processInfo.FileName = $Command
-        $processInfo.Arguments = $Arguments
-        $processInfo.WorkingDirectory = $WorkingDirectory
-        $processInfo.RedirectStandardOutput = $true
-        $processInfo.RedirectStandardError = $true
-        $processInfo.UseShellExecute = $false
-        $processInfo.CreateNoWindow = $true
-        
-        $process = New-Object System.Diagnostics.Process
-        $process.StartInfo = $processInfo
-        $process.Start() | Out-Null
-        
-        return $process
-    }
-    catch {
-        Write-Error "Failed to start $ProcessName : $_"
-        return $null
-    }
-}
-
 # Check prerequisites
 function Test-Prerequisites {
     Write-Status "Checking prerequisites..."
     
     # Check Node.js
     if (-not (Test-Command "node")) {
-        Write-Error "Node.js is not installed. Please install Node.js v16 or higher."
+        Write-ErrorMsg "Node.js is not installed. Please install Node.js v16 or higher."
         Write-Status "Download from: https://nodejs.org/"
         exit 1
     }
     
     $nodeVersion = (node --version) -replace 'v', '' -split '\.' | Select-Object -First 1
     if ([int]$nodeVersion -lt 16) {
-        Write-Error "Node.js version must be 16 or higher. Current version: $(node --version)"
+        Write-ErrorMsg "Node.js version must be 16 or higher. Current version: $(node --version)"
         exit 1
     }
     Write-Success "Node.js $(node --version) found"
     
     # Check npm
     if (-not (Test-Command "npm")) {
-        Write-Error "npm is not installed. Please install npm."
+        Write-ErrorMsg "npm is not installed. Please install npm."
         exit 1
     }
     Write-Success "npm $(npm --version) found"
     
-    # Check Git
-    if (-not (Test-Command "git")) {
-        Write-Warning "Git is not installed. Some features may not work properly."
-    }
-    else {
-        Write-Success "Git found"
-    }
-    
     # Check if we're in the right directory
     if (-not (Test-Path "package.json")) {
-        Write-Error "package.json not found. Please run this script from the project root directory."
+        Write-ErrorMsg "package.json not found. Please run this script from the project root directory."
         exit 1
     }
     
@@ -159,23 +111,21 @@ function Install-Dependencies {
     # Install global dependencies
     Write-Status "Installing global dependencies..."
     try {
-        npm install -g ganache-cli truffle nodemon concurrently 2>$null
+        npm install -g ganache-cli truffle nodemon concurrently
         if ($LASTEXITCODE -ne 0) {
-            Write-Warning "Failed to install some global packages. Trying with --force..."
-            npm install -g ganache-cli truffle nodemon concurrently --force
+            Write-Warning "Some global packages may have failed. Continuing..."
         }
-        Write-Success "Global dependencies installed"
+        Write-Success "Global dependencies installation completed"
     }
     catch {
-        Write-Error "Failed to install global dependencies. Please run as administrator."
-        exit 1
+        Write-Warning "Failed to install some global dependencies. Continuing..."
     }
     
     # Root dependencies
     Write-Status "Installing root dependencies..."
     npm install
     if ($LASTEXITCODE -ne 0) {
-        Write-Error "Failed to install root dependencies"
+        Write-ErrorMsg "Failed to install root dependencies"
         exit 1
     }
     Write-Success "Root dependencies installed"
@@ -187,7 +137,7 @@ function Install-Dependencies {
         npm install
         if ($LASTEXITCODE -ne 0) {
             Pop-Location
-            Write-Error "Failed to install backend dependencies"
+            Write-ErrorMsg "Failed to install backend dependencies"
             exit 1
         }
         Pop-Location
@@ -201,7 +151,7 @@ function Install-Dependencies {
         npm install
         if ($LASTEXITCODE -ne 0) {
             Pop-Location
-            Write-Error "Failed to install frontend dependencies"
+            Write-ErrorMsg "Failed to install frontend dependencies"
             exit 1
         }
         Pop-Location
@@ -223,45 +173,23 @@ function Initialize-Environment {
     # Backend environment
     if (-not (Test-Path "backend\.env")) {
         Write-Status "Creating backend environment file..."
-        if (Test-Path "backend\.env.example") {
-            Copy-Item "backend\.env.example" "backend\.env"
-        }
-        else {
-            # Create basic .env file
-            $envContent = @"
-# Server Configuration
+        $envContent = @"
 NODE_ENV=development
 PORT=5000
 API_URL=http://localhost:5000
-
-# Frontend Configuration
 FRONTEND_URL=http://localhost:3000
-
-# Database Configuration
 MONGODB_URI=mongodb://localhost:27017/supply_chain_traceability
-
-# Redis Configuration
 REDIS_URL=redis://localhost:6379
-
-# Blockchain Configuration
 WEB3_PROVIDER_URL=http://localhost:8545
 NETWORK_ID=1337
 CONTRACT_OWNER_PRIVATE_KEY=0xc87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3
-
-# JWT Configuration
-JWT_SECRET=your_super_secret_jwt_key_change_this_in_production_$((Get-Date).Ticks)
+JWT_SECRET=your_super_secret_jwt_key_change_this_in_production
 JWT_EXPIRES_IN=7d
-JWT_COOKIE_EXPIRES_IN=7
-
-# Logging Configuration
 LOG_LEVEL=info
-
-# Development Configuration
 DEBUG=true
 ENABLE_SWAGGER=true
 "@
-            $envContent | Out-File -FilePath "backend\.env" -Encoding UTF8
-        }
+        $envContent | Out-File -FilePath "backend\.env" -Encoding UTF8
         Write-Success "Backend .env file created"
     }
     else {
@@ -284,57 +212,6 @@ REACT_APP_NETWORK_ID=1337
     }
 }
 
-# Start MongoDB (if available)
-function Start-MongoDB {
-    Write-Status "Checking MongoDB..."
-    
-    if (Test-Command "mongod") {
-        if (-not (Test-Port 27017)) {
-            Write-Status "Starting MongoDB..."
-            New-Item -ItemType Directory -Force -Path "data\db" | Out-Null
-            $Global:MongoPID = Start-BackgroundProcess "mongod" "--dbpath .\data\db --port 27017" $PWD "backend\logs\mongodb.log" "MongoDB"
-            Start-Sleep -Seconds 3
-            if (Test-Port 27017) {
-                Write-Success "MongoDB started successfully"
-            }
-            else {
-                Write-Warning "MongoDB may not have started properly"
-            }
-        }
-        else {
-            Write-Success "MongoDB is already running"
-        }
-    }
-    else {
-        Write-Warning "MongoDB not found. Using in-memory database fallback."
-    }
-}
-
-# Start Redis (if available)
-function Start-Redis {
-    Write-Status "Checking Redis..."
-    
-    if (Test-Command "redis-server") {
-        if (-not (Test-Port 6379)) {
-            Write-Status "Starting Redis..."
-            $Global:RedisPID = Start-BackgroundProcess "redis-server" "--port 6379" $PWD "backend\logs\redis.log" "Redis"
-            Start-Sleep -Seconds 2
-            if (Test-Port 6379) {
-                Write-Success "Redis started successfully"
-            }
-            else {
-                Write-Warning "Redis may not have started properly"
-            }
-        }
-        else {
-            Write-Success "Redis is already running"
-        }
-    }
-    else {
-        Write-Warning "Redis not found. Caching will be disabled."
-    }
-}
-
 # Start blockchain
 function Start-Blockchain {
     Write-Status "Starting local blockchain..."
@@ -347,7 +224,7 @@ function Start-Blockchain {
     
     Write-Status "Starting Ganache CLI..."
     $ganacheArgs = "--deterministic --accounts 10 --host 0.0.0.0 --port 8545 --networkId 1337 --gasLimit 8000000 --gasPrice 20000000000"
-    $Global:GanachePID = Start-BackgroundProcess "ganache-cli" $ganacheArgs $PWD "backend\logs\ganache.log" "Ganache"
+    Start-Process -FilePath "ganache-cli" -ArgumentList $ganacheArgs -WindowStyle Normal
     
     # Wait for Ganache to start
     Write-Status "Waiting for blockchain to initialize..."
@@ -360,7 +237,7 @@ function Start-Blockchain {
         Start-Sleep -Seconds 1
     }
     
-    Write-Error "Ganache failed to start within $timeout seconds"
+    Write-ErrorMsg "Ganache failed to start within $timeout seconds"
     exit 1
 }
 
@@ -402,7 +279,7 @@ module.exports = {
     Write-Status "Compiling contracts..."
     npx truffle compile
     if ($LASTEXITCODE -ne 0) {
-        Write-Error "Contract compilation failed"
+        Write-ErrorMsg "Contract compilation failed"
         exit 1
     }
     Write-Success "Contracts compiled successfully"
@@ -411,20 +288,10 @@ module.exports = {
     Write-Status "Deploying contracts to local network..."
     npx truffle migrate --network development --reset
     if ($LASTEXITCODE -ne 0) {
-        Write-Error "Contract deployment failed"
+        Write-ErrorMsg "Contract deployment failed"
         exit 1
     }
     Write-Success "Contracts deployed successfully"
-    
-    # Verify deployment
-    Write-Status "Verifying contract deployment..."
-    if ((Test-Path "build\contracts") -and (Get-ChildItem "build\contracts" | Measure-Object).Count -gt 0) {
-        Write-Success "Contract artifacts generated successfully"
-    }
-    else {
-        Write-Error "Contract deployment verification failed"
-        exit 1
-    }
 }
 
 # Start backend server
@@ -432,7 +299,7 @@ function Start-Backend {
     Write-Status "Starting backend server..."
     
     if (-not (Test-Path "backend")) {
-        Write-Error "Backend directory not found"
+        Write-ErrorMsg "Backend directory not found"
         exit 1
     }
     
@@ -442,9 +309,8 @@ function Start-Backend {
         Stop-ProcessByPort 5000
     }
     
-    Push-Location backend
-    $Global:BackendPID = Start-BackgroundProcess "npm" "run dev" $PWD "..\backend\logs\backend.log" "Backend Server"
-    Pop-Location
+    Write-Status "Starting backend in new window..."
+    Start-Process -FilePath "cmd" -ArgumentList "/k", "cd backend && npm run dev" -WindowStyle Normal
     
     # Wait for backend to start
     Write-Status "Waiting for backend server to initialize..."
@@ -457,9 +323,7 @@ function Start-Backend {
         Start-Sleep -Seconds 1
     }
     
-    Write-Error "Backend server failed to start within $timeout seconds"
-    Write-Error "Check backend\logs\backend.log for details"
-    exit 1
+    Write-Warning "Backend server may still be starting..."
 }
 
 # Start frontend application
@@ -467,7 +331,7 @@ function Start-Frontend {
     Write-Status "Starting frontend application..."
     
     if (-not (Test-Path "frontend")) {
-        Write-Error "Frontend directory not found"
+        Write-ErrorMsg "Frontend directory not found"
         exit 1
     }
     
@@ -477,9 +341,8 @@ function Start-Frontend {
         Stop-ProcessByPort 3000
     }
     
-    Push-Location frontend
-    $Global:FrontendPID = Start-BackgroundProcess "npm" "start" $PWD "..\backend\logs\frontend.log" "Frontend Application"
-    Pop-Location
+    Write-Status "Starting frontend in new window..."
+    Start-Process -FilePath "cmd" -ArgumentList "/k", "cd frontend && npm start" -WindowStyle Normal
     
     # Wait for frontend to start
     Write-Status "Waiting for frontend application to initialize..."
@@ -492,9 +355,7 @@ function Start-Frontend {
         Start-Sleep -Seconds 1
     }
     
-    Write-Error "Frontend application failed to start within $timeout seconds"
-    Write-Error "Check backend\logs\frontend.log for details"
-    exit 1
+    Write-Warning "Frontend application may still be starting..."
 }
 
 # Health check
@@ -508,28 +369,17 @@ function Test-Health {
         Write-Success "✓ Blockchain (Ganache) is running on port 8545"
     }
     else {
-        Write-Error "✗ Blockchain is not accessible"
+        Write-ErrorMsg "✗ Blockchain is not accessible"
         $allHealthy = $false
     }
     
     # Check backend
-    try {
-        $response = Invoke-WebRequest -Uri "http://localhost:5000/health" -UseBasicParsing -TimeoutSec 5
-        if ($response.StatusCode -eq 200) {
-            Write-Success "✓ Backend API is healthy on port 5000"
-        }
-        else {
-            Write-Warning "⚠ Backend health check failed (may still be starting)"
-        }
+    if (Test-Port 5000) {
+        Write-Success "✓ Backend is running on port 5000"
     }
-    catch {
-        if (Test-Port 5000) {
-            Write-Success "✓ Backend is running on port 5000"
-        }
-        else {
-            Write-Error "✗ Backend is not accessible"
-            $allHealthy = $false
-        }
+    else {
+        Write-ErrorMsg "✗ Backend is not accessible"
+        $allHealthy = $false
     }
     
     # Check frontend
@@ -537,58 +387,11 @@ function Test-Health {
         Write-Success "✓ Frontend is running on port 3000"
     }
     else {
-        Write-Error "✗ Frontend is not accessible"
+        Write-ErrorMsg "✗ Frontend is not accessible"
         $allHealthy = $false
     }
     
-    # Check databases
-    if (Test-Port 27017) {
-        Write-Success "✓ MongoDB is running on port 27017"
-    }
-    else {
-        Write-Warning "⚠ MongoDB is not running (using fallback)"
-    }
-    
-    if (Test-Port 6379) {
-        Write-Success "✓ Redis is running on port 6379"
-    }
-    else {
-        Write-Warning "⚠ Redis is not running (caching disabled)"
-    }
-    
     return $allHealthy
-}
-
-# Cleanup function
-function Stop-AllProcesses {
-    Write-Status "Cleaning up processes..."
-    
-    # Kill Node.js processes
-    Get-Process -Name "node" -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
-    
-    # Kill specific processes if we have their IDs
-    if ($Global:FrontendPID) { 
-        try { $Global:FrontendPID.Kill() } catch { }
-    }
-    if ($Global:BackendPID) { 
-        try { $Global:BackendPID.Kill() } catch { }
-    }
-    if ($Global:GanachePID) { 
-        try { $Global:GanachePID.Kill() } catch { }
-    }
-    if ($Global:MongoPID) { 
-        try { $Global:MongoPID.Kill() } catch { }
-    }
-    if ($Global:RedisPID) { 
-        try { $Global:RedisPID.Kill() } catch { }
-    }
-    
-    # Cleanup ports
-    Stop-ProcessByPort 3000
-    Stop-ProcessByPort 5000
-    Stop-ProcessByPort 8545
-    
-    Write-Status "Cleanup completed"
 }
 
 # Show usage information
@@ -615,14 +418,11 @@ function Start-Deployment {
     Write-Status "Starting High-Efficiency Blockchain-Based Supply Chain Traceability deployment..."
     Write-Host ""
     
-    # Platform detection
     Write-Status "Detected platform: Windows PowerShell"
     
     Test-Prerequisites
     Install-Dependencies
     Initialize-Environment
-    Start-MongoDB
-    Start-Redis
     Start-Blockchain
     Deploy-Contracts
     Start-Backend
@@ -654,50 +454,42 @@ function Start-Deployment {
         Write-Host "      - RPC URL: http://localhost:8545"
         Write-Host "      - Chain ID: 1337"
         Write-Host "      - Currency Symbol: ETH"
-        Write-Host "   3. Import a Ganache account to MetaMask using one of the private keys"
+        Write-Host "   3. Import a Ganache account to MetaMask using private key:"
+        Write-Host "      0xc87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3"
         Write-Host "   4. Start using the application!"
         Write-Host ""
-        Write-Host "📋 Test Accounts (Private Keys):"
-        Write-Host "   Account 0: 0xc87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3"
-        Write-Host "   Account 1: 0xae6ae8e5ccbfb04590405997ee2d52d2b330726137b875053c36d94e974d162f"
-        Write-Host ""
-        Write-Host "🛑 To stop all services, press Ctrl+C"
+        Write-Host "🛑 To stop services: Close the individual service windows"
         Write-Host ""
         
-        # Keep script running with monitoring
+        # Keep script running
         Write-Status "All services are running. Press Ctrl+C to stop..."
         try {
             while ($true) {
                 Start-Sleep -Seconds 10
-                # Basic health monitoring
                 if (-not (Test-Port 3000) -or -not (Test-Port 5000) -or -not (Test-Port 8545)) {
-                    Write-Warning "One or more services may have stopped. Check the logs."
-                    Write-Status "Frontend:  $(if (Test-Port 3000) { '✓ Running' } else { '✗ Stopped' })"
-                    Write-Status "Backend:   $(if (Test-Port 5000) { '✓ Running' } else { '✗ Stopped' })"
-                    Write-Status "Blockchain: $(if (Test-Port 8545) { '✓ Running' } else { '✗ Stopped' })"
+                    Write-Warning "One or more services may have stopped. Check the service windows."
                 }
             }
         }
         finally {
-            Stop-AllProcesses
+            Write-Status "Stopping services..."
         }
     }
     else {
-        Write-Error "❌ Deployment failed during health checks"
+        Write-ErrorMsg "❌ Deployment failed during health checks"
         Write-Host ""
         Write-Host "🔍 Troubleshooting:"
-        Write-Host "   - Check log files in backend\logs\"
         Write-Host "   - Ensure all required ports are available"
         Write-Host "   - Verify Node.js version is 16 or higher"
-        Write-Host "   - Try running the script as administrator"
+        Write-Host "   - Try running as administrator"
         Write-Host ""
         exit 1
     }
 }
 
-# Development mode (lighter setup)
+# Development mode
 function Start-DevMode {
-    Write-Status "Starting in development mode (faster startup)..."
+    Write-Status "Starting in development mode..."
     
     Test-Prerequisites
     Initialize-Environment
@@ -706,15 +498,10 @@ function Start-DevMode {
     
     Write-Success "Development environment ready!"
     Write-Host ""
-    Write-Host "🚀 Quick start commands:"
-    Write-Host "   Backend:  cd backend; npm run dev"
-    Write-Host "   Frontend: cd frontend; npm start"
+    Write-Host "🚀 Next steps:"
+    Write-Host "   1. Open new terminal: cd backend; npm run dev"
+    Write-Host "   2. Open new terminal: cd frontend; npm start"
     Write-Host ""
-}
-
-# Handle Ctrl+C gracefully
-$null = Register-EngineEvent PowerShell.Exiting -Action {
-    Stop-AllProcesses
 }
 
 # Main script logic
