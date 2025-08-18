@@ -10,6 +10,7 @@ echo ========================================
 echo.
 
 REM Check if Node.js is installed
+echo [INFO] Checking Node.js...
 node --version >nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
     echo [ERROR] Node.js is not installed. Please install Node.js v16 or higher.
@@ -22,6 +23,7 @@ echo [INFO] Node.js version:
 node --version
 
 REM Check if npm is installed
+echo [INFO] Checking npm...
 npm --version >nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
     echo [ERROR] npm is not installed.
@@ -33,27 +35,33 @@ echo [INFO] npm version:
 npm --version
 
 REM Check if we're in the right directory
+echo [INFO] Checking project directory...
 if not exist "package.json" (
     echo [ERROR] package.json not found. Please run this script from the project root directory.
     pause
     exit /b 1
 )
+echo [SUCCESS] Found package.json
 
 echo.
 echo [INFO] Installing global dependencies...
+echo [INFO] This may take a few minutes...
 call npm install -g ganache-cli truffle nodemon concurrently
 if %ERRORLEVEL% NEQ 0 (
     echo [WARNING] Some global packages failed to install. Continuing anyway...
 )
+echo [SUCCESS] Global dependencies installation completed
 
 echo.
 echo [INFO] Installing project dependencies...
+echo [INFO] Installing root dependencies...
 call npm install
 if %ERRORLEVEL% NEQ 0 (
     echo [ERROR] Failed to install root dependencies
     pause
     exit /b 1
 )
+echo [SUCCESS] Root dependencies installed
 
 REM Install backend dependencies
 if exist "backend" (
@@ -67,6 +75,9 @@ if exist "backend" (
         exit /b 1
     )
     cd ..
+    echo [SUCCESS] Backend dependencies installed
+) else (
+    echo [WARNING] Backend directory not found
 )
 
 REM Install frontend dependencies
@@ -81,6 +92,9 @@ if exist "frontend" (
         exit /b 1
     )
     cd ..
+    echo [SUCCESS] Frontend dependencies installed
+) else (
+    echo [WARNING] Frontend directory not found
 )
 
 echo.
@@ -186,7 +200,9 @@ echo.
 
 REM Start Ganache in a new window
 echo [INFO] Starting Ganache CLI (Blockchain)...
-start "Ganache CLI" cmd /k "ganache-cli --deterministic --accounts 10 --host 0.0.0.0 --port 8545 --networkId 1337 --gasLimit 8000000 --gasPrice 20000000000"
+echo [INFO] This will open a new window for the blockchain...
+start "Ganache CLI - Blockchain" cmd /k "ganache-cli --deterministic --accounts 10 --host 0.0.0.0 --port 8545 --networkId 1337 --gasLimit 8000000 --gasPrice 20000000000"
+echo [SUCCESS] Ganache CLI started in new window
 
 REM Wait a bit for Ganache to start
 echo [INFO] Waiting for blockchain to initialize...
@@ -214,13 +230,21 @@ echo [SUCCESS] Smart contracts deployed successfully
 REM Start backend in a new window
 if exist "backend" (
     echo [INFO] Starting Backend Server...
-    start "Backend Server" cmd /k "cd backend && npm run dev"
+    echo [INFO] This will open a new window for the backend API...
+    start "Backend Server - API" cmd /k "cd backend && npm run dev"
+    echo [SUCCESS] Backend server started in new window
+) else (
+    echo [WARNING] Backend directory not found
 )
 
 REM Start frontend in a new window
 if exist "frontend" (
     echo [INFO] Starting Frontend Application...
-    start "Frontend App" cmd /k "cd frontend && npm start"
+    echo [INFO] This will open a new window for the React app...
+    start "Frontend App - React" cmd /k "cd frontend && npm start"
+    echo [SUCCESS] Frontend application started in new window
+) else (
+    echo [WARNING] Frontend directory not found
 )
 
 echo.
