@@ -56,7 +56,7 @@ function Stop-ProcessByPort {
     try {
         $processes = netstat -ano | Select-String ":$Port " | ForEach-Object {
             $fields = $_ -split '\s+'
-            $fields[4]
+            $fields[-1]
         }
         foreach ($pid in $processes) {
             if ($pid -and $pid -ne "0") {
@@ -81,8 +81,8 @@ function Test-Prerequisites {
         exit 1
     }
     
-    $nodeVersion = (node --version) -replace 'v', '' -split '\.' | Select-Object -First 1
-    if ([int]$nodeVersion -lt 16) {
+    $nodeMajor = ((node --version) -replace 'v', '' -split '\.')[0]
+    if ([int]$nodeMajor -lt 16) {
         Write-ErrorMsg "Node.js version must be 16 or higher. Current version: $(node --version)"
         exit 1
     }
@@ -108,18 +108,28 @@ function Test-Prerequisites {
 function Install-Dependencies {
     Write-Status "Installing dependencies..."
     
-    # Install global dependencies
+    # Install global dependencies only if missing (avoid EEXIST/EPERM)
     Write-Status "Installing global dependencies..."
-    try {
-        npm install -g ganache-cli truffle nodemon concurrently
-        if ($LASTEXITCODE -ne 0) {
-            Write-Warning "Some global packages may have failed. Continuing..."
+    $packages = @(
+        @{ name = "truffle";       cmd = "truffle" },
+        @{ name = "ganache-cli";   cmd = "ganache-cli" },
+        @{ name = "nodemon";       cmd = "nodemon" },
+        @{ name = "concurrently";  cmd = "concurrently" }
+    )
+    foreach ($pkg in $packages) {
+        if (-not (Test-Command $pkg.cmd)) {
+            Write-Status "Installing $($pkg.name)..."
+            npm install -g $pkg.name
+            if ($LASTEXITCODE -ne 0) {
+                Write-Warning "Failed to install $($pkg.name). Continuing..."
+            } else {
+                Write-Success "$($pkg.name) installed"
+            }
+        } else {
+            Write-Status "$($pkg.name) already installed; skipping"
         }
-        Write-Success "Global dependencies installation completed"
     }
-    catch {
-        Write-Warning "Failed to install some global dependencies. Continuing..."
-    }
+    Write-Success "Global dependencies step completed"
     
     # Root dependencies
     Write-Status "Installing root dependencies..."
@@ -144,15 +154,19 @@ function Install-Dependencies {
         Write-Success "Backend dependencies installed"
     }
     
-    # Frontend dependencies
+    # Frontend dependencies (use legacy peer deps to avoid ERESOLVE with react-scripts)
     if (Test-Path "frontend") {
         Write-Status "Installing frontend dependencies..."
         Push-Location frontend
-        npm install
+        npm install --legacy-peer-deps
         if ($LASTEXITCODE -ne 0) {
-            Pop-Location
-            Write-ErrorMsg "Failed to install frontend dependencies"
-            exit 1
+            Write-Warning "Retrying frontend install with --force"
+            npm install --legacy-peer-deps --force
+            if ($LASTEXITCODE -ne 0) {
+                Pop-Location
+                Write-ErrorMsg "Failed to install frontend dependencies"
+                exit 1
+            }
         }
         Pop-Location
         Write-Success "Frontend dependencies installed"
@@ -173,7 +187,7 @@ function Initialize-Environment {
     # Backend environment
     if (-not (Test-Path "backend\.env")) {
         Write-Status "Creating backend environment file..."
-        $envContent = @"
+        $envContent = @'
 NODE_ENV=development
 PORT=5000
 API_URL=http://localhost:5000
@@ -188,7 +202,7 @@ JWT_EXPIRES_IN=7d
 LOG_LEVEL=info
 DEBUG=true
 ENABLE_SWAGGER=true
-"@
+'@
         $envContent | Out-File -FilePath "backend\.env" -Encoding UTF8
         Write-Success "Backend .env file created"
     }
@@ -199,11 +213,11 @@ ENABLE_SWAGGER=true
     # Frontend environment
     if (-not (Test-Path "frontend\.env.local")) {
         Write-Status "Creating frontend environment file..."
-        $frontendEnv = @"
+        $frontendEnv = @'
 REACT_APP_API_URL=http://localhost:5000/api
 REACT_APP_WEB3_PROVIDER_URL=http://localhost:8545
 REACT_APP_NETWORK_ID=1337
-"@
+'@
         $frontendEnv | Out-File -FilePath "frontend\.env.local" -Encoding UTF8
         Write-Success "Frontend .env.local file created"
     }
@@ -222,16 +236,27 @@ function Start-Blockchain {
         Stop-ProcessByPort 8545
     }
     
-    Write-Status "Starting Ganache CLI..."
-    $ganacheArgs = "--deterministic --accounts 10 --host 0.0.0.0 --port 8545 --networkId 1337 --gasLimit 8000000 --gasPrice 20000000000"
-    Start-Process -FilePath "ganache-cli" -ArgumentList $ganacheArgs -WindowStyle Normal
+    # Build command line for Ganache (try ganache-cli, then ganache, then npx)
+    $legacyArgs = "--deterministic --accounts 10 --host 127.0.0.1 --port 8545 --networkId 1337 --gasLimit 8000000 --gasPrice 20000000000"
+    $modernArgs = "--wallet.deterministic --wallet.totalAccounts 10 --host 127.0.0.1 --port 8545 --chain.networkId 1337 --miner.blockGasLimit 8000000 --miner.defaultGasPrice 20000000000"
+    if (Test-Command "ganache-cli") {
+        $cmdLine = "ganache-cli $legacyArgs"
+    } elseif (Test-Command "ganache") {
+        $cmdLine = "ganache $modernArgs"
+    } else {
+        $cmdLine = "npx ganache-cli $legacyArgs"
+    }
+
+    Write-Status "Starting Ganache..."
+    # Launch in a visible window that stays open
+    Start-Process -FilePath "cmd" -ArgumentList "/k", $cmdLine -WindowStyle Normal
     
     # Wait for Ganache to start
     Write-Status "Waiting for blockchain to initialize..."
-    $timeout = 30
+    $timeout = 90
     for ($i = 1; $i -le $timeout; $i++) {
         if (Test-Port 8545) {
-            Write-Success "Ganache CLI started successfully"
+            Write-Success "Ganache started successfully"
             return
         }
         Start-Sleep -Seconds 1
@@ -241,14 +266,29 @@ function Start-Blockchain {
     exit 1
 }
 
+function Ensure-TruffleSecret {
+    $secretPath = Join-Path (Get-Location) ".secret"
+    if (-not (Test-Path $secretPath)) {
+        Write-Status "Creating .secret for Truffle (dev mnemonic)..."
+        $mnemonic = "candy maple cake sugar pudding cream honey rich smooth crumble sweet treat"
+        $mnemonic | Set-Content -Path $secretPath -Encoding ASCII
+        Write-Success ".secret created"
+    } else {
+        Write-Status ".secret already exists; skipping"
+    }
+}
+
 # Deploy smart contracts
 function Deploy-Contracts {
     Write-Status "Deploying smart contracts..."
+
+    # Ensure Truffle's .secret exists so truffle-config.js can read it
+    Ensure-TruffleSecret
     
     # Check if truffle-config.js exists, create if not
     if (-not (Test-Path "truffle-config.js")) {
         Write-Status "Creating truffle-config.js..."
-        $truffleConfig = @"
+        $truffleConfig = @'
 module.exports = {
   networks: {
     development: {
@@ -271,7 +311,7 @@ module.exports = {
     }
   }
 };
-"@
+'@
         $truffleConfig | Out-File -FilePath "truffle-config.js" -Encoding UTF8
     }
     
@@ -310,7 +350,7 @@ function Start-Backend {
     }
     
     Write-Status "Starting backend in new window..."
-    Start-Process -FilePath "cmd" -ArgumentList "/k", "cd backend && npm run dev" -WindowStyle Normal
+    Start-Process -FilePath "cmd" -ArgumentList '/k', 'cd backend && npm run dev' -WindowStyle Normal
     
     # Wait for backend to start
     Write-Status "Waiting for backend server to initialize..."
@@ -342,7 +382,7 @@ function Start-Frontend {
     }
     
     Write-Status "Starting frontend in new window..."
-    Start-Process -FilePath "cmd" -ArgumentList "/k", "cd frontend && npm start" -WindowStyle Normal
+    Start-Process -FilePath "cmd" -ArgumentList '/k', 'cd frontend && npm start' -WindowStyle Normal
     
     # Wait for frontend to start
     Write-Status "Waiting for frontend application to initialize..."
@@ -366,28 +406,28 @@ function Test-Health {
     
     # Check blockchain
     if (Test-Port 8545) {
-        Write-Success "✓ Blockchain (Ganache) is running on port 8545"
+        Write-Success "OK Blockchain (Ganache) is running on port 8545"
     }
     else {
-        Write-ErrorMsg "✗ Blockchain is not accessible"
+        Write-ErrorMsg "FAIL Blockchain is not accessible"
         $allHealthy = $false
     }
     
     # Check backend
     if (Test-Port 5000) {
-        Write-Success "✓ Backend is running on port 5000"
+        Write-Success "OK Backend is running on port 5000"
     }
     else {
-        Write-ErrorMsg "✗ Backend is not accessible"
+        Write-ErrorMsg "FAIL Backend is not accessible"
         $allHealthy = $false
     }
     
     # Check frontend
     if (Test-Port 3000) {
-        Write-Success "✓ Frontend is running on port 3000"
+        Write-Success "OK Frontend is running on port 3000"
     }
     else {
-        Write-ErrorMsg "✗ Frontend is not accessible"
+        Write-ErrorMsg "FAIL Frontend is not accessible"
         $allHealthy = $false
     }
     
@@ -434,20 +474,20 @@ function Start-Deployment {
     
     if (Test-Health) {
         Write-Host ""
-        Write-Success "🎉 Deployment completed successfully!"
+        Write-Success "Deployment completed successfully!"
         Write-Host ""
-        Write-Host "📊 Application URLs:"
+        Write-Host "Application URLs:"
         Write-Host "   Frontend:        http://localhost:3000"
         Write-Host "   Backend API:     http://localhost:5000/api"
         Write-Host "   API Docs:        http://localhost:5000/api-docs"
         Write-Host "   Health Check:    http://localhost:5000/health"
         Write-Host ""
-        Write-Host "🔗 Blockchain:"
+        Write-Host "Blockchain:"
         Write-Host "   RPC URL:         http://localhost:8545"
         Write-Host "   Network ID:      1337"
         Write-Host "   Chain ID:        1337"
         Write-Host ""
-        Write-Host "📝 Next Steps:"
+        Write-Host "Next Steps:"
         Write-Host "   1. Open http://localhost:3000 in your browser"
         Write-Host "   2. Configure MetaMask:"
         Write-Host "      - Network Name: Local Ganache"
@@ -458,7 +498,7 @@ function Start-Deployment {
         Write-Host "      0xc87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3"
         Write-Host "   4. Start using the application!"
         Write-Host ""
-        Write-Host "🛑 To stop services: Close the individual service windows"
+        Write-Host "To stop services: Close the individual service windows"
         Write-Host ""
         
         # Keep script running
@@ -476,11 +516,12 @@ function Start-Deployment {
         }
     }
     else {
-        Write-ErrorMsg "❌ Deployment failed during health checks"
+        Write-ErrorMsg "Deployment failed during health checks"
         Write-Host ""
-        Write-Host "🔍 Troubleshooting:"
+        Write-Host "Troubleshooting:"
         Write-Host "   - Ensure all required ports are available"
         Write-Host "   - Verify Node.js version is 16 or higher"
+        Write-Host "   - Allow Ganache if Windows Firewall prompts"
         Write-Host "   - Try running as administrator"
         Write-Host ""
         exit 1
@@ -498,7 +539,7 @@ function Start-DevMode {
     
     Write-Success "Development environment ready!"
     Write-Host ""
-    Write-Host "🚀 Next steps:"
+    Write-Host "Next steps:"
     Write-Host "   1. Open new terminal: cd backend; npm run dev"
     Write-Host "   2. Open new terminal: cd frontend; npm start"
     Write-Host ""
