@@ -1,7 +1,7 @@
 const express = require('express');
 const { body, validationResult, query } = require('express-validator');
 const Product = require('../models/Product');
-const auth = require('../middleware/auth');
+const { auth } = require('../middleware/auth');
 const { catchAsync, AppError } = require('../middleware/errorHandler');
 const logger = require('../utils/logger');
 

@@ -1,0 +1,6 @@
+{
+  message: 'Server running on port 5000',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-20 17:38:42'
+}

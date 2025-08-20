@@ -11,9 +11,9 @@ const { Server } = require('socket.io');
 require('dotenv').config();
 
 const connectDB = require('./config/database');
-const connectRedis = require('./config/redis');
+const { connectRedis } = require('./config/redis');
 const logger = require('./utils/logger');
-const errorHandler = require('./middleware/errorHandler');
+const { globalErrorHandler } = require('./middleware/errorHandler');
 const authRoutes = require('./routes/auth');
 const productRoutes = require('./routes/products');
 const participantRoutes = require('./routes/participants');
@@ -146,7 +146,7 @@ app.use('*', (req, res) => {
 });
 
 // Global error handler
-app.use(errorHandler);
+app.use(globalErrorHandler);
 
 // Graceful shutdown
 process.on('SIGTERM', () => {

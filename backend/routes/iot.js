@@ -2,7 +2,7 @@ const express = require('express');
 const { body, validationResult, query } = require('express-validator');
 const Sensor = require('../models/Sensor');
 const SensorReading = require('../models/SensorReading');
-const auth = require('../middleware/auth');
+const { auth } = require('../middleware/auth');
 const { catchAsync, AppError } = require('../middleware/errorHandler');
 const logger = require('../utils/logger');
 
