@@ -4,3 +4,9 @@
   service: 'supply-chain-api',
   timestamp: '2025-08-20 17:38:42'
 }
+{
+  message: 'Redis client error: AggregateError',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-20 18:14:15'
+}

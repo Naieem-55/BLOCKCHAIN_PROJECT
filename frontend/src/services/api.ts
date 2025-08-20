@@ -1,5 +1,14 @@
-import axios, { AxiosInstance, AxiosError, AxiosResponse } from 'axios';
+import axios, { AxiosInstance, AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import { ApiResponse, ApiError } from '../types/api';
+
+// Extend AxiosRequestConfig to include metadata
+declare module 'axios' {
+  interface InternalAxiosRequestConfig {
+    metadata?: {
+      startTime: Date;
+    };
+  }
+}
 
 // Create axios instance
 const api: AxiosInstance = axios.create({
@@ -34,7 +43,7 @@ api.interceptors.response.use(
   (response: AxiosResponse) => {
     // Calculate request duration
     const endTime = new Date();
-    const duration = endTime.getTime() - response.config.metadata.startTime.getTime();
+    const duration = endTime.getTime() - (response.config.metadata?.startTime.getTime() || endTime.getTime());
     
     // Log successful requests in development
     if (process.env.NODE_ENV === 'development') {
@@ -56,9 +65,9 @@ api.interceptors.response.use(
       // Server responded with error status
       const { status, data } = error.response;
       customError.statusCode = status;
-      customError.message = data?.message || `HTTP Error ${status}`;
-      customError.code = data?.code || `HTTP_${status}`;
-      customError.details = data?.details;
+      customError.message = (data as any)?.message || `HTTP Error ${status}`;
+      customError.code = (data as any)?.code || `HTTP_${status}`;
+      customError.details = (data as any)?.details;
       customError.path = error.config?.url;
 
       // Handle specific error cases

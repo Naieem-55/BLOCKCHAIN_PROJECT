@@ -189,7 +189,7 @@ export interface ChartData {
 
 export interface Recommendation {
   id: string;
-  type: RecommendationType;
+  type: ParticipantRecommendationType;
   title: string;
   description: string;
   priority: 'low' | 'medium' | 'high';
@@ -197,7 +197,7 @@ export interface Recommendation {
   estimatedImpact: string;
 }
 
-export enum RecommendationType {
+export enum ParticipantRecommendationType {
   PROCESS_IMPROVEMENT = 'process_improvement',
   QUALITY_ENHANCEMENT = 'quality_enhancement',
   COMPLIANCE = 'compliance',

@@ -1,6 +1,7 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
 
 // Import all slice reducers
 import authSlice from './authSlice';
@@ -52,7 +53,5 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
 // Typed hooks
-import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
-
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
