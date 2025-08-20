@@ -9,7 +9,6 @@ import {
   ProductFilter,
   ProductStats
 } from '../types/product';
-import { PaginatedResponse } from '../types';
 import { productService } from '../services/productService';
 
 interface ProductState {
