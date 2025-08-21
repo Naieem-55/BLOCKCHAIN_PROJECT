@@ -40933,14 +40933,208 @@
   },
   "networks": {
     "5777": {
-      "events": {},
+      "events": {
+        "0x6af8a40f8a661f2ea1898dc041375ba059bc15f9120cb2c9cae247243d14e534": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "productId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "alertType",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "message",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "name": "AlertTriggered",
+          "type": "event"
+        },
+        "0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "previousAdminRole",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "newAdminRole",
+              "type": "bytes32"
+            }
+          ],
+          "name": "RoleAdminChanged",
+          "type": "event"
+        },
+        "0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleGranted",
+          "type": "event"
+        },
+        "0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleRevoked",
+          "type": "event"
+        },
+        "0x42e59dab04bb1a1119755dbb0231b82d757bab1fc0b13e4cde2b9fcfe1b97dc7": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "string",
+              "name": "sensorId",
+              "type": "string"
+            },
+            {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "productId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "name": "SensorDataRecorded",
+          "type": "event"
+        },
+        "0x88e2f721b8cc550dd0e039e5891e36df5d1a63d5787d3f861c234dfc9e7a69a7": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "sensorId",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "enum IoTIntegration.SensorType",
+              "name": "sensorType",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "description",
+              "type": "string"
+            }
+          ],
+          "name": "SensorRegistered",
+          "type": "event"
+        },
+        "0x05a72bf03262e35aac2b6f62b425a3025450125ed4e5f633f9e934c497fe0d27": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "enum IoTIntegration.SensorType",
+              "name": "sensorType",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "int256",
+              "name": "minValue",
+              "type": "int256"
+            },
+            {
+              "indexed": false,
+              "internalType": "int256",
+              "name": "maxValue",
+              "type": "int256"
+            }
+          ],
+          "name": "ThresholdSet",
+          "type": "event"
+        }
+      },
       "links": {},
-      "address": "0xD10c92B8A6422E9990208e02C2Eefc40aD267C3E",
-      "transactionHash": "0x7a3e8216b648a6454983f1e2cd969edc72430021a44b1eeeca94371f310b0196"
+      "address": "0x7795d7A6A69243121B7b8381cf190Ef819A75efB",
+      "transactionHash": "0xba987e960630efae3362219d463fd54bc47318164f64906061aaf52b3c082b61"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-08-18T18:36:08.081Z",
+  "updatedAt": "2025-08-21T06:12:14.866Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "Contract for integrating IoT devices and sensor data into supply chain",

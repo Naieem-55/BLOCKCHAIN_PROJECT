@@ -88,6 +88,7 @@ export interface UpdateProfileData {
   company?: string;
   location?: string;
   avatar?: File;
+  walletAddress?: string | undefined;
 }
 
 export interface WalletConnection {

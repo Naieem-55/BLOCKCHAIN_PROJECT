@@ -33,7 +33,9 @@ class BlockchainService {
       
     } catch (error) {
       logger.error(`Blockchain service initialization failed: ${error.message}`);
-      throw error;
+      logger.warn('Application will continue without blockchain functionality');
+      this.isInitialized = false;
+      // Don't throw error, allow app to continue
     }
   }
 

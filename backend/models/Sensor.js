@@ -103,7 +103,7 @@ const sensorSchema = new mongoose.Schema({
 });
 
 // Indexes
-sensorSchema.index({ sensorId: 1 });
+// Removed duplicate index on sensorId since it's already unique
 sensorSchema.index({ owner: 1 });
 sensorSchema.index({ type: 1 });
 sensorSchema.index({ isActive: 1 });

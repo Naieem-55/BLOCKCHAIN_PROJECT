@@ -134,7 +134,7 @@ const productSchema = new mongoose.Schema({
 });
 
 // Indexes
-productSchema.index({ batchNumber: 1 });
+// Removed duplicate index on batchNumber since it's already unique
 productSchema.index({ currentOwner: 1 });
 productSchema.index({ currentStage: 1 });
 productSchema.index({ category: 1 });

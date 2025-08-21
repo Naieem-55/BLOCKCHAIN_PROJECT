@@ -192,7 +192,7 @@ class ProductService {
   }
 
   async deleteProductImage(productId: string, imageUrl: string): Promise<void> {
-    return apiRequest.delete(`/products/${productId}/images`, { imageUrl });
+    return apiRequest.delete(`/products/${productId}/images?imageUrl=${encodeURIComponent(imageUrl)}`);
   }
 
   async uploadProductDocument(productId: string, document: File, type: string): Promise<{ url: string }> {

@@ -9,38 +9,42 @@ const connectRedis = async () => {
     
     client = redis.createClient({
       url: redisUrl,
-      retry_strategy: (options) => {
-        if (options.error && options.error.code === 'ECONNREFUSED') {
-          logger.error('Redis server refused connection');
-          return new Error('Redis server refused connection');
-        }
-        if (options.total_retry_time > 1000 * 60 * 60) {
-          logger.error('Redis retry time exhausted');
-          return new Error('Redis retry time exhausted');
-        }
-        if (options.attempt > 10) {
-          logger.error('Redis max retry attempts reached');
-          return new Error('Redis max retry attempts reached');
-        }
-        // Reconnect after
-        return Math.min(options.attempt * 100, 3000);
+      socket: {
+        reconnectStrategy: (retries) => {
+          if (retries > 3) {
+            logger.warn('Redis reconnection attempts exceeded, disabling Redis');
+            return false; // Stop reconnecting
+          }
+          return Math.min(retries * 100, 3000);
+        },
+        connectTimeout: 5000,
       }
     });
 
+    let errorLogged = false;
+    
     client.on('connect', () => {
       logger.info('Redis client connected');
+      errorLogged = false;
     });
 
     client.on('ready', () => {
       logger.info('Redis client ready');
+      errorLogged = false;
     });
 
     client.on('error', (err) => {
-      logger.error(`Redis client error: ${err}`);
+      // Only log the error once to avoid spam
+      if (!errorLogged) {
+        logger.warn(`Redis not available: ${err.message}. Application will continue without caching.`);
+        errorLogged = true;
+      }
     });
 
     client.on('end', () => {
-      logger.warn('Redis client connection ended');
+      if (!errorLogged) {
+        logger.warn('Redis client connection ended');
+      }
     });
 
     await client.connect();
@@ -50,9 +54,9 @@ const connectRedis = async () => {
     logger.info('Redis connection established successfully');
     
   } catch (error) {
-    logger.error(`Redis connection failed: ${error.message}`);
+    logger.warn(`Redis not available: ${error.message}. Application will continue without caching.`);
     // Don't exit process, allow app to run without Redis
-    logger.warn('Application will continue without Redis caching');
+    client = null; // Set client to null to avoid further connection attempts
   }
 };
 

@@ -2,6 +2,53 @@
 
 A comprehensive blockchain-based supply chain traceability system that provides end-to-end visibility, real-time IoT integration, and advanced analytics for supply chain management.
 
+## 🔧 Quick Start Guide
+
+### Prerequisites
+- Node.js v18+ 
+- MongoDB (running on localhost:27017)
+- Redis (optional, for caching)
+- Ethereum local blockchain (optional, for blockchain features)
+
+### Installation & Running
+
+1. **Install Dependencies**
+```bash
+# Backend
+cd backend
+npm install
+
+# Frontend  
+cd ../frontend
+npm install
+```
+
+2. **Start Backend** (Port 5001)
+```bash
+cd backend
+npm run dev
+```
+
+3. **Start Frontend** (Port 3000)
+```bash
+cd frontend
+npm start
+```
+
+4. **Access the Application**
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:5001
+- API Docs: http://localhost:5001/api-docs
+
+### First Time Setup
+1. Go to http://localhost:3000/register
+2. Create an account (choose any role)
+3. Login with your credentials
+
+**Test Account Available:**
+- Email: test@example.com
+- Password: Test123!
+
 ## 🚀 Features
 
 ### Core Functionality

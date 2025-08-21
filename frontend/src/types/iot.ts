@@ -269,7 +269,7 @@ export interface TrendingMetric {
 
 export interface SensorRecommendation {
   id: string;
-  type: RecommendationType;
+  type: IoTRecommendationType;
   title: string;
   description: string;
   priority: 'low' | 'medium' | 'high';
@@ -278,7 +278,7 @@ export interface SensorRecommendation {
   estimatedSavings?: string;
 }
 
-export enum RecommendationType {
+export enum IoTRecommendationType {
   CALIBRATION = 'calibration',
   MAINTENANCE = 'maintenance',
   REPLACEMENT = 'replacement',

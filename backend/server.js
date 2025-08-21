@@ -11,9 +11,9 @@ const { Server } = require('socket.io');
 require('dotenv').config();
 
 const connectDB = require('./config/database');
-const connectRedis = require('./config/redis');
+const { connectRedis } = require('./config/redis');
 const logger = require('./utils/logger');
-const errorHandler = require('./middleware/errorHandler');
+const { globalErrorHandler } = require('./middleware/errorHandler');
 const authRoutes = require('./routes/auth');
 const productRoutes = require('./routes/products');
 const participantRoutes = require('./routes/participants');
@@ -37,6 +37,9 @@ connectRedis();
 // Initialize blockchain service
 blockchainService.initialize();
 
+// Trust proxy for rate limiting when behind a proxy
+app.set('trust proxy', 1);
+
 // Security middleware
 app.use(helmet());
 app.use(cors({
@@ -48,7 +51,9 @@ app.use(cors({
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per windowMs
-  message: 'Too many requests from this IP, please try again later.'
+  message: 'Too many requests from this IP, please try again later.',
+  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 app.use(limiter);
 
@@ -146,7 +151,7 @@ app.use('*', (req, res) => {
 });
 
 // Global error handler
-app.use(errorHandler);
+app.use(globalErrorHandler);
 
 // Graceful shutdown
 process.on('SIGTERM', () => {

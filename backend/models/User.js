@@ -75,7 +75,7 @@ const userSchema = new mongoose.Schema({
 });
 
 // Indexes
-userSchema.index({ email: 1 });
+// Removed duplicate index on email since it's already unique
 userSchema.index({ role: 1 });
 userSchema.index({ walletAddress: 1 });
 userSchema.index({ isActive: 1 });

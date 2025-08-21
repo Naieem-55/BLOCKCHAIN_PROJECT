@@ -3,7 +3,7 @@ import { ApiResponse, ApiError } from '../types/api';
 
 // Create axios instance
 const api: AxiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5000/api',
+  baseURL: process.env.REACT_APP_API_URL || '/api',
   timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
@@ -12,7 +12,7 @@ const api: AxiosInstance = axios.create({
 
 // Request interceptor
 api.interceptors.request.use(
-  (config) => {
+  (config: any) => {
     // Add auth token to requests
     const token = localStorage.getItem('token');
     if (token) {
@@ -34,7 +34,8 @@ api.interceptors.response.use(
   (response: AxiosResponse) => {
     // Calculate request duration
     const endTime = new Date();
-    const duration = endTime.getTime() - response.config.metadata.startTime.getTime();
+    const config = response.config as any;
+    const duration = config.metadata ? endTime.getTime() - config.metadata.startTime.getTime() : 0;
     
     // Log successful requests in development
     if (process.env.NODE_ENV === 'development') {
@@ -55,10 +56,11 @@ api.interceptors.response.use(
     if (error.response) {
       // Server responded with error status
       const { status, data } = error.response;
+      const errorData = data as any;
       customError.statusCode = status;
-      customError.message = data?.message || `HTTP Error ${status}`;
-      customError.code = data?.code || `HTTP_${status}`;
-      customError.details = data?.details;
+      customError.message = errorData?.message || `HTTP Error ${status}`;
+      customError.code = errorData?.code || `HTTP_${status}`;
+      customError.details = errorData?.details;
       customError.path = error.config?.url;
 
       // Handle specific error cases

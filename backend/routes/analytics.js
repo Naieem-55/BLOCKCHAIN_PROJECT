@@ -3,7 +3,7 @@ const Product = require('../models/Product');
 const User = require('../models/User');
 const Sensor = require('../models/Sensor');
 const SensorReading = require('../models/SensorReading');
-const auth = require('../middleware/auth');
+const { auth } = require('../middleware/auth');
 const { catchAsync } = require('../middleware/errorHandler');
 
 const router = express.Router();

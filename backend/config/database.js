@@ -6,12 +6,9 @@ const connectDB = async () => {
     const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/supply_chain_traceability';
     
     const options = {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
       maxPoolSize: 10, // Maintain up to 10 socket connections
       serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
       socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
-      bufferMaxEntries: 0, // Disable mongoose buffering
       bufferCommands: false, // Disable mongoose buffering
     };
 
@@ -41,7 +38,8 @@ const connectDB = async () => {
     
   } catch (error) {
     logger.error(`Database connection failed: ${error.message}`);
-    process.exit(1);
+    logger.warn('Application will continue without database functionality');
+    // Don't exit process, allow app to continue
   }
 };
 
