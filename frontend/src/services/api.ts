@@ -101,7 +101,12 @@ api.interceptors.response.use(
 
     // Log errors in development
     if (process.env.NODE_ENV === 'development') {
-      console.error(`❌ ${error.config?.method?.toUpperCase()} ${error.config?.url}:`, customError);
+      console.error(`❌ ${error.config?.method?.toUpperCase()} ${error.config?.url}:`, {
+        error: customError,
+        fullError: error,
+        config: error.config,
+        response: error.response?.data
+      });
     }
 
     return Promise.reject(customError);

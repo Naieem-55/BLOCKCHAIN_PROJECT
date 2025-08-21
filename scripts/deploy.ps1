@@ -189,9 +189,9 @@ function Initialize-Environment {
         Write-Status "Creating backend environment file..."
         $envContent = @'
 NODE_ENV=development
-PORT=5000
-API_URL=http://localhost:5000
-FRONTEND_URL=http://localhost:3000
+PORT=5001
+API_URL=http://localhost:5001
+FRONTEND_URL=http://localhost:3001
 MONGODB_URI=mongodb://localhost:27017/supply_chain_traceability
 REDIS_URL=redis://localhost:6379
 WEB3_PROVIDER_URL=http://localhost:8545
@@ -214,7 +214,7 @@ ENABLE_SWAGGER=true
     if (-not (Test-Path "frontend\.env.local")) {
         Write-Status "Creating frontend environment file..."
         $frontendEnv = @'
-REACT_APP_API_URL=http://localhost:5000/api
+REACT_APP_API_URL=http://localhost:5001/api
 REACT_APP_WEB3_PROVIDER_URL=http://localhost:8545
 REACT_APP_NETWORK_ID=1337
 '@
@@ -343,10 +343,10 @@ function Start-Backend {
         exit 1
     }
     
-    # Kill any existing process on port 5000
-    if (Test-Port 5000) {
-        Write-Warning "Port 5000 is in use. Attempting to free it..."
-        Stop-ProcessByPort 5000
+    # Kill any existing process on port 5001
+    if (Test-Port 5001) {
+        Write-Warning "Port 5001 is in use. Attempting to free it..."
+        Stop-ProcessByPort 5001
     }
     
     Write-Status "Starting backend in new window..."
@@ -356,7 +356,7 @@ function Start-Backend {
     Write-Status "Waiting for backend server to initialize..."
     $timeout = 60
     for ($i = 1; $i -le $timeout; $i++) {
-        if (Test-Port 5000) {
+        if (Test-Port 5001) {
             Write-Success "Backend server started successfully"
             return
         }
@@ -375,10 +375,10 @@ function Start-Frontend {
         exit 1
     }
     
-    # Kill any existing process on port 3000
-    if (Test-Port 3000) {
-        Write-Warning "Port 3000 is in use. Attempting to free it..."
-        Stop-ProcessByPort 3000
+    # Kill any existing process on port 3001
+    if (Test-Port 3001) {
+        Write-Warning "Port 3001 is in use. Attempting to free it..."
+        Stop-ProcessByPort 3001
     }
     
     Write-Status "Starting frontend in new window..."
@@ -388,7 +388,7 @@ function Start-Frontend {
     Write-Status "Waiting for frontend application to initialize..."
     $timeout = 90
     for ($i = 1; $i -le $timeout; $i++) {
-        if (Test-Port 3000) {
+        if (Test-Port 3001) {
             Write-Success "Frontend application started successfully"
             return
         }
@@ -414,8 +414,8 @@ function Test-Health {
     }
     
     # Check backend
-    if (Test-Port 5000) {
-        Write-Success "OK Backend is running on port 5000"
+    if (Test-Port 5001) {
+        Write-Success "OK Backend is running on port 5001"
     }
     else {
         Write-ErrorMsg "FAIL Backend is not accessible"
@@ -423,8 +423,8 @@ function Test-Health {
     }
     
     # Check frontend
-    if (Test-Port 3000) {
-        Write-Success "OK Frontend is running on port 3000"
+    if (Test-Port 3001) {
+        Write-Success "OK Frontend is running on port 3001"
     }
     else {
         Write-ErrorMsg "FAIL Frontend is not accessible"
@@ -477,10 +477,10 @@ function Start-Deployment {
         Write-Success "Deployment completed successfully!"
         Write-Host ""
         Write-Host "Application URLs:"
-        Write-Host "   Frontend:        http://localhost:3000"
-        Write-Host "   Backend API:     http://localhost:5000/api"
-        Write-Host "   API Docs:        http://localhost:5000/api-docs"
-        Write-Host "   Health Check:    http://localhost:5000/health"
+        Write-Host "   Frontend:        http://localhost:3001"
+        Write-Host "   Backend API:     http://localhost:5001/api"
+        Write-Host "   API Docs:        http://localhost:5001/api-docs"
+        Write-Host "   Health Check:    http://localhost:5001/health"
         Write-Host ""
         Write-Host "Blockchain:"
         Write-Host "   RPC URL:         http://localhost:8545"
@@ -488,7 +488,7 @@ function Start-Deployment {
         Write-Host "   Chain ID:        1337"
         Write-Host ""
         Write-Host "Next Steps:"
-        Write-Host "   1. Open http://localhost:3000 in your browser"
+        Write-Host "   1. Open http://localhost:3001 in your browser"
         Write-Host "   2. Configure MetaMask:"
         Write-Host "      - Network Name: Local Ganache"
         Write-Host "      - RPC URL: http://localhost:8545"
@@ -506,7 +506,7 @@ function Start-Deployment {
         try {
             while ($true) {
                 Start-Sleep -Seconds 10
-                if (-not (Test-Port 3000) -or -not (Test-Port 5000) -or -not (Test-Port 8545)) {
+                if (-not (Test-Port 3001) -or -not (Test-Port 5001) -or -not (Test-Port 8545)) {
                     Write-Warning "One or more services may have stopped. Check the service windows."
                 }
             }

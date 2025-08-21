@@ -3,7 +3,10 @@
     "allow": [
       "Bash(taskkill:*)",
       "Bash(curl:*)",
-      "Bash(npm run dev:clean:*)"
+      "Bash(npm run dev:clean:*)",
+      "Bash(npx truffle:*)",
+      "Bash(cp:*)",
+      "Bash(npm start)"
     ],
     "deny": [],
     "ask": []

@@ -18,7 +18,15 @@ declare global {
 class AuthService {
   // Authentication
   async login(credentials: LoginCredentials): Promise<LoginResponse> {
-    return apiRequest.post<LoginResponse>('/auth/login', credentials);
+    console.log('🔐 AuthService: Attempting login with:', { email: credentials.email });
+    try {
+      const result = await apiRequest.post<LoginResponse>('/auth/login', credentials);
+      console.log('✅ AuthService: Login successful');
+      return result;
+    } catch (error) {
+      console.error('❌ AuthService: Login failed:', error);
+      throw error;
+    }
   }
 
   async register(userData: RegisterData): Promise<LoginResponse> {

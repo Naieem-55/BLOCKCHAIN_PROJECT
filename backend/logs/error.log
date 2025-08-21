@@ -42616,3 +42616,69 @@
   service: 'supply-chain-api',
   timestamp: '2025-08-21 12:09:35'
 }
+{
+  message: "Contract loading failed: ENOENT: no such file or directory, open 'C:\\projects\\BLOCKCHAIN_PROJECT\\contracts\\SupplyChainTraceability.json'",
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-21 14:44:42'
+}
+{
+  message: "Blockchain service initialization failed: ENOENT: no such file or directory, open 'C:\\projects\\BLOCKCHAIN_PROJECT\\contracts\\SupplyChainTraceability.json'",
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-21 14:44:42'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-21 15:22:43'
+}
+{
+  message: "Contract loading failed: ENOENT: no such file or directory, open 'C:\\projects\\BLOCKCHAIN_PROJECT\\contracts\\SupplyChainTraceability.json'",
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-21 15:24:11'
+}
+{
+  message: "Blockchain service initialization failed: ENOENT: no such file or directory, open 'C:\\projects\\BLOCKCHAIN_PROJECT\\contracts\\SupplyChainTraceability.json'",
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-21 15:24:11'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-21 15:25:00'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-21 15:43:38'
+}
+{
+  message: "Contract loading failed: ENOENT: no such file or directory, open 'C:\\projects\\BLOCKCHAIN_PROJECT\\contracts\\IoTIntegration.json'",
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-21 15:56:13'
+}
+{
+  message: "Blockchain service initialization failed: ENOENT: no such file or directory, open 'C:\\projects\\BLOCKCHAIN_PROJECT\\contracts\\IoTIntegration.json'",
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-21 15:56:13'
+}
+{
+  message: "Contract loading failed: ENOENT: no such file or directory, open 'C:\\projects\\BLOCKCHAIN_PROJECT\\contracts\\IoTIntegration.json'",
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-21 15:56:34'
+}
+{
+  message: "Blockchain service initialization failed: ENOENT: no such file or directory, open 'C:\\projects\\BLOCKCHAIN_PROJECT\\contracts\\IoTIntegration.json'",
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-21 15:56:34'
+}
