@@ -5,90 +5,73 @@ import "./AccessControl.sol";
 
 /**
  * @title AdaptiveSharding
- * @dev Contract for adaptive sharding to improve scalability and performance
- * This implements a dynamic sharding mechanism based on transaction load and network conditions
+ * @dev Implements adaptive sharding for high-efficiency blockchain operations
+ * This contract manages multiple shards dynamically based on load and performance
  */
 contract AdaptiveSharding is AccessControl {
     
-    // Events
-    event ShardCreated(uint256 indexed shardId, address shardManager, uint256 minCapacity, uint256 maxCapacity);
-    event ShardActivated(uint256 indexed shardId, uint256 timestamp);
-    event ShardDeactivated(uint256 indexed shardId, string reason, uint256 timestamp);
-    event ProductAssignedToShard(uint256 indexed productId, uint256 indexed shardId, uint256 timestamp);
-    event ShardRebalanced(uint256[] affectedShards, uint256 timestamp);
-    event LoadThresholdUpdated(uint256 highThreshold, uint256 lowThreshold);
-    
-    // Shard status
-    enum ShardStatus {
-        Inactive,
-        Active,
-        Rebalancing,
-        Maintenance
-    }
-    
-    // Shard information
+    // Shard structure
     struct Shard {
         uint256 shardId;
-        address shardManager;
-        ShardStatus status;
-        uint256 currentLoad; // Number of products/transactions
-        uint256 minCapacity;
+        address shardContract;
+        uint256 currentLoad;
         uint256 maxCapacity;
+        uint256 transactionCount;
+        uint256 averageGasUsed;
+        bool isActive;
         uint256 createdAt;
-        uint256 lastRebalanced;
-        string region; // Geographic region for optimization
-        uint256[] assignedProducts;
-        mapping(uint256 => bool) productExists;
+        string shardType; // "product", "iot", "participant"
     }
     
-    // Load metrics for adaptive decisions
-    struct LoadMetrics {
-        uint256 totalTransactions;
-        uint256 avgResponseTime;
+    // Performance metrics for adaptive decisions
+    struct PerformanceMetrics {
+        uint256 avgTransactionTime;
+        uint256 avgGasPrice;
         uint256 throughput;
         uint256 errorRate;
-        uint256 timestamp;
+        uint256 lastUpdated;
     }
     
-    // Rebalancing configuration
-    struct RebalancingConfig {
-        uint256 highLoadThreshold; // Percentage (e.g., 80 = 80%)
-        uint256 lowLoadThreshold;  // Percentage (e.g., 20 = 20%)
-        uint256 rebalanceInterval; // Minimum time between rebalances
-        uint256 migrationBatchSize; // Products to migrate per transaction
-        bool autoRebalanceEnabled;
+    // Sharding configuration
+    struct ShardingConfig {
+        uint256 maxShardsPerType;
+        uint256 loadThreshold; // Percentage (0-100)
+        uint256 minShardCapacity;
+        uint256 maxShardCapacity;
+        uint256 rebalanceInterval; // seconds
+        bool autoScaling;
     }
+    
+    // Events
+    event ShardCreated(uint256 indexed shardId, address shardContract, string shardType);
+    event ShardActivated(uint256 indexed shardId);
+    event ShardDeactivated(uint256 indexed shardId);
+    event LoadRebalanced(uint256 fromShardId, uint256 toShardId, uint256 transactionsMoved);
+    event PerformanceMetricsUpdated(uint256 indexed shardId, uint256 avgTime, uint256 throughput);
+    event ShardingConfigUpdated(uint256 maxShards, uint256 loadThreshold, bool autoScaling);
     
     // State variables
     uint256 private shardCounter;
-    uint256 private rebalanceCounter;
-    
-    // Mappings
     mapping(uint256 => Shard) public shards;
-    mapping(uint256 => uint256) public productToShard; // productId => shardId
-    mapping(address => uint256[]) public managerShards;
-    mapping(string => uint256[]) public regionShards; // region => shardIds
-    mapping(uint256 => LoadMetrics) public shardMetrics;
+    mapping(string => uint256[]) public shardsByType;
+    mapping(uint256 => PerformanceMetrics) public shardMetrics;
+    mapping(bytes32 => uint256) public transactionToShard;
     
-    // Configuration
-    RebalancingConfig public rebalancingConfig;
+    ShardingConfig public config;
     
-    // Arrays for iteration
-    uint256[] public activeShards;
-    uint256[] public inactiveShards;
-    
-    modifier shardExists(uint256 _shardId) {
-        require(_shardId > 0 && _shardId <= shardCounter, "Shard does not exist");
-        _;
-    }
-    
-    modifier onlyShardManager(uint256 _shardId) {
-        require(shards[_shardId].shardManager == msg.sender, "Not shard manager");
-        _;
-    }
-    
+    // Modifiers
     modifier onlyActiveShard(uint256 _shardId) {
-        require(shards[_shardId].status == ShardStatus.Active, "Shard not active");
+        require(shards[_shardId].isActive, "Shard is not active");
+        _;
+    }
+    
+    modifier validShardType(string memory _shardType) {
+        require(
+            keccak256(bytes(_shardType)) == keccak256(bytes("product")) ||
+            keccak256(bytes(_shardType)) == keccak256(bytes("iot")) ||
+            keccak256(bytes(_shardType)) == keccak256(bytes("participant")),
+            "Invalid shard type"
+        );
         _;
     }
     
@@ -96,457 +79,360 @@ contract AdaptiveSharding is AccessControl {
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _setupRole(ADMIN_ROLE, msg.sender);
         
-        // Set default rebalancing configuration
-        rebalancingConfig = RebalancingConfig({
-            highLoadThreshold: 80, // 80%
-            lowLoadThreshold: 20,  // 20%
-            rebalanceInterval: 300, // 5 minutes
-            migrationBatchSize: 100,
-            autoRebalanceEnabled: true
+        // Initialize default configuration
+        config = ShardingConfig({
+            maxShardsPerType: 10,
+            loadThreshold: 80, // 80% load triggers new shard
+            minShardCapacity: 1000,
+            maxShardCapacity: 10000,
+            rebalanceInterval: 3600, // 1 hour
+            autoScaling: true
         });
     }
     
     /**
-     * @dev Create a new shard
+     * @dev Create a new shard for a specific type
      */
     function createShard(
-        address _shardManager,
-        uint256 _minCapacity,
-        uint256 _maxCapacity,
-        string memory _region
-    ) external onlyRole(ADMIN_ROLE) returns (uint256) {
-        require(_shardManager != address(0), "Invalid shard manager");
-        require(_maxCapacity > _minCapacity, "Invalid capacity range");
-        require(_minCapacity > 0, "Minimum capacity must be > 0");
+        string memory _shardType,
+        address _shardContract,
+        uint256 _capacity
+    ) external onlyRole(ADMIN_ROLE) validShardType(_shardType) returns (uint256) {
+        require(_shardContract != address(0), "Invalid shard contract address");
+        require(_capacity >= config.minShardCapacity, "Capacity below minimum");
+        require(_capacity <= config.maxShardCapacity, "Capacity above maximum");
+        
+        // Check if we can create more shards of this type
+        require(shardsByType[_shardType].length < config.maxShardsPerType, "Maximum shards reached for this type");
         
         shardCounter++;
         
-        Shard storage newShard = shards[shardCounter];
-        newShard.shardId = shardCounter;
-        newShard.shardManager = _shardManager;
-        newShard.status = ShardStatus.Inactive;
-        newShard.currentLoad = 0;
-        newShard.minCapacity = _minCapacity;
-        newShard.maxCapacity = _maxCapacity;
-        newShard.createdAt = block.timestamp;
-        newShard.lastRebalanced = block.timestamp;
-        newShard.region = _region;
+        shards[shardCounter] = Shard({
+            shardId: shardCounter,
+            shardContract: _shardContract,
+            currentLoad: 0,
+            maxCapacity: _capacity,
+            transactionCount: 0,
+            averageGasUsed: 0,
+            isActive: true,
+            createdAt: block.timestamp,
+            shardType: _shardType
+        });
         
-        managerShards[_shardManager].push(shardCounter);
-        regionShards[_region].push(shardCounter);
-        inactiveShards.push(shardCounter);
+        shardsByType[_shardType].push(shardCounter);
         
-        // Grant shard manager role
-        grantRole(SHARD_MANAGER_ROLE, _shardManager);
+        // Initialize performance metrics
+        shardMetrics[shardCounter] = PerformanceMetrics({
+            avgTransactionTime: 0,
+            avgGasPrice: 0,
+            throughput: 0,
+            errorRate: 0,
+            lastUpdated: block.timestamp
+        });
         
-        emit ShardCreated(shardCounter, _shardManager, _minCapacity, _maxCapacity);
+        emit ShardCreated(shardCounter, _shardContract, _shardType);
         
         return shardCounter;
     }
     
     /**
-     * @dev Activate a shard
+     * @dev Get optimal shard for a transaction based on load and performance
      */
-    function activateShard(uint256 _shardId) 
-        external 
-        shardExists(_shardId) 
-        onlyRole(ADMIN_ROLE) {
-        require(shards[_shardId].status == ShardStatus.Inactive, "Shard not inactive");
+    function getOptimalShard(string memory _shardType) external view validShardType(_shardType) returns (uint256) {
+        uint256[] memory typeShards = shardsByType[_shardType];
+        require(typeShards.length > 0, "No shards available for this type");
         
-        shards[_shardId].status = ShardStatus.Active;
+        uint256 optimalShardId = 0;
+        uint256 lowestLoad = type(uint256).max;
         
-        // Move from inactive to active array
-        _removeFromArray(inactiveShards, _shardId);
-        activeShards.push(_shardId);
-        
-        emit ShardActivated(_shardId, block.timestamp);
-    }
-    
-    /**
-     * @dev Deactivate a shard
-     */
-    function deactivateShard(uint256 _shardId, string memory _reason) 
-        external 
-        shardExists(_shardId) 
-        onlyRole(ADMIN_ROLE) {
-        require(shards[_shardId].status == ShardStatus.Active, "Shard not active");
-        require(shards[_shardId].currentLoad == 0, "Shard has active products");
-        
-        shards[_shardId].status = ShardStatus.Inactive;
-        
-        // Move from active to inactive array
-        _removeFromArray(activeShards, _shardId);
-        inactiveShards.push(_shardId);
-        
-        emit ShardDeactivated(_shardId, _reason, block.timestamp);
-    }
-    
-    /**
-     * @dev Assign product to optimal shard
-     */
-    function assignProductToShard(uint256 _productId, string memory _preferredRegion) 
-        external 
-        onlyRole(PARTICIPANT_ROLE) 
-        returns (uint256) {
-        require(_productId > 0, "Invalid product ID");
-        require(productToShard[_productId] == 0, "Product already assigned");
-        
-        uint256 optimalShardId = _findOptimalShard(_preferredRegion);
-        require(optimalShardId > 0, "No available shard");
-        
-        // Assign product to shard
-        productToShard[_productId] = optimalShardId;
-        shards[optimalShardId].assignedProducts.push(_productId);
-        shards[optimalShardId].productExists[_productId] = true;
-        shards[optimalShardId].currentLoad++;
-        
-        // Check if rebalancing is needed
-        if (rebalancingConfig.autoRebalanceEnabled) {
-            _checkRebalanceNeed(optimalShardId);
+        for (uint256 i = 0; i < typeShards.length; i++) {
+            uint256 shardId = typeShards[i];
+            Shard storage shard = shards[shardId];
+            
+            if (shard.isActive && shard.currentLoad < lowestLoad) {
+                lowestLoad = shard.currentLoad;
+                optimalShardId = shardId;
+            }
         }
         
-        emit ProductAssignedToShard(_productId, optimalShardId, block.timestamp);
-        
+        require(optimalShardId != 0, "No active shards available");
         return optimalShardId;
     }
     
     /**
-     * @dev Update load metrics for a shard
+     * @dev Get recommended shard for new transaction based on predictive analysis
      */
-    function updateShardMetrics(
-        uint256 _shardId,
-        uint256 _totalTransactions,
-        uint256 _avgResponseTime,
-        uint256 _throughput,
-        uint256 _errorRate
-    ) external shardExists(_shardId) onlyShardManager(_shardId) {
-        shardMetrics[_shardId] = LoadMetrics({
-            totalTransactions: _totalTransactions,
-            avgResponseTime: _avgResponseTime,
-            throughput: _throughput,
-            errorRate: _errorRate,
-            timestamp: block.timestamp
-        });
+    function getRecommendedShard(
+        string memory _shardType,
+        uint256 _estimatedGas,
+        uint256 _priority
+    ) external view validShardType(_shardType) returns (uint256, string memory) {
+        uint256[] memory typeShards = shardsByType[_shardType];
+        require(typeShards.length > 0, "No shards available");
+        
+        uint256 bestShardId = 0;
+        uint256 bestScore = 0;
+        
+        for (uint256 i = 0; i < typeShards.length; i++) {
+            uint256 shardId = typeShards[i];
+            Shard memory shard = shards[shardId];
+            
+            if (!shard.isActive) continue;
+            
+            // Simplified scoring to avoid stack depth
+            uint256 availableCapacity = shard.maxCapacity > shard.currentLoad ? 
+                shard.maxCapacity - shard.currentLoad : 0;
+            
+            uint256 score = (availableCapacity * 100) / shard.maxCapacity;
+            
+            // Bonus for priority transactions
+            if (_priority > 5) {
+                score = (score * 120) / 100;
+            }
+            
+            if (score > bestScore) {
+                bestScore = score;
+                bestShardId = shardId;
+            }
+        }
+        
+        require(bestShardId != 0, "No suitable shard found");
+        
+        string memory reason = bestScore > 80 ? "Low load shard" : 
+                              bestScore > 50 ? "Balanced selection" : 
+                              "Available shard";
+        
+        return (bestShardId, reason);
     }
     
     /**
-     * @dev Trigger manual rebalancing
+     * @dev Update shard load after transaction
      */
-    function triggerRebalancing() external onlyRole(ADMIN_ROLE) {
-        require(activeShards.length > 1, "Need at least 2 active shards");
+    function updateShardLoad(
+        uint256 _shardId,
+        uint256 _gasUsed,
+        uint256 _executionTime,
+        bool _success
+    ) external onlyRole(PARTICIPANT_ROLE) onlyActiveShard(_shardId) {
+        Shard storage shard = shards[_shardId];
+        PerformanceMetrics storage metrics = shardMetrics[_shardId];
         
-        uint256[] memory overloadedShards = _getOverloadedShards();
-        uint256[] memory underloadedShards = _getUnderloadedShards();
+        // Update shard load
+        shard.currentLoad = (shard.currentLoad * shard.transactionCount + 1) / (shard.transactionCount + 1);
+        shard.transactionCount++;
         
-        if (overloadedShards.length > 0 && underloadedShards.length > 0) {
-            _performRebalancing(overloadedShards, underloadedShards);
+        // Update average gas used
+        shard.averageGasUsed = (shard.averageGasUsed * (shard.transactionCount - 1) + _gasUsed) / shard.transactionCount;
+        
+        // Update performance metrics
+        metrics.avgTransactionTime = (metrics.avgTransactionTime * (shard.transactionCount - 1) + _executionTime) / shard.transactionCount;
+        metrics.throughput = shard.transactionCount * 1000 / (block.timestamp - shard.createdAt + 1);
+        
+        if (!_success) {
+            metrics.errorRate = (metrics.errorRate * (shard.transactionCount - 1) + 100) / shard.transactionCount;
+        } else {
+            metrics.errorRate = (metrics.errorRate * (shard.transactionCount - 1)) / shard.transactionCount;
+        }
+        
+        metrics.lastUpdated = block.timestamp;
+        
+        emit PerformanceMetricsUpdated(_shardId, metrics.avgTransactionTime, metrics.throughput);
+    }
+    
+    /**
+     * @dev Rebalance load between shards
+     */
+    function rebalanceShards(string memory _shardType) external onlyRole(ADMIN_ROLE) validShardType(_shardType) {
+        uint256[] memory typeShards = shardsByType[_shardType];
+        require(typeShards.length > 1, "Need at least 2 shards to rebalance");
+        
+        // Find overloaded and underloaded shards
+        uint256 overloadedShard = 0;
+        uint256 underloadedShard = 0;
+        uint256 maxLoad = 0;
+        uint256 minLoad = type(uint256).max;
+        
+        for (uint256 i = 0; i < typeShards.length; i++) {
+            uint256 shardId = typeShards[i];
+            Shard memory shard = shards[shardId];
+            
+            if (shard.isActive) {
+                if (shard.currentLoad > maxLoad) {
+                    maxLoad = shard.currentLoad;
+                    overloadedShard = shardId;
+                }
+                if (shard.currentLoad < minLoad) {
+                    minLoad = shard.currentLoad;
+                    underloadedShard = shardId;
+                }
+            }
+        }
+        
+        // Perform rebalancing if significant difference
+        if (overloadedShard != 0 && underloadedShard != 0 && maxLoad > minLoad * 2) {
+            uint256 transactionsToMove = (maxLoad - minLoad) / 2;
+            
+            // Update loads
+            shards[overloadedShard].currentLoad -= transactionsToMove;
+            shards[underloadedShard].currentLoad += transactionsToMove;
+            
+            emit LoadRebalanced(overloadedShard, underloadedShard, transactionsToMove);
         }
     }
     
     /**
-     * @dev Update rebalancing configuration
+     * @dev Get system-wide statistics
      */
-    function updateRebalancingConfig(
-        uint256 _highThreshold,
-        uint256 _lowThreshold,
-        uint256 _rebalanceInterval,
-        uint256 _migrationBatchSize,
-        bool _autoRebalanceEnabled
-    ) external onlyRole(ADMIN_ROLE) {
-        require(_highThreshold > _lowThreshold, "Invalid threshold range");
-        require(_highThreshold <= 100, "High threshold cannot exceed 100%");
+    function getSystemStats() external view returns (
+        uint256 totalShards,
+        uint256 activeShards,
+        uint256 totalTransactions,
+        uint256 avgSystemLoad,
+        uint256 systemEfficiency
+    ) {
+        totalShards = shardCounter;
+        activeShards = 0;
+        totalTransactions = 0;
+        uint256 totalLoad = 0;
         
-        rebalancingConfig.highLoadThreshold = _highThreshold;
-        rebalancingConfig.lowLoadThreshold = _lowThreshold;
-        rebalancingConfig.rebalanceInterval = _rebalanceInterval;
-        rebalancingConfig.migrationBatchSize = _migrationBatchSize;
-        rebalancingConfig.autoRebalanceEnabled = _autoRebalanceEnabled;
+        for (uint256 i = 1; i <= shardCounter; i++) {
+            if (shards[i].isActive) {
+                activeShards++;
+                totalTransactions += shards[i].transactionCount;
+                totalLoad += (shards[i].currentLoad * 100) / shards[i].maxCapacity;
+            }
+        }
         
-        emit LoadThresholdUpdated(_highThreshold, _lowThreshold);
+        avgSystemLoad = activeShards > 0 ? totalLoad / activeShards : 0;
+        systemEfficiency = this.getSystemEfficiencyScore();
+        
+        return (totalShards, activeShards, totalTransactions, avgSystemLoad, systemEfficiency);
+    }
+    
+    /**
+     * @dev Calculate system efficiency score
+     */
+    function getSystemEfficiencyScore() external view returns (uint256) {
+        if (shardCounter == 0) return 0;
+        
+        uint256 totalThroughput = 0;
+        uint256 totalErrorRate = 0;
+        uint256 activeShards = 0;
+        
+        for (uint256 i = 1; i <= shardCounter; i++) {
+            if (shards[i].isActive) {
+                PerformanceMetrics memory metrics = shardMetrics[i];
+                totalThroughput += metrics.throughput;
+                totalErrorRate += metrics.errorRate;
+                activeShards++;
+            }
+        }
+        
+        if (activeShards == 0) return 0;
+        
+        uint256 avgThroughput = totalThroughput / activeShards;
+        uint256 avgErrorRate = totalErrorRate / activeShards;
+        
+        // Calculate efficiency score (0-100)
+        uint256 efficiencyScore = avgThroughput > 0 ? 
+            (avgThroughput * 100) / (avgThroughput + avgErrorRate + 1) : 0;
+            
+        return efficiencyScore > 100 ? 100 : efficiencyScore;
     }
     
     /**
      * @dev Get shard information
      */
-    function getShardInfo(uint256 _shardId) 
-        external 
-        view 
-        shardExists(_shardId) 
-        returns (
-            address shardManager,
-            ShardStatus status,
-            uint256 currentLoad,
-            uint256 minCapacity,
-            uint256 maxCapacity,
-            string memory region,
-            uint256[] memory assignedProducts
-        ) {
-        Shard storage shard = shards[_shardId];
+    function getShardInfo(uint256 _shardId) external view returns (
+        address shardContract,
+        uint256 currentLoad,
+        uint256 maxCapacity,
+        uint256 transactionCount,
+        bool isActive,
+        string memory shardType
+    ) {
+        Shard memory shard = shards[_shardId];
+        require(shard.shardId != 0, "Shard does not exist");
+        
         return (
-            shard.shardManager,
-            shard.status,
+            shard.shardContract,
             shard.currentLoad,
-            shard.minCapacity,
             shard.maxCapacity,
-            shard.region,
-            shard.assignedProducts
+            shard.transactionCount,
+            shard.isActive,
+            shard.shardType
         );
     }
     
     /**
-     * @dev Get optimal shard for a product
+     * @dev Get performance metrics for a shard
      */
-    function getOptimalShard(string memory _preferredRegion) 
-        external 
-        view 
-        returns (uint256) {
-        return _findOptimalShard(_preferredRegion);
+    function getShardMetrics(uint256 _shardId) external view returns (
+        uint256 avgTransactionTime,
+        uint256 avgGasPrice,
+        uint256 throughput,
+        uint256 errorRate,
+        uint256 lastUpdated
+    ) {
+        PerformanceMetrics memory metrics = shardMetrics[_shardId];
+        
+        return (
+            metrics.avgTransactionTime,
+            metrics.avgGasPrice,
+            metrics.throughput,
+            metrics.errorRate,
+            metrics.lastUpdated
+        );
     }
     
     /**
-     * @dev Get shard load percentage
+     * @dev Get all shards for a specific type
      */
-    function getShardLoadPercentage(uint256 _shardId) 
-        external 
-        view 
-        shardExists(_shardId) 
-        returns (uint256) {
-        Shard storage shard = shards[_shardId];
-        if (shard.maxCapacity == 0) return 0;
-        return (shard.currentLoad * 100) / shard.maxCapacity;
+    function getShardsByType(string memory _shardType) external view validShardType(_shardType) returns (uint256[] memory) {
+        return shardsByType[_shardType];
     }
     
     /**
-     * @dev Find optimal shard based on load and region
+     * @dev Emergency function to redistribute all transactions
      */
-    function _findOptimalShard(string memory _preferredRegion) 
-        private 
-        view 
-        returns (uint256) {
-        uint256 bestShard = 0;
-        uint256 lowestLoad = type(uint256).max;
-        
-        // First, try to find shard in preferred region
-        uint256[] memory regionShardIds = regionShards[_preferredRegion];
-        for (uint256 i = 0; i < regionShardIds.length; i++) {
-            uint256 shardId = regionShardIds[i];
-            Shard storage shard = shards[shardId];
-            
-            if (shard.status == ShardStatus.Active && 
-                shard.currentLoad < shard.maxCapacity &&
-                shard.currentLoad < lowestLoad) {
-                bestShard = shardId;
-                lowestLoad = shard.currentLoad;
-            }
-        }
-        
-        // If no shard found in preferred region, check all active shards
-        if (bestShard == 0) {
-            for (uint256 i = 0; i < activeShards.length; i++) {
-                uint256 shardId = activeShards[i];
-                Shard storage shard = shards[shardId];
+    function emergencyRebalance() external onlyRole(ADMIN_ROLE) {
+        string[3] memory types = ["product", "iot", "participant"];
+        for (uint256 i = 0; i < 3; i++) {
+            if (shardsByType[types[i]].length > 1) {
+                // Find overloaded and underloaded shards for each type
+                uint256[] memory typeShards = shardsByType[types[i]];
+                uint256 overloadedShard = 0;
+                uint256 underloadedShard = 0;
+                uint256 maxLoad = 0;
+                uint256 minLoad = type(uint256).max;
                 
-                if (shard.currentLoad < shard.maxCapacity &&
-                    shard.currentLoad < lowestLoad) {
-                    bestShard = shardId;
-                    lowestLoad = shard.currentLoad;
+                for (uint256 j = 0; j < typeShards.length; j++) {
+                    uint256 shardId = typeShards[j];
+                    Shard memory shard = shards[shardId];
+                    
+                    if (shard.isActive) {
+                        if (shard.currentLoad > maxLoad) {
+                            maxLoad = shard.currentLoad;
+                            overloadedShard = shardId;
+                        }
+                        if (shard.currentLoad < minLoad) {
+                            minLoad = shard.currentLoad;
+                            underloadedShard = shardId;
+                        }
+                    }
+                }
+                
+                // Perform rebalancing if significant difference
+                if (overloadedShard != 0 && underloadedShard != 0 && maxLoad > minLoad * 2) {
+                    uint256 transactionsToMove = (maxLoad - minLoad) / 2;
+                    
+                    // Update loads
+                    shards[overloadedShard].currentLoad -= transactionsToMove;
+                    shards[underloadedShard].currentLoad += transactionsToMove;
+                    
+                    emit LoadRebalanced(overloadedShard, underloadedShard, transactionsToMove);
                 }
             }
         }
-        
-        return bestShard;
-    }
-    
-    /**
-     * @dev Check if rebalancing is needed for a shard
-     */
-    function _checkRebalanceNeed(uint256 _shardId) private {
-        if (!rebalancingConfig.autoRebalanceEnabled) return;
-        
-        Shard storage shard = shards[_shardId];
-        uint256 loadPercentage = (shard.currentLoad * 100) / shard.maxCapacity;
-        
-        if (loadPercentage >= rebalancingConfig.highLoadThreshold &&
-            block.timestamp >= shard.lastRebalanced + rebalancingConfig.rebalanceInterval) {
-            
-            // Find underloaded shards for migration
-            uint256[] memory underloadedShards = _getUnderloadedShards();
-            if (underloadedShards.length > 0) {
-                uint256[] memory overloaded = new uint256[](1);
-                overloaded[0] = _shardId;
-                _performRebalancing(overloaded, underloadedShards);
-            }
-        }
-    }
-    
-    /**
-     * @dev Get overloaded shards
-     */
-    function _getOverloadedShards() private view returns (uint256[] memory) {
-        uint256[] memory overloaded = new uint256[](activeShards.length);
-        uint256 count = 0;
-        
-        for (uint256 i = 0; i < activeShards.length; i++) {
-            uint256 shardId = activeShards[i];
-            Shard storage shard = shards[shardId];
-            uint256 loadPercentage = (shard.currentLoad * 100) / shard.maxCapacity;
-            
-            if (loadPercentage >= rebalancingConfig.highLoadThreshold) {
-                overloaded[count] = shardId;
-                count++;
-            }
-        }
-        
-        // Resize array
-        uint256[] memory result = new uint256[](count);
-        for (uint256 i = 0; i < count; i++) {
-            result[i] = overloaded[i];
-        }
-        
-        return result;
-    }
-    
-    /**
-     * @dev Get underloaded shards
-     */
-    function _getUnderloadedShards() private view returns (uint256[] memory) {
-        uint256[] memory underloaded = new uint256[](activeShards.length);
-        uint256 count = 0;
-        
-        for (uint256 i = 0; i < activeShards.length; i++) {
-            uint256 shardId = activeShards[i];
-            Shard storage shard = shards[shardId];
-            uint256 loadPercentage = (shard.currentLoad * 100) / shard.maxCapacity;
-            
-            if (loadPercentage <= rebalancingConfig.lowLoadThreshold) {
-                underloaded[count] = shardId;
-                count++;
-            }
-        }
-        
-        // Resize array
-        uint256[] memory result = new uint256[](count);
-        for (uint256 i = 0; i < count; i++) {
-            result[i] = underloaded[i];
-        }
-        
-        return result;
-    }
-    
-    /**
-     * @dev Perform rebalancing between shards
-     */
-    function _performRebalancing(
-        uint256[] memory _overloadedShards,
-        uint256[] memory _underloadedShards
-    ) private {
-        rebalanceCounter++;
-        uint256[] memory affectedShards = new uint256[](_overloadedShards.length + _underloadedShards.length);
-        
-        // Copy shard IDs to affected shards array
-        for (uint256 i = 0; i < _overloadedShards.length; i++) {
-            affectedShards[i] = _overloadedShards[i];
-        }
-        for (uint256 i = 0; i < _underloadedShards.length; i++) {
-            affectedShards[_overloadedShards.length + i] = _underloadedShards[i];
-        }
-        
-        // Migrate products from overloaded to underloaded shards
-        uint256 underloadedIndex = 0;
-        
-        for (uint256 i = 0; i < _overloadedShards.length && underloadedIndex < _underloadedShards.length; i++) {
-            uint256 overloadedShardId = _overloadedShards[i];
-            uint256 underloadedShardId = _underloadedShards[underloadedIndex];
-            
-            Shard storage overloadedShard = shards[overloadedShardId];
-            Shard storage underloadedShard = shards[underloadedShardId];
-            
-            // Calculate how many products to migrate
-            uint256 excessLoad = overloadedShard.currentLoad - (overloadedShard.maxCapacity * rebalancingConfig.highLoadThreshold / 100);
-            uint256 availableCapacity = underloadedShard.maxCapacity - underloadedShard.currentLoad;
-            uint256 toMigrate = excessLoad < availableCapacity ? excessLoad : availableCapacity;
-            
-            if (toMigrate > rebalancingConfig.migrationBatchSize) {
-                toMigrate = rebalancingConfig.migrationBatchSize;
-            }
-            
-            // Migrate products
-            _migrateProducts(overloadedShardId, underloadedShardId, toMigrate);
-            
-            // Update last rebalanced timestamp
-            overloadedShard.lastRebalanced = block.timestamp;
-            underloadedShard.lastRebalanced = block.timestamp;
-            
-            // Move to next underloaded shard if current one is getting full
-            if (underloadedShard.currentLoad >= underloadedShard.maxCapacity * 80 / 100) {
-                underloadedIndex++;
-            }
-        }
-        
-        emit ShardRebalanced(affectedShards, block.timestamp);
-    }
-    
-    /**
-     * @dev Migrate products between shards
-     */
-    function _migrateProducts(uint256 _fromShard, uint256 _toShard, uint256 _count) private {
-        Shard storage fromShard = shards[_fromShard];
-        Shard storage toShard = shards[_toShard];
-        
-        uint256 migrated = 0;
-        uint256 i = fromShard.assignedProducts.length;
-        
-        while (migrated < _count && i > 0) {
-            i--;
-            uint256 productId = fromShard.assignedProducts[i];
-            
-            // Update product assignment
-            productToShard[productId] = _toShard;
-            
-            // Add to destination shard
-            toShard.assignedProducts.push(productId);
-            toShard.productExists[productId] = true;
-            toShard.currentLoad++;
-            
-            // Remove from source shard
-            fromShard.productExists[productId] = false;
-            fromShard.currentLoad--;
-            
-            // Remove from array (swap with last element and pop)
-            fromShard.assignedProducts[i] = fromShard.assignedProducts[fromShard.assignedProducts.length - 1];
-            fromShard.assignedProducts.pop();
-            
-            migrated++;
-        }
-    }
-    
-    /**
-     * @dev Remove element from array
-     */
-    function _removeFromArray(uint256[] storage _array, uint256 _element) private {
-        for (uint256 i = 0; i < _array.length; i++) {
-            if (_array[i] == _element) {
-                _array[i] = _array[_array.length - 1];
-                _array.pop();
-                break;
-            }
-        }
-    }
-    
-    // Utility functions
-    function getActiveShardCount() external view returns (uint256) {
-        return activeShards.length;
-    }
-    
-    function getInactiveShardCount() external view returns (uint256) {
-        return inactiveShards.length;
-    }
-    
-    function getTotalShardCount() external view returns (uint256) {
-        return shardCounter;
-    }
-    
-    function getActiveShards() external view returns (uint256[] memory) {
-        return activeShards;
     }
 }

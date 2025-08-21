@@ -21,6 +21,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
+import ShardingDashboard from './pages/ShardingDashboard';
 import NotFound from './pages/NotFound';
 import LoadingScreen from './components/Common/LoadingScreen';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
@@ -143,6 +144,7 @@ const App: React.FC = () => {
                               <Route path="/iot-sensors" element={<IoTSensors />} />
                               <Route path="/analytics" element={<Analytics />} />
                               <Route path="/qr-scanner" element={<QRScanner />} />
+                              <Route path="/sharding" element={<ShardingDashboard />} />
                               <Route path="/profile" element={<Profile />} />
                               <Route path="/settings" element={<Settings />} />
                               <Route path="*" element={<NotFound />} />

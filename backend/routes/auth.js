@@ -9,58 +9,28 @@ const logger = require('../utils/logger');
 
 const router = express.Router();
 
+// Validation rules
+const validateRegistration = [
+  body('email').isEmail().normalizeEmail().withMessage('Valid email is required'),
+  body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
+  body('name').trim().isLength({ min: 2 }).withMessage('Name must be at least 2 characters'),
+  body('role').isIn(['admin', 'supplier', 'manufacturer', 'distributor', 'retailer', 'auditor', 'consumer']).withMessage('Valid role is required'),
+];
+
+const validateLogin = [
+  body('email').isEmail().normalizeEmail().withMessage('Valid email is required'),
+  body('password').notEmpty().withMessage('Password is required'),
+];
+
 // Generate JWT token
 const generateToken = (userId) => {
-  return jwt.sign({ userId }, process.env.JWT_SECRET, {
+  return jwt.sign({ userId }, process.env.JWT_SECRET || 'fallback-secret-key', {
     expiresIn: process.env.JWT_EXPIRES_IN || '7d',
   });
 };
 
-/**
- * @swagger
- * /auth/register:
- *   post:
- *     summary: Register a new user
- *     tags: [Authentication]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - email
- *               - password
- *               - name
- *               - role
- *             properties:
- *               email:
- *                 type: string
- *                 format: email
- *               password:
- *                 type: string
- *                 minLength: 6
- *               name:
- *                 type: string
- *               role:
- *                 type: string
- *                 enum: [admin, supplier, manufacturer, distributor, retailer, auditor]
- *               company:
- *                 type: string
- *               location:
- *                 type: string
- *     responses:
- *       201:
- *         description: User registered successfully
- *       400:
- *         description: Validation error
- */
-router.post('/register', [
-  body('email').isEmail().normalizeEmail(),
-  body('password').isLength({ min: 6 }),
-  body('name').trim().isLength({ min: 2 }),
-  body('role').isIn(['admin', 'supplier', 'manufacturer', 'distributor', 'retailer', 'auditor']),
-], catchAsync(async (req, res) => {
+// Register endpoint
+router.post('/register', validateRegistration, catchAsync(async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({
@@ -70,10 +40,15 @@ router.post('/register', [
     });
   }
 
-  const { email, password, name, role, company, location } = req.body;
+  const { email, password, name, role, company, location, termsAccepted } = req.body;
+
+  // Check terms acceptance
+  if (termsAccepted !== true) {
+    throw new AppError('You must accept the terms and conditions', 400);
+  }
 
   // Check if user already exists
-  const existingUser = await User.findOne({ email });
+  const existingUser = await User.findOne({ email: email.toLowerCase() });
   if (existingUser) {
     throw new AppError('User already exists with this email', 400);
   }
@@ -84,12 +59,14 @@ router.post('/register', [
 
   // Create user
   const user = new User({
-    email,
+    email: email.toLowerCase(),
     password: hashedPassword,
     name,
     role,
     company,
     location,
+    isActive: true,
+    profileComplete: !!(name && company && location),
   });
 
   await user.save();
@@ -109,44 +86,18 @@ router.post('/register', [
         role: user.role,
         company: user.company,
         location: user.location,
+        permissions: user.getPermissions(),
       },
       token,
+      refreshToken: token,
+      expiresIn: 7 * 24 * 60 * 60,
     },
     message: 'User registered successfully',
   });
 }));
 
-/**
- * @swagger
- * /auth/login:
- *   post:
- *     summary: Login user
- *     tags: [Authentication]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - email
- *               - password
- *             properties:
- *               email:
- *                 type: string
- *                 format: email
- *               password:
- *                 type: string
- *     responses:
- *       200:
- *         description: Login successful
- *       401:
- *         description: Invalid credentials
- */
-router.post('/login', [
-  body('email').isEmail().normalizeEmail(),
-  body('password').exists(),
-], catchAsync(async (req, res) => {
+// Login endpoint
+router.post('/login', validateLogin, catchAsync(async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({
@@ -156,10 +107,10 @@ router.post('/login', [
     });
   }
 
-  const { email, password } = req.body;
+  const { email, password, rememberMe } = req.body;
 
   // Find user
-  const user = await User.findOne({ email }).select('+password');
+  const user = await User.findOne({ email: email.toLowerCase() }).select('+password');
   if (!user) {
     throw new AppError('Invalid email or password', 401);
   }
@@ -168,6 +119,11 @@ router.post('/login', [
   const isPasswordValid = await bcrypt.compare(password, user.password);
   if (!isPasswordValid) {
     throw new AppError('Invalid email or password', 401);
+  }
+
+  // Check if user is active
+  if (!user.isActive) {
+    throw new AppError('Account is deactivated', 401);
   }
 
   // Update last login
@@ -190,27 +146,17 @@ router.post('/login', [
         company: user.company,
         location: user.location,
         walletAddress: user.walletAddress,
+        permissions: user.getPermissions(),
       },
       token,
+      refreshToken: token,
+      expiresIn: rememberMe ? 30 * 24 * 60 * 60 : 7 * 24 * 60 * 60,
     },
     message: 'Login successful',
   });
 }));
 
-/**
- * @swagger
- * /auth/profile:
- *   get:
- *     summary: Get current user profile
- *     tags: [Authentication]
- *     security:
- *       - bearerAuth: []
- *     responses:
- *       200:
- *         description: User profile retrieved successfully
- *       401:
- *         description: Unauthorized
- */
+// Get profile
 router.get('/profile', auth, catchAsync(async (req, res) => {
   const user = await User.findById(req.user.id);
   
@@ -227,52 +173,13 @@ router.get('/profile', auth, catchAsync(async (req, res) => {
       isActive: user.isActive,
       createdAt: user.createdAt,
       lastLogin: user.lastLogin,
+      permissions: user.getPermissions(),
     },
   });
 }));
 
-/**
- * @swagger
- * /auth/profile:
- *   put:
- *     summary: Update user profile
- *     tags: [Authentication]
- *     security:
- *       - bearerAuth: []
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *               company:
- *                 type: string
- *               location:
- *                 type: string
- *               walletAddress:
- *                 type: string
- *     responses:
- *       200:
- *         description: Profile updated successfully
- */
-router.put('/profile', auth, [
-  body('name').optional().trim().isLength({ min: 2 }),
-  body('company').optional().trim(),
-  body('location').optional().trim(),
-  body('walletAddress').optional().isEthereumAddress(),
-], catchAsync(async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({
-      success: false,
-      message: 'Validation failed',
-      errors: errors.array(),
-    });
-  }
-
+// Update profile
+router.put('/profile', auth, catchAsync(async (req, res) => {
   const { name, company, location, walletAddress } = req.body;
   
   const user = await User.findById(req.user.id);
@@ -299,38 +206,10 @@ router.put('/profile', auth, [
   });
 }));
 
-/**
- * @swagger
- * /auth/change-password:
- *   post:
- *     summary: Change user password
- *     tags: [Authentication]
- *     security:
- *       - bearerAuth: []
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - currentPassword
- *               - newPassword
- *             properties:
- *               currentPassword:
- *                 type: string
- *               newPassword:
- *                 type: string
- *                 minLength: 6
- *     responses:
- *       200:
- *         description: Password changed successfully
- *       400:
- *         description: Invalid current password
- */
+// Change password
 router.post('/change-password', auth, [
-  body('currentPassword').exists(),
-  body('newPassword').isLength({ min: 6 }),
+  body('currentPassword').notEmpty().withMessage('Current password is required'),
+  body('newPassword').isLength({ min: 6 }).withMessage('New password must be at least 6 characters'),
 ], catchAsync(async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -363,22 +242,8 @@ router.post('/change-password', auth, [
   });
 }));
 
-/**
- * @swagger
- * /auth/logout:
- *   post:
- *     summary: Logout user
- *     tags: [Authentication]
- *     security:
- *       - bearerAuth: []
- *     responses:
- *       200:
- *         description: Logout successful
- */
+// Logout
 router.post('/logout', auth, catchAsync(async (req, res) => {
-  // In a more sophisticated implementation, you might want to blacklist the token
-  // For now, we'll just return success and let the client handle token removal
-  
   logger.info(`User logged out: ${req.user.email}`);
   
   res.json({

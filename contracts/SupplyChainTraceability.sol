@@ -2,12 +2,19 @@
 pragma solidity ^0.8.19;
 
 import "./AccessControl.sol";
+import "./AdaptiveSharding.sol";
+import "./HighEfficiencyProcessor.sol";
 
 /**
  * @title SupplyChainTraceability
  * @dev Advanced supply chain traceability system with high efficiency and comprehensive tracking
  */
 contract SupplyChainTraceability is AccessControl {
+    
+    // Integration with sharding and efficiency processor
+    AdaptiveSharding public shardingContract;
+    HighEfficiencyProcessor public processorContract;
+    mapping(uint256 => uint256) public productToShard;
     
     // Events for tracking and transparency
     event ProductCreated(uint256 indexed productId, string name, address indexed creator, uint256 timestamp);
@@ -118,9 +125,16 @@ contract SupplyChainTraceability is AccessControl {
         _;
     }
     
-    constructor() {
+    constructor(address _shardingContract, address _processorContract) {
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _setupRole(ADMIN_ROLE, msg.sender);
+        
+        if (_shardingContract != address(0)) {
+            shardingContract = AdaptiveSharding(_shardingContract);
+        }
+        if (_processorContract != address(0)) {
+            processorContract = HighEfficiencyProcessor(_processorContract);
+        }
     }
     
     /**
@@ -160,6 +174,12 @@ contract SupplyChainTraceability is AccessControl {
         string memory _initialLocation
     ) external onlyRole(PARTICIPANT_ROLE) returns (uint256) {
         productCounter++;
+        
+        // Assign product to optimal shard
+        if (address(shardingContract) != address(0)) {
+            uint256 shardId = shardingContract.getOptimalShard("product");
+            productToShard[productCounter] = shardId;
+        }
         
         products[productCounter] = Product({
             id: productCounter,
