@@ -42682,3 +42682,15 @@
   service: 'supply-chain-api',
   timestamp: '2025-08-21 15:56:34'
 }
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-21 17:20:13'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-21 18:01:21'
+}

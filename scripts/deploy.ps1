@@ -189,8 +189,8 @@ function Initialize-Environment {
         Write-Status "Creating backend environment file..."
         $envContent = @'
 NODE_ENV=development
-PORT=5001
-API_URL=http://localhost:5001
+PORT=5002
+API_URL=http://localhost:5002
 FRONTEND_URL=http://localhost:3001
 MONGODB_URI=mongodb://localhost:27017/supply_chain_traceability
 REDIS_URL=redis://localhost:6379
@@ -214,7 +214,7 @@ ENABLE_SWAGGER=true
     if (-not (Test-Path "frontend\.env.local")) {
         Write-Status "Creating frontend environment file..."
         $frontendEnv = @'
-REACT_APP_API_URL=http://localhost:5001/api
+REACT_APP_API_URL=http://localhost:5002/api
 REACT_APP_WEB3_PROVIDER_URL=http://localhost:8545
 REACT_APP_NETWORK_ID=1337
 '@
@@ -343,10 +343,10 @@ function Start-Backend {
         exit 1
     }
     
-    # Kill any existing process on port 5001
-    if (Test-Port 5001) {
-        Write-Warning "Port 5001 is in use. Attempting to free it..."
-        Stop-ProcessByPort 5001
+    # Kill any existing process on port 5002
+    if (Test-Port 5002) {
+        Write-Warning "Port 5002 is in use. Attempting to free it..."
+        Stop-ProcessByPort 5002
     }
     
     Write-Status "Starting backend in new window..."
@@ -356,7 +356,7 @@ function Start-Backend {
     Write-Status "Waiting for backend server to initialize..."
     $timeout = 60
     for ($i = 1; $i -le $timeout; $i++) {
-        if (Test-Port 5001) {
+        if (Test-Port 5002) {
             Write-Success "Backend server started successfully"
             return
         }
@@ -414,8 +414,8 @@ function Test-Health {
     }
     
     # Check backend
-    if (Test-Port 5001) {
-        Write-Success "OK Backend is running on port 5001"
+    if (Test-Port 5002) {
+        Write-Success "OK Backend is running on port 5002"
     }
     else {
         Write-ErrorMsg "FAIL Backend is not accessible"
@@ -478,9 +478,9 @@ function Start-Deployment {
         Write-Host ""
         Write-Host "Application URLs:"
         Write-Host "   Frontend:        http://localhost:3001"
-        Write-Host "   Backend API:     http://localhost:5001/api"
-        Write-Host "   API Docs:        http://localhost:5001/api-docs"
-        Write-Host "   Health Check:    http://localhost:5001/health"
+        Write-Host "   Backend API:     http://localhost:5002/api"
+        Write-Host "   API Docs:        http://localhost:5002/api-docs"
+        Write-Host "   Health Check:    http://localhost:5002/health"
         Write-Host ""
         Write-Host "Blockchain:"
         Write-Host "   RPC URL:         http://localhost:8545"
@@ -506,7 +506,7 @@ function Start-Deployment {
         try {
             while ($true) {
                 Start-Sleep -Seconds 10
-                if (-not (Test-Port 3001) -or -not (Test-Port 5001) -or -not (Test-Port 8545)) {
+                if (-not (Test-Port 3001) -or -not (Test-Port 5002) -or -not (Test-Port 8545)) {
                     Write-Warning "One or more services may have stopped. Check the service windows."
                 }
             }
