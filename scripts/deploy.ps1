@@ -189,8 +189,8 @@ function Initialize-Environment {
         Write-Status "Creating backend environment file..."
         $envContent = @'
 NODE_ENV=development
-PORT=5000
-API_URL=http://localhost:5000
+PORT=5003
+API_URL=http://localhost:5003
 FRONTEND_URL=http://localhost:3001
 MONGODB_URI=mongodb://localhost:27017/supply_chain_traceability
 REDIS_URL=redis://localhost:6379
@@ -214,7 +214,7 @@ ENABLE_SWAGGER=true
     if (-not (Test-Path "frontend\.env.local")) {
         Write-Status "Creating frontend environment file..."
         $frontendEnv = @'
-REACT_APP_API_URL=http://localhost:5000/api
+REACT_APP_API_URL=http://localhost:5003/api
 REACT_APP_WEB3_PROVIDER_URL=http://localhost:8545
 REACT_APP_NETWORK_ID=1337
 '@
@@ -343,21 +343,28 @@ function Start-Backend {
         exit 1
     }
     
-    # Kill any existing process on port 5000
-    if (Test-Port 5000) {
-        Write-Warning "Port 5000 is in use. Attempting to free it..."
-        Stop-ProcessByPort 5000
+    # Kill any existing process on backend port (5003)
+    $backendPort = 5003
+    Write-Status "Killing all processes on port $backendPort..."
+    Stop-ProcessByPort $backendPort
+    
+    # Also try npx kill-port as backup
+    try {
+        & npx kill-port $backendPort 2>$null
+        Write-Success "Port $backendPort cleared with npx kill-port"
+    } catch {
+        Write-Status "npx kill-port not available, using system method"
     }
     
-    Write-Status "Starting backend in new window..."
-    Start-Process -FilePath "cmd" -ArgumentList '/k', 'cd backend && npm run dev' -WindowStyle Normal
+    Write-Status "Starting backend in new window using safe mode..."
+    Start-Process -FilePath "cmd" -ArgumentList '/k', 'cd backend && npm run dev:safe' -WindowStyle Normal
     
     # Wait for backend to start
-    Write-Status "Waiting for backend server to initialize..."
+    Write-Status "Waiting for backend server to initialize on port $backendPort..."
     $timeout = 60
     for ($i = 1; $i -le $timeout; $i++) {
-        if (Test-Port 5000) {
-            Write-Success "Backend server started successfully"
+        if (Test-Port $backendPort) {
+            Write-Success "Backend server started successfully on port $backendPort"
             return
         }
         Start-Sleep -Seconds 1
@@ -375,10 +382,17 @@ function Start-Frontend {
         exit 1
     }
     
-    # Kill any existing process on port 3001
-    if (Test-Port 3001) {
-        Write-Warning "Port 3001 is in use. Attempting to free it..."
-        Stop-ProcessByPort 3001
+    # Kill any existing process on frontend port (3001)
+    $frontendPort = 3001
+    Write-Status "Killing all processes on port $frontendPort..."
+    Stop-ProcessByPort $frontendPort
+    
+    # Also try npx kill-port as backup
+    try {
+        & npx kill-port $frontendPort 2>$null
+        Write-Success "Port $frontendPort cleared with npx kill-port"
+    } catch {
+        Write-Status "npx kill-port not available, using system method"
     }
     
     Write-Status "Starting frontend in new window..."
@@ -414,11 +428,11 @@ function Test-Health {
     }
     
     # Check backend
-    if (Test-Port 5000) {
-        Write-Success "OK Backend is running on port 5000"
+    if (Test-Port 5003) {
+        Write-Success "OK Backend is running on port 5003"
     }
     else {
-        Write-ErrorMsg "FAIL Backend is not accessible"
+        Write-ErrorMsg "FAIL Backend is not accessible on port 5003"
         $allHealthy = $false
     }
     
@@ -453,12 +467,37 @@ function Show-Usage {
     Write-Host ""
 }
 
+# Clean all ports before deployment
+function Clear-AllPorts {
+    Write-Status "Cleaning up all application ports before deployment..."
+    
+    $ports = @(5003, 3001, 8545)
+    foreach ($port in $ports) {
+        Write-Status "Checking port $port..."
+        Stop-ProcessByPort $port
+        
+        # Also try npx kill-port as backup
+        try {
+            & npx kill-port $port 2>$null
+            Write-Status "Port $port cleared"
+        } catch {
+            # Silent fail, Stop-ProcessByPort already handled it
+        }
+    }
+    
+    Write-Success "All ports cleaned successfully"
+    Start-Sleep -Seconds 2
+}
+
 # Main deployment function
 function Start-Deployment {
     Write-Status "Starting High-Efficiency Blockchain-Based Supply Chain Traceability deployment..."
     Write-Host ""
     
     Write-Status "Detected platform: Windows PowerShell"
+    
+    # Clean ports first to prevent conflicts
+    Clear-AllPorts
     
     Test-Prerequisites
     Install-Dependencies
@@ -478,9 +517,9 @@ function Start-Deployment {
         Write-Host ""
         Write-Host "Application URLs:"
         Write-Host "   Frontend:        http://localhost:3001"
-        Write-Host "   Backend API:     http://localhost:5000/api"
-        Write-Host "   API Docs:        http://localhost:5000/api-docs"
-        Write-Host "   Health Check:    http://localhost:5000/health"
+        Write-Host "   Backend API:     http://localhost:5003/api"
+        Write-Host "   API Docs:        http://localhost:5003/api-docs"
+        Write-Host "   Health Check:    http://localhost:5003/health"
         Write-Host ""
         Write-Host "Blockchain:"
         Write-Host "   RPC URL:         http://localhost:8545"
@@ -506,7 +545,7 @@ function Start-Deployment {
         try {
             while ($true) {
                 Start-Sleep -Seconds 10
-                if (-not (Test-Port 3001) -or -not (Test-Port 5000) -or -not (Test-Port 8545)) {
+                if (-not (Test-Port 3001) -or -not (Test-Port 5003) -or -not (Test-Port 8545)) {
                     Write-Warning "One or more services may have stopped. Check the service windows."
                 }
             }
@@ -531,6 +570,9 @@ function Start-Deployment {
 # Development mode
 function Start-DevMode {
     Write-Status "Starting in development mode..."
+    
+    # Clean ports first to prevent conflicts
+    Clear-AllPorts
     
     Test-Prerequisites
     Initialize-Environment

@@ -54,6 +54,11 @@ class BlockchainService {
         fs.readFileSync(path.join(contractsPath, 'IoTIntegration.json'), 'utf8')
       );
       
+      // Load AdaptiveSharding contract
+      const shardingArtifact = JSON.parse(
+        fs.readFileSync(path.join(contractsPath, 'AdaptiveSharding.json'), 'utf8')
+      );
+      
       // Get network ID
       const networkId = await this.web3.eth.net.getId();
       
@@ -66,6 +71,11 @@ class BlockchainService {
       this.contracts.iot = new this.web3.eth.Contract(
         iotArtifact.abi,
         iotArtifact.networks[networkId]?.address
+      );
+      
+      this.contracts.sharding = new this.web3.eth.Contract(
+        shardingArtifact.abi,
+        shardingArtifact.networks[networkId]?.address
       );
       
       logger.info('Smart contracts loaded successfully');
@@ -299,6 +309,136 @@ class BlockchainService {
     }
   }
 
+  // Adaptive Sharding Functions
+  async createShard(shardData, fromAccount) {
+    try {
+      const { shardManager, minCapacity, maxCapacity, region } = shardData;
+      
+      const result = await this.contracts.sharding.methods
+        .createShard(shardManager, minCapacity, maxCapacity, region)
+        .send({ from: fromAccount, gas: 500000 });
+      
+      const shardId = result.events.ShardCreated.returnValues.shardId;
+      logger.info(`Shard created with ID: ${shardId}`);
+      return { shardId, transactionHash: result.transactionHash };
+      
+    } catch (error) {
+      logger.error(`Create shard failed: ${error.message}`);
+      throw error;
+    }
+  }
+
+  async activateShard(shardId, fromAccount) {
+    try {
+      const result = await this.contracts.sharding.methods
+        .activateShard(shardId)
+        .send({ from: fromAccount, gas: 200000 });
+      
+      logger.info(`Shard ${shardId} activated`);
+      return { transactionHash: result.transactionHash };
+      
+    } catch (error) {
+      logger.error(`Activate shard failed: ${error.message}`);
+      throw error;
+    }
+  }
+
+  async assignProductToShard(productId, preferredRegion, fromAccount) {
+    try {
+      const result = await this.contracts.sharding.methods
+        .assignProductToShard(productId, preferredRegion)
+        .send({ from: fromAccount, gas: 300000 });
+      
+      const assignedShardId = result.events.ProductAssignedToShard.returnValues.shardId;
+      logger.info(`Product ${productId} assigned to shard ${assignedShardId}`);
+      return { shardId: assignedShardId, transactionHash: result.transactionHash };
+      
+    } catch (error) {
+      logger.error(`Assign product to shard failed: ${error.message}`);
+      throw error;
+    }
+  }
+
+  async updateShardMetrics(shardId, metrics, fromAccount) {
+    try {
+      const { totalTransactions, avgResponseTime, throughput, errorRate } = metrics;
+      
+      const result = await this.contracts.sharding.methods
+        .updateShardMetrics(shardId, totalTransactions, avgResponseTime, throughput, errorRate)
+        .send({ from: fromAccount, gas: 250000 });
+      
+      logger.info(`Shard ${shardId} metrics updated`);
+      return { transactionHash: result.transactionHash };
+      
+    } catch (error) {
+      logger.error(`Update shard metrics failed: ${error.message}`);
+      throw error;
+    }
+  }
+
+  async triggerRebalancing(fromAccount) {
+    try {
+      const result = await this.contracts.sharding.methods
+        .triggerRebalancing()
+        .send({ from: fromAccount, gas: 1000000 });
+      
+      logger.info('Rebalancing triggered successfully');
+      return { transactionHash: result.transactionHash };
+      
+    } catch (error) {
+      logger.error(`Trigger rebalancing failed: ${error.message}`);
+      throw error;
+    }
+  }
+
+  async getShardInfo(shardId) {
+    try {
+      const shardInfo = await this.contracts.sharding.methods
+        .getShardInfo(shardId)
+        .call();
+      return shardInfo;
+    } catch (error) {
+      logger.error(`Get shard info failed: ${error.message}`);
+      throw error;
+    }
+  }
+
+  async getOptimalShard(preferredRegion) {
+    try {
+      const optimalShardId = await this.contracts.sharding.methods
+        .getOptimalShard(preferredRegion)
+        .call();
+      return optimalShardId;
+    } catch (error) {
+      logger.error(`Get optimal shard failed: ${error.message}`);
+      throw error;
+    }
+  }
+
+  async getShardLoadPercentage(shardId) {
+    try {
+      const loadPercentage = await this.contracts.sharding.methods
+        .getShardLoadPercentage(shardId)
+        .call();
+      return loadPercentage;
+    } catch (error) {
+      logger.error(`Get shard load percentage failed: ${error.message}`);
+      throw error;
+    }
+  }
+
+  async getActiveShards() {
+    try {
+      const activeShards = await this.contracts.sharding.methods
+        .getActiveShards()
+        .call();
+      return activeShards;
+    } catch (error) {
+      logger.error(`Get active shards failed: ${error.message}`);
+      throw error;
+    }
+  }
+
   // Event Listening Functions
   subscribeToProductEvents(callback) {
     if (!this.contracts.traceability) {
@@ -327,6 +467,21 @@ class BlockchainService {
       })
       .on('error', (error) => {
         logger.error(`IoT event error: ${error.message}`);
+      });
+  }
+
+  subscribeToShardingEvents(callback) {
+    if (!this.contracts.sharding) {
+      throw new Error('Sharding contract not initialized');
+    }
+
+    this.contracts.sharding.events.allEvents()
+      .on('data', (event) => {
+        logger.info(`Sharding event received: ${event.event}`);
+        callback(event);
+      })
+      .on('error', (error) => {
+        logger.error(`Sharding event error: ${error.message}`);
       });
   }
 

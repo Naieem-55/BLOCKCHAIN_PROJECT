@@ -6,7 +6,10 @@
       "Bash(npm run dev:clean:*)",
       "Bash(npx truffle:*)",
       "Bash(cp:*)",
-      "Bash(npm start)"
+      "Bash(npm start)",
+      "Bash(npx kill-port:*)",
+      "Bash(npm run dev:*)",
+      "Bash(mv:*)"
     ],
     "deny": [],
     "ask": []

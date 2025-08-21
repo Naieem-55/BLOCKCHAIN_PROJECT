@@ -19,6 +19,7 @@ const productRoutes = require('./routes/products');
 const participantRoutes = require('./routes/participants');
 const iotRoutes = require('./routes/iot');
 const analyticsRoutes = require('./routes/analytics');
+const shardingRoutes = require('./routes/sharding');
 const blockchainService = require('./services/blockchainService');
 
 const app = express();
@@ -123,6 +124,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/participants', participantRoutes);
 app.use('/api/iot', iotRoutes);
 app.use('/api/analytics', analyticsRoutes);
+app.use('/api/sharding', shardingRoutes);
 
 // WebSocket handling for real-time updates
 io.on('connection', (socket) => {

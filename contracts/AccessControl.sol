@@ -13,6 +13,7 @@ contract AccessControl {
     bytes32 public constant PARTICIPANT_ROLE = keccak256("PARTICIPANT_ROLE");
     bytes32 public constant AUDITOR_ROLE = keccak256("AUDITOR_ROLE");
     bytes32 public constant IOT_DEVICE_ROLE = keccak256("IOT_DEVICE_ROLE");
+    bytes32 public constant SHARD_MANAGER_ROLE = keccak256("SHARD_MANAGER_ROLE");
     
     // Events
     event RoleGranted(bytes32 indexed role, address indexed account, address indexed sender);
