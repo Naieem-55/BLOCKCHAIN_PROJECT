@@ -8,10 +8,12 @@
     "@emotion/styled": "^11.11.0",
     "@hookform/resolvers": "^3.3.2",
     "@mui/icons-material": "^5.14.18",
+    "@mui/lab": "^5.0.0-alpha.173",
     "@mui/material": "^5.14.18",
     "@mui/x-charts": "^6.18.1",
     "@mui/x-data-grid": "^6.18.1",
     "@mui/x-date-pickers": "^6.18.1",
+    "@react-google-maps/api": "^2.20.7",
     "@reduxjs/toolkit": "^1.9.7",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -85,5 +87,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5003"
+  "proxy": "http://localhost:5000"
 }

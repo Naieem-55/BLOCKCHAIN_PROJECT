@@ -185,6 +185,11 @@ contract AdaptiveSharding is AccessControl {
             
             uint256 score = (availableCapacity * 100) / shard.maxCapacity;
             
+            // Adjust score based on estimated gas - prefer shards with capacity for high gas operations
+            if (_estimatedGas > 500000 && availableCapacity > 100) {
+                score = (score * 110) / 100; // 10% bonus for high gas operations on low-load shards
+            }
+            
             // Bonus for priority transactions
             if (_priority > 5) {
                 score = (score * 120) / 100;

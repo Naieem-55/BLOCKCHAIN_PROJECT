@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supply Chain API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        input {
+            padding: 8px;
+            margin: 5px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Supply Chain API Test</h1>
+    
+    <div class="section">
+        <h2>1. Login</h2>
+        <input type="email" id="email" placeholder="Email" value="admin@example.com">
+        <input type="password" id="password" placeholder="Password" value="Admin123!">
+        <button onclick="login()">Login</button>
+        <div id="loginResult"></div>
+    </div>
+
+    <div class="section">
+        <h2>2. Fetch Products</h2>
+        <button onclick="fetchProducts()">Fetch Products</button>
+        <div id="productsResult"></div>
+    </div>
+
+    <div class="section">
+        <h2>3. Create Product</h2>
+        <input type="text" id="productName" placeholder="Product Name" value="Test Product">
+        <input type="text" id="batchNumber" placeholder="Batch Number" value="">
+        <input type="text" id="category" placeholder="Category" value="electronics">
+        <button onclick="createProduct()">Create Product</button>
+        <div id="createResult"></div>
+    </div>
+
+    <div class="section">
+        <h2>Token Status</h2>
+        <div id="tokenStatus"></div>
+        <button onclick="checkToken()">Check Token</button>
+        <button onclick="clearToken()">Clear Token</button>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:5000/api';
+        
+        function updateTokenStatus() {
+            const token = localStorage.getItem('token');
+            document.getElementById('tokenStatus').innerHTML = token 
+                ? `<span class="success">Token exists: ${token.substring(0, 50)}...</span>`
+                : '<span class="error">No token in localStorage</span>';
+        }
+
+        async function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                console.log('Attempting login...');
+                const response = await fetch(`${API_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+                console.log('Login response:', data);
+
+                if (response.ok && data.success) {
+                    const token = data.data.token;
+                    localStorage.setItem('token', token);
+                    document.getElementById('loginResult').innerHTML = 
+                        `<span class="success">✓ Login successful!</span>
+                        <pre>${JSON.stringify(data.data.user, null, 2)}</pre>`;
+                    updateTokenStatus();
+                } else {
+                    document.getElementById('loginResult').innerHTML = 
+                        `<span class="error">✗ Login failed: ${data.message}</span>`;
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                document.getElementById('loginResult').innerHTML = 
+                    `<span class="error">✗ Network error: ${error.message}</span>`;
+            }
+        }
+
+        async function fetchProducts() {
+            const token = localStorage.getItem('token');
+            
+            if (!token) {
+                document.getElementById('productsResult').innerHTML = 
+                    '<span class="error">Please login first!</span>';
+                return;
+            }
+
+            try {
+                console.log('Fetching products with token:', token.substring(0, 50) + '...');
+                const response = await fetch(`${API_URL}/products`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    }
+                });
+
+                const data = await response.json();
+                console.log('Products response:', data);
+
+                if (response.ok) {
+                    const products = data.data || [];
+                    document.getElementById('productsResult').innerHTML = 
+                        `<span class="success">✓ Found ${products.length} products</span>
+                        <pre>${JSON.stringify(products, null, 2)}</pre>`;
+                } else {
+                    document.getElementById('productsResult').innerHTML = 
+                        `<span class="error">✗ Failed: ${data.message}</span>`;
+                }
+            } catch (error) {
+                console.error('Fetch error:', error);
+                document.getElementById('productsResult').innerHTML = 
+                    `<span class="error">✗ Network error: ${error.message}</span>`;
+            }
+        }
+
+        async function createProduct() {
+            const token = localStorage.getItem('token');
+            
+            if (!token) {
+                document.getElementById('createResult').innerHTML = 
+                    '<span class="error">Please login first!</span>';
+                return;
+            }
+
+            const productName = document.getElementById('productName').value;
+            const batchNumber = document.getElementById('batchNumber').value || 'BATCH-' + Date.now();
+            const category = document.getElementById('category').value;
+
+            try {
+                console.log('Creating product...');
+                const response = await fetch(`${API_URL}/products`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: productName,
+                        description: 'Test product created from HTML test page',
+                        category: category,
+                        batchNumber: batchNumber,
+                        initialLocation: 'Test Location'
+                    })
+                });
+
+                const data = await response.json();
+                console.log('Create response:', data);
+
+                if (response.ok) {
+                    document.getElementById('createResult').innerHTML = 
+                        `<span class="success">✓ Product created successfully!</span>
+                        <pre>${JSON.stringify(data.data, null, 2)}</pre>`;
+                    // Auto-generate new batch number for next product
+                    document.getElementById('batchNumber').value = '';
+                } else {
+                    document.getElementById('createResult').innerHTML = 
+                        `<span class="error">✗ Failed: ${data.message}</span>`;
+                }
+            } catch (error) {
+                console.error('Create error:', error);
+                document.getElementById('createResult').innerHTML = 
+                    `<span class="error">✗ Network error: ${error.message}</span>`;
+            }
+        }
+
+        function checkToken() {
+            updateTokenStatus();
+        }
+
+        function clearToken() {
+            localStorage.removeItem('token');
+            updateTokenStatus();
+            document.getElementById('loginResult').innerHTML = '<span class="error">Token cleared - Please login again</span>';
+        }
+
+        // Check token on page load
+        window.onload = updateTokenStatus;
+    </script>
+</body>
+</html>

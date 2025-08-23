@@ -171,15 +171,15 @@ contract HighEfficiencyProcessor is AccessControl {
         
         emit BatchProcessed(_batchId, gasUsed, processingTime);
         
-        if (gasUsed < originalGasEstimate) {
-            emit OptimizationApplied(_batchId, originalGasEstimate - gasUsed, "Batch optimization");
+        if (gasUsed < optimizedGas) {
+            emit OptimizationApplied(_batchId, optimizedGas - gasUsed, "Batch optimization");
         }
     }
     
     /**
      * @dev Apply gas optimizations based on operation type and configuration
      */
-    function applyGasOptimizations(uint256 _originalGas, string memory _operationType) internal view returns (uint256) {
+    function applyGasOptimizations(uint256 _originalGas, string memory /*_operationType*/) internal view returns (uint256) {
         uint256 optimizedGas = _originalGas;
         
         // Apply optimization level multiplier
@@ -222,9 +222,9 @@ contract HighEfficiencyProcessor is AccessControl {
         uint256 compressionRatio,
         uint256 efficiencyScore
     ) {
-        uint256 efficiencyScore = 0;
+        uint256 calculatedEfficiencyScore = 0;
         if (performance.avgProcessingTime > 0) {
-            efficiencyScore = (performance.avgGasSaved * 100) / (performance.avgProcessingTime + 1);
+            calculatedEfficiencyScore = (performance.avgGasSaved * 100) / (performance.avgProcessingTime + 1);
         }
         
         return (
@@ -234,7 +234,7 @@ contract HighEfficiencyProcessor is AccessControl {
             performance.avgProcessingTime,
             performance.successRate,
             performance.compressionRatio,
-            efficiencyScore
+            calculatedEfficiencyScore
         );
     }
     

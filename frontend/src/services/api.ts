@@ -2,8 +2,11 @@ import axios, { AxiosInstance, AxiosError, AxiosResponse } from 'axios';
 import { ApiResponse, ApiError } from '../types/api';
 
 // Create axios instance
+const apiBaseURL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+console.log('🔧 API Base URL:', apiBaseURL);
+
 const api: AxiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || '/api',
+  baseURL: apiBaseURL,
   timeout: 30000,
   headers: {
     'Content-Type': 'application/json',

@@ -21,7 +21,8 @@ export enum UserRole {
   DISTRIBUTOR = 'distributor',
   RETAILER = 'retailer',
   AUDITOR = 'auditor',
-  CONSUMER = 'consumer'
+  CONSUMER = 'consumer',
+  PRODUCER = 'producer'
 }
 
 export interface Permission {

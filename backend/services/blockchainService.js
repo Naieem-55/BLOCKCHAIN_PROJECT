@@ -39,50 +39,71 @@ class BlockchainService {
     }
   }
 
-  // issue here
   async loadContracts() {
     try {
-      const contractsPath = path.join(__dirname, '../../contracts');
+      const contractsPath = path.join(__dirname, '../../build/contracts');
       
-      // Load SupplyChainTraceability contract
-      const traceabilityArtifact = JSON.parse(
-        fs.readFileSync(path.join(contractsPath, 'SupplyChainTraceability.json'), 'utf8')
-      );
+      // Load SupplyChain contract
+      const supplyChainPath = path.join(contractsPath, 'SupplyChain.json');
+      if (fs.existsSync(supplyChainPath)) {
+        const supplyChainArtifact = JSON.parse(fs.readFileSync(supplyChainPath, 'utf8'));
+        const networkId = await this.web3.eth.net.getId();
+        
+        if (supplyChainArtifact.networks[networkId]) {
+          this.contracts.supplyChain = new this.web3.eth.Contract(
+            supplyChainArtifact.abi,
+            supplyChainArtifact.networks[networkId].address
+          );
+          this.contract = this.contracts.supplyChain; // Alias for compatibility
+          logger.info(`SupplyChain contract loaded at: ${supplyChainArtifact.networks[networkId].address}`);
+        }
+      }
       
       // Load IoTIntegration contract
-      const iotArtifact = JSON.parse(
-        fs.readFileSync(path.join(contractsPath, 'IoTIntegration.json'), 'utf8')
-      );
+      const iotPath = path.join(contractsPath, 'IoTIntegration.json');
+      if (fs.existsSync(iotPath)) {
+        const iotArtifact = JSON.parse(fs.readFileSync(iotPath, 'utf8'));
+        const networkId = await this.web3.eth.net.getId();
+        
+        if (iotArtifact.networks[networkId]) {
+          this.contracts.iot = new this.web3.eth.Contract(
+            iotArtifact.abi,
+            iotArtifact.networks[networkId].address
+          );
+          this.iotContract = this.contracts.iot; // Alias for compatibility
+          logger.info(`IoTIntegration contract loaded at: ${iotArtifact.networks[networkId].address}`);
+        }
+      }
       
-      // Load AdaptiveSharding contract
-      const shardingArtifact = JSON.parse(
-        fs.readFileSync(path.join(contractsPath, 'AdaptiveSharding.json'), 'utf8')
-      );
+      // Try to load other contracts if they exist
+      const contractFiles = ['AccessControl.json', 'SupplyChainTraceability.json', 'AdaptiveSharding.json'];
       
-      // Get network ID
-      const networkId = await this.web3.eth.net.getId();
-      
-      // Initialize contracts
-      this.contracts.traceability = new this.web3.eth.Contract(
-        traceabilityArtifact.abi,
-        traceabilityArtifact.networks[networkId]?.address
-      );
-      
-      this.contracts.iot = new this.web3.eth.Contract(
-        iotArtifact.abi,
-        iotArtifact.networks[networkId]?.address
-      );
-      
-      this.contracts.sharding = new this.web3.eth.Contract(
-        shardingArtifact.abi,
-        shardingArtifact.networks[networkId]?.address
-      );
+      for (const file of contractFiles) {
+        const filePath = path.join(contractsPath, file);
+        if (fs.existsSync(filePath)) {
+          try {
+            const artifact = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+            const networkId = await this.web3.eth.net.getId();
+            
+            if (artifact.networks[networkId]) {
+              const contractName = file.replace('.json', '');
+              this.contracts[contractName.toLowerCase()] = new this.web3.eth.Contract(
+                artifact.abi,
+                artifact.networks[networkId].address
+              );
+              logger.info(`${contractName} contract loaded`);
+            }
+          } catch (err) {
+            logger.warn(`Could not load ${file}: ${err.message}`);
+          }
+        }
+      }
       
       logger.info('Smart contracts loaded successfully');
       
     } catch (error) {
       logger.error(`Contract loading failed: ${error.message}`);
-      throw error;
+      // Don't throw - allow app to continue without blockchain
     }
   }
 

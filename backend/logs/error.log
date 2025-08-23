@@ -42808,3 +42808,69 @@
   service: 'supply-chain-api',
   timestamp: '2025-08-22 00:19:25'
 }
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:11:16'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:17:51'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:16:53'
+}
+{
+  service: 'supply-chain-api',
+  errors: {
+    category: ValidatorError: `Electronics` is not a valid enum value for path `category`.
+        at validate (C:\projects\BLOCKCHAIN_PROJECT\backend\node_modules\mongoose\lib\schemaType.js:1407:13)
+        at SchemaType.doValidate (C:\projects\BLOCKCHAIN_PROJECT\backend\node_modules\mongoose\lib\schemaType.js:1391:7)
+        at C:\projects\BLOCKCHAIN_PROJECT\backend\node_modules\mongoose\lib\document.js:3111:18
+        at process.processTicksAndRejections (node:internal/process/task_queues:77:11) {
+      properties: {
+        validator: [Function (anonymous)],
+        message: '`Electronics` is not a valid enum value for path `category`.',
+        type: 'enum',
+        enumValues: [
+          'food',
+          'pharmaceutical',
+          'electronics',
+          'textiles',
+          'automotive',
+          'chemicals',
+          'other'
+        ],
+        path: 'category',
+        fullPath: undefined,
+        value: 'Electronics'
+      },
+      kind: 'enum',
+      path: 'category',
+      value: 'Electronics',
+      reason: undefined,
+      [Symbol(mongoose#validatorError)]: true
+    }
+  },
+  _message: 'Product validation failed',
+  level: 'error',
+  message: 'Error seeding database: Product validation failed: category: `Electronics` is not a valid enum value for path `category`.',
+  stack: 'ValidationError: Product validation failed: category: `Electronics` is not a valid enum value for path `category`.\n' +
+    '    at Document.invalidate (C:\\projects\\BLOCKCHAIN_PROJECT\\backend\\node_modules\\mongoose\\lib\\document.js:3358:32)\n' +
+    '    at C:\\projects\\BLOCKCHAIN_PROJECT\\backend\\node_modules\\mongoose\\lib\\document.js:3119:17\n' +
+    '    at C:\\projects\\BLOCKCHAIN_PROJECT\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1410:9\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)',
+  timestamp: '2025-08-22 14:55:43'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:17:35'
+}

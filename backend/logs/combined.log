@@ -47032,3 +47032,879 @@
   service: 'supply-chain-api',
   timestamp: '2025-08-22 00:47:32'
 }
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:00:50'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:00:51'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:00:51'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:00:51'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:00:51'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:00:51'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:00:51'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:00:51'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:00:51'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:00:51'
+}
+{
+  message: '::1 - - [22/Aug/2025:06:02:43 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 207 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:02:43'
+}
+{
+  message: '::1 - - [22/Aug/2025:06:02:43 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 204 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:02:43'
+}
+{
+  message: 'Server running on port 5000',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:02:57'
+}
+{
+  message: 'API Documentation available at http://localhost:5000/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:02:57'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:02:57'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:02:57'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:02:57'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:02:57'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:02:57'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:02:57'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:02:57'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:02:57'
+}
+{
+  message: '::1 - - [22/Aug/2025:06:03:46 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 207 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:03:46'
+}
+{
+  message: '::1 - - [22/Aug/2025:06:03:46 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 208 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:03:46'
+}
+{
+  message: '::1 - - [22/Aug/2025:06:04:15 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 208 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:04:15'
+}
+{
+  message: '::1 - - [22/Aug/2025:06:04:15 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 208 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:04:15'
+}
+{
+  message: '::1 - - [22/Aug/2025:06:05:24 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 208 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:05:24'
+}
+{
+  message: '::1 - - [22/Aug/2025:06:05:24 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 207 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:05:24'
+}
+{
+  message: '::1 - - [22/Aug/2025:06:07:48 +0000] "GET /health HTTP/1.1" 200 103 "-" "curl/8.8.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:07:48'
+}
+{
+  message: 'Server running on port 5000',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:11:16'
+}
+{
+  message: 'API Documentation available at http://localhost:5000/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:11:16'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:11:16'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:11:16'
+}
+{
+  message: 'Application will continue without blockchain functionality',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:11:16'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:11:16'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:11:16'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:11:16'
+}
+{
+  message: 'Server running on port 5000',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:17:51'
+}
+{
+  message: 'API Documentation available at http://localhost:5000/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:17:51'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:17:51'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:17:51'
+}
+{
+  message: 'Application will continue without blockchain functionality',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:17:51'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:17:51'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:17:51'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 12:17:51'
+}
+{
+  message: 'Server running on port 5000',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:16:52'
+}
+{
+  message: 'API Documentation available at http://localhost:5000/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:16:52'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:16:52'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:16:53'
+}
+{
+  message: 'Application will continue without blockchain functionality',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:16:53'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:16:53'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:16:53'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:16:53'
+}
+{
+  message: '127.0.0.1 - - [22/Aug/2025:08:22:57 +0000] "GET /logo192.png HTTP/1.1" 404 74 "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:22:57'
+}
+{
+  message: 'Connected to MongoDB for seeding',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:55:42'
+}
+{
+  message: 'Admin user created successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:55:43'
+}
+{
+  message: 'manufacturer user created: manufacturer@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:55:43'
+}
+{
+  message: 'supplier user created: supplier@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:55:43'
+}
+{
+  message: 'distributor user created: distributor@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:55:43'
+}
+{
+  message: 'retailer user created: retailer@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:55:43'
+}
+{
+  service: 'supply-chain-api',
+  errors: {
+    category: ValidatorError: `Electronics` is not a valid enum value for path `category`.
+        at validate (C:\projects\BLOCKCHAIN_PROJECT\backend\node_modules\mongoose\lib\schemaType.js:1407:13)
+        at SchemaType.doValidate (C:\projects\BLOCKCHAIN_PROJECT\backend\node_modules\mongoose\lib\schemaType.js:1391:7)
+        at C:\projects\BLOCKCHAIN_PROJECT\backend\node_modules\mongoose\lib\document.js:3111:18
+        at process.processTicksAndRejections (node:internal/process/task_queues:77:11) {
+      properties: {
+        validator: [Function (anonymous)],
+        message: '`Electronics` is not a valid enum value for path `category`.',
+        type: 'enum',
+        enumValues: [
+          'food',
+          'pharmaceutical',
+          'electronics',
+          'textiles',
+          'automotive',
+          'chemicals',
+          'other'
+        ],
+        path: 'category',
+        fullPath: undefined,
+        value: 'Electronics'
+      },
+      kind: 'enum',
+      path: 'category',
+      value: 'Electronics',
+      reason: undefined,
+      [Symbol(mongoose#validatorError)]: true
+    }
+  },
+  _message: 'Product validation failed',
+  level: 'error',
+  message: 'Error seeding database: Product validation failed: category: `Electronics` is not a valid enum value for path `category`.',
+  stack: 'ValidationError: Product validation failed: category: `Electronics` is not a valid enum value for path `category`.\n' +
+    '    at Document.invalidate (C:\\projects\\BLOCKCHAIN_PROJECT\\backend\\node_modules\\mongoose\\lib\\document.js:3358:32)\n' +
+    '    at C:\\projects\\BLOCKCHAIN_PROJECT\\backend\\node_modules\\mongoose\\lib\\document.js:3119:17\n' +
+    '    at C:\\projects\\BLOCKCHAIN_PROJECT\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1410:9\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)',
+  timestamp: '2025-08-22 14:55:43'
+}
+{
+  message: 'Server running on port 5000',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:56:12'
+}
+{
+  message: 'API Documentation available at http://localhost:5000/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:56:12'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:56:12'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:56:12'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:56:12'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:56:12'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:56:13'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:56:13'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:56:13'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 14:56:13'
+}
+{
+  message: '127.0.0.1 - - [22/Aug/2025:09:01:35 +0000] "GET /logo192.png HTTP/1.1" 404 74 "http://localhost:3001/profile" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:01:35'
+}
+{
+  message: 'Server running on port 5000',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:10:15'
+}
+{
+  message: 'API Documentation available at http://localhost:5000/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:10:15'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:10:15'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:10:15'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:10:15'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:10:15'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:10:15'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:10:15'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:10:15'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:10:15'
+}
+{
+  message: '127.0.0.1 - - [22/Aug/2025:09:12:20 +0000] "GET /main.df2beefc709b965917d4.hot-update.json HTTP/1.1" 404 104 "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:12:20'
+}
+{
+  message: '127.0.0.1 - - [22/Aug/2025:09:12:24 +0000] "GET /logo192.png HTTP/1.1" 404 74 "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:12:24'
+}
+{
+  message: '127.0.0.1 - - [22/Aug/2025:09:12:26 +0000] "GET /logo192.png HTTP/1.1" 404 74 "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:12:26'
+}
+{
+  message: 'Server running on port 5000',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:17:35'
+}
+{
+  message: 'API Documentation available at http://localhost:5000/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:17:35'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:17:35'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:17:35'
+}
+{
+  message: 'Application will continue without blockchain functionality',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:17:35'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:17:35'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:17:35'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:17:35'
+}
+{
+  message: '127.0.0.1 - - [22/Aug/2025:09:26:05 +0000] "GET /logo192.png HTTP/1.1" 404 74 "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:26:05'
+}
+{
+  message: '::1 - - [22/Aug/2025:09:29:41 +0000] "GET /api/products HTTP/1.1" 401 63 "-" "curl/8.8.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:29:41'
+}
+{
+  message: 'User logged in: admin@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:30:22'
+}
+{
+  message: '::1 - - [22/Aug/2025:09:30:22 +0000] "POST /api/auth/login HTTP/1.1" 200 942 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:30:22'
+}
+{
+  message: '::1 - - [22/Aug/2025:09:30:22 +0000] "GET /api/products HTTP/1.1" 401 44 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:30:22'
+}
+{
+  message: 'User logged in: admin@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:31:09'
+}
+{
+  message: '::1 - - [22/Aug/2025:09:31:09 +0000] "POST /api/auth/login HTTP/1.1" 200 942 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:31:09'
+}
+{
+  message: '::1 - - [22/Aug/2025:09:31:09 +0000] "GET /api/products HTTP/1.1" 200 86 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:31:09'
+}
+{
+  message: 'New product created: Test Product 1755855069404 (BATCH-1755855069404) by admin@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:31:09'
+}
+{
+  message: '::1 - - [22/Aug/2025:09:31:09 +0000] "POST /api/products HTTP/1.1" 201 859 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 15:31:09'
+}
+{
+  message: '127.0.0.1 - - [22/Aug/2025:13:05:27 +0000] "GET /logo192.png HTTP/1.1" 404 74 "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:05:27'
+}
+{
+  message: '127.0.0.1 - - [22/Aug/2025:13:13:44 +0000] "GET /logo192.png HTTP/1.1" 404 74 "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:13:44'
+}
+{
+  message: '127.0.0.1 - - [22/Aug/2025:13:14:55 +0000] "GET /main.50c320e28c6b96a0600d.hot-update.json HTTP/1.1" 404 104 "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:14:55'
+}
+{
+  message: '127.0.0.1 - - [22/Aug/2025:13:14:58 +0000] "GET /logo192.png HTTP/1.1" 404 74 "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:14:58'
+}
+{
+  message: 'Server running on port 5000',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:21:19'
+}
+{
+  message: 'API Documentation available at http://localhost:5000/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:21:20'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:21:20'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:21:20'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:21:20'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:21:20'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:21:20'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:21:20'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:21:20'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:21:20'
+}
+{
+  message: '127.0.0.1 - - [22/Aug/2025:13:27:17 +0000] "GET /logo192.png HTTP/1.1" 404 74 "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:27:17'
+}
+{
+  message: '::1 - - [22/Aug/2025:13:33:47 +0000] "GET /api/products HTTP/1.1" 401 63 "-" "-"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:33:47'
+}
+{
+  message: 'User logged in: admin@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:34:55'
+}
+{
+  message: '::1 - - [22/Aug/2025:13:34:55 +0000] "POST /api/auth/login HTTP/1.1" 200 942 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:34:55'
+}
+{
+  message: '::1 - - [22/Aug/2025:13:34:55 +0000] "GET /api/products HTTP/1.1" 200 794 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:34:55'
+}
+{
+  message: 'New product created: Test Product 2025-08-22T13:34:55.222Z (TEST-1755869695223) by admin@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:34:55'
+}
+{
+  message: '::1 - - [22/Aug/2025:13:34:55 +0000] "POST /api/products HTTP/1.1" 201 879 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:34:55'
+}
+{
+  message: '::1 - - [22/Aug/2025:13:34:55 +0000] "GET /api/products HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:34:55'
+}
+{
+  message: 'User logged in: admin@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:37:20'
+}
+{
+  message: '::1 - - [22/Aug/2025:13:37:20 +0000] "POST /api/auth/login HTTP/1.1" 200 942 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:37:20'
+}
+{
+  message: '::1 - - [22/Aug/2025:13:37:20 +0000] "GET /api/products HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:37:20'
+}
+{
+  message: 'New product created: Test Product 2025-08-22T13:37:20.387Z (TEST-1755869840388) by admin@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:37:20'
+}
+{
+  message: '::1 - - [22/Aug/2025:13:37:20 +0000] "POST /api/products HTTP/1.1" 201 879 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:37:20'
+}
+{
+  message: '::1 - - [22/Aug/2025:13:37:20 +0000] "GET /api/products HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:37:20'
+}
+{
+  message: 'User logged in: admin@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:37:30'
+}
+{
+  message: '127.0.0.1 - - [22/Aug/2025:13:37:30 +0000] "POST /api/auth/login HTTP/1.1" 200 942 "-" "curl/8.8.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 19:37:30'
+}
+{
+  message: 'User logged in: admin@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 21:44:25'
+}
+{
+  message: '::1 - - [22/Aug/2025:15:44:25 +0000] "POST /api/auth/login HTTP/1.1" 200 942 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 21:44:25'
+}
+{
+  message: '::1 - - [22/Aug/2025:15:44:25 +0000] "GET /api/products HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-22 21:44:25'
+}
+{
+  message: 'Mongoose disconnected from MongoDB',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-23 07:01:40'
+}
+{
+  message: 'Mongoose connected to MongoDB',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-23 07:01:51'
+}
+{
+  message: 'Mongoose disconnected from MongoDB',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-23 16:34:02'
+}
+{
+  message: 'Mongoose connected to MongoDB',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-23 16:34:13'
+}

@@ -40,6 +40,38 @@ const productSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  locationHistory: [{
+    location: {
+      type: String,
+      required: true,
+    },
+    coordinates: {
+      latitude: Number,
+      longitude: Number,
+    },
+    address: {
+      street: String,
+      city: String,
+      state: String,
+      country: String,
+      postalCode: String,
+    },
+    timestamp: { type: Date, default: Date.now },
+    recordedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    },
+    locationType: {
+      type: String,
+      enum: ['warehouse', 'transport', 'facility', 'retail', 'customer'],
+    },
+    transportDetails: {
+      vehicleId: String,
+      driverId: String,
+      route: String,
+      estimatedArrival: Date,
+    },
+  }],
   isActive: {
     type: Boolean,
     default: true,
