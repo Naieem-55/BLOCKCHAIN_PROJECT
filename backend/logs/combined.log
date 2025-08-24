@@ -55750,3 +55750,681 @@
   service: 'supply-chain-api',
   timestamp: '2025-08-24 18:52:56'
 }
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:18:45'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:18:45'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:18:45'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:18:45'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:18:45'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:18:45'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:18:45'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:18:45'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:18:45'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:18:45'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:18:45'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:22:15 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 208 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:22:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:22:15 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 208 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:22:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:38:10 +0000] "GET /api/products HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:38:10'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:38:11 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:38:11'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:38:21 +0000] "GET /api/products/68a87290ffc72a2e08356955/trace HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:38:21'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:38:22 +0000] "GET /api/immutability/status/68a87290ffc72a2e08356955 HTTP/1.1" 200 517 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:38:22'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:38:22 +0000] "POST /api/immutability/browser-test HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:38:22'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:38:22 +0000] "POST /api/immutability/browser-test HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:38:22'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:38:22 +0000] "GET /api/immutability/status/68a87290ffc72a2e08356955 HTTP/1.1" 200 517 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:38:22'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:39:45 +0000] "GET /api/products/68a87290ffc72a2e08356955/trace HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:39:45'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:39:45 +0000] "GET /api/immutability/status/68a87290ffc72a2e08356955 HTTP/1.1" 200 517 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:39:45'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:39:45 +0000] "GET /api/immutability/status/68a87290ffc72a2e08356955 HTTP/1.1" 200 517 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:39:45'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:39:45 +0000] "POST /api/immutability/browser-test HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:39:45'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:39:45 +0000] "POST /api/immutability/browser-test HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:39:45'
+}
+{
+  message: 'Immutability protection enabled for product 68a87290ffc72a2e08356955',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:40:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:40:03 +0000] "PUT /api/immutability/protect/68a87290ffc72a2e08356955 HTTP/1.1" 200 298 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:40:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:40:03 +0000] "GET /api/immutability/status/68a87290ffc72a2e08356955 HTTP/1.1" 200 807 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:40:03'
+}
+{
+  message: 'Tampering scenarios tested for 68a87290ffc72a2e08356955: 5/5 detected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:40:41'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:40:41 +0000] "POST /api/immutability/test-scenarios/68a87290ffc72a2e08356955 HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:40:41'
+}
+{
+  message: 'Tampering scenarios tested for 68a87290ffc72a2e08356955: 5/5 detected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:41:55'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:41:55 +0000] "POST /api/immutability/test-scenarios/68a87290ffc72a2e08356955 HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:41:55'
+}
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:48:40'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:48:40'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:48:40'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:48:40'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:48:40'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:48:40'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:48:40'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:48:40'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:48:40'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:48:40'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:48:40'
+}
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:15'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:15'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:15'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:15'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:15'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:15'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:15'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:15'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:16'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:16'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:16'
+}
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:27'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:27'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:27'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:27'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:27'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:27'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:27'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:27'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:27'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:27'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:27'
+}
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:35'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:35'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:35'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:35'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:35'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:35'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:35'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:35'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:35'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:35'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:49:35'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:51:25 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "curl/8.8.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:51:25'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:52:54 +0000] "POST /api/auth/login HTTP/1.1" 401 319 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:52:54'
+}
+{
+  message: 'User logged in: admin@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:53:17'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:53:17 +0000] "POST /api/auth/login HTTP/1.1" 200 942 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:53:17'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:53:17 +0000] "GET /api/products HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:53:17'
+}
+{
+  message: 'User logged in: admin@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:53:39'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:53:39 +0000] "POST /api/auth/login HTTP/1.1" 200 942 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:53:39'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:53:39 +0000] "GET /api/products HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:53:39'
+}
+{
+  message: 'Tampering scenarios tested for 68a87290ffc72a2e08356955: 5/5 detected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:53:39'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:53:39 +0000] "POST /api/immutability/test-scenarios/68a87290ffc72a2e08356955 HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:53:39'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:54:48 +0000] "GET /api/products HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:54:48'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:54:48 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:54:48'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:54:51 +0000] "GET /api/products/68a87290ffc72a2e08356955/trace HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:54:51'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:54:51 +0000] "GET /api/immutability/status/68a87290ffc72a2e08356955 HTTP/1.1" 200 807 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:54:51'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:54:51 +0000] "GET /api/immutability/status/68a87290ffc72a2e08356955 HTTP/1.1" 200 807 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:54:51'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:54:51 +0000] "POST /api/immutability/browser-test HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:54:51'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:54:51 +0000] "POST /api/immutability/browser-test HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:54:51'
+}
+{
+  message: 'Product integrity verification for 68a87290ffc72a2e08356955: PASSED',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:55:43'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:55:43 +0000] "POST /api/immutability/verify/68a87290ffc72a2e08356955 HTTP/1.1" 200 510 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:55:43'
+}
+{
+  message: 'Tampering scenarios tested for 68a87290ffc72a2e08356955: 5/5 detected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:55:45'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:55:45 +0000] "POST /api/immutability/test-scenarios/68a87290ffc72a2e08356955 HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:55:45'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:56:03 +0000] "GET /api/products/68a87290ffc72a2e08356955/verify HTTP/1.1" 404 107 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:56:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:56:03 +0000] "GET /api/products/68a87290ffc72a2e08356955/verify HTTP/1.1" 404 107 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:56:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:56:03 +0000] "GET /api/products/68a87290ffc72a2e08356955 HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:56:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:56:03 +0000] "GET /api/products/68a87290ffc72a2e08356955 HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:56:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:56:05 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:56:05'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:56:05 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:56:05'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:58:04 +0000] "GET /api/products/68a871ffffc72a2e08356940/trace HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:58:04'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:58:04 +0000] "GET /api/immutability/status/68a871ffffc72a2e08356940 HTTP/1.1" 200 517 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:58:04'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:58:04 +0000] "POST /api/immutability/browser-test HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:58:04'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:58:04 +0000] "POST /api/immutability/browser-test HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:58:04'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:58:04 +0000] "GET /api/immutability/status/68a871ffffc72a2e08356940 HTTP/1.1" 200 517 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:58:04'
+}
+{
+  message: 'Immutability protection enabled for product 68a871ffffc72a2e08356940',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:58:08'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:58:08 +0000] "PUT /api/immutability/protect/68a871ffffc72a2e08356940 HTTP/1.1" 200 298 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:58:08'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:58:08 +0000] "GET /api/immutability/status/68a871ffffc72a2e08356940 HTTP/1.1" 200 807 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:58:08'
+}
+{
+  message: 'Tampering scenarios tested for 68a871ffffc72a2e08356940: 5/5 detected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:58:09'
+}
+{
+  message: '::1 - - [24/Aug/2025:16:58:10 +0000] "POST /api/immutability/test-scenarios/68a871ffffc72a2e08356940 HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 22:58:10'
+}

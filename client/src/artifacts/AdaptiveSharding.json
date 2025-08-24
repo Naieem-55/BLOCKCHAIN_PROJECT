@@ -34935,12 +34935,12 @@
         }
       },
       "links": {},
-      "address": "0xB5d1b8e7d130C599C53c77858f5fe2bA6E41F36B",
-      "transactionHash": "0xecd7215c619264aeaf1de1177afbf3eb70c23768c6f9094c25740ddf6d92ff7b"
+      "address": "0xf287a2c2b48c2B57e1840cC95205B5C21f2e70a1",
+      "transactionHash": "0xfe7cecbc81bbdea9b1c03ae146d49e8f3bd9cc3d1c9a35c0f48fab712b960a2f"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-08-24T12:54:07.294Z",
+  "updatedAt": "2025-08-24T16:17:46.773Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "Implements adaptive sharding for high-efficiency blockchain operations This contract manages multiple shards dynamically based on load and performance",

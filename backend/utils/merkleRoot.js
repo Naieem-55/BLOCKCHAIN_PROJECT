@@ -133,11 +133,9 @@ class MerkleRootGenerator {
         description: 'Attacker increases product price',
         tamperedData: {
           ...originalProduct,
-          price: parseFloat(originalProduct.price || 0) + 100,
-          metadata: {
-            ...originalProduct.metadata,
-            price: parseFloat(originalProduct.metadata?.price || 0) + 100
-          }
+          price: originalProduct.price !== undefined 
+            ? parseFloat(originalProduct.price) * 2 + 100  
+            : 100
         }
       },
       {
@@ -154,11 +152,9 @@ class MerkleRootGenerator {
         description: 'Attacker increases inventory quantity',
         tamperedData: {
           ...originalProduct,
-          quantity: parseInt(originalProduct.quantity || 0) * 5,
-          metadata: {
-            ...originalProduct.metadata,
-            quantity: parseInt(originalProduct.metadata?.quantity || 0) * 5
-          }
+          quantity: originalProduct.quantity !== undefined
+            ? parseInt(originalProduct.quantity) * 5 + 10
+            : 50
         }
       },
       {
