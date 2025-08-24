@@ -50176,3 +50176,3837 @@
   service: 'supply-chain-api',
   timestamp: '2025-08-24 11:14:09'
 }
+{
+  message: 'New product created: ABC Product (BATCH003) by test2@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:14:40'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:14:40 +0000] "POST /api/products HTTP/1.1" 201 1019 "-" "curl/8.14.1"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:14:40'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:15:29 +0000] "GET /api/products HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:15:29'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:15:29 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:15:29'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:15:30 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:15:30'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:15:30 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:15:30'
+}
+{
+  message: '127.0.0.1 - - [24/Aug/2025:05:15:30 +0000] "GET /logo192.png HTTP/1.1" 404 74 "http://localhost:3001/products" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:15:30'
+}
+{
+  message: 'New product created: abc (A1) by test@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:15:57'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:15:57 +0000] "POST /api/products HTTP/1.1" 201 1009 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:15:57'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:15:57 +0000] "GET /api/products HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:15:57'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:17:15 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 207 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:17:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:17:15 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 208 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:17:15'
+}
+{
+  message: 'Server running on port 5000',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:31:34'
+}
+{
+  message: 'API Documentation available at http://localhost:5000/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:31:34'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:31:34'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:31:34'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:31:34'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:31:34'
+}
+{
+  message: 'Connected to blockchain network ID: 1756013083593',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:31:34'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:31:34'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:31:34'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:31:34'
+}
+{
+  message: 'Traceability contract not available, creating product without blockchain',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:32:14'
+}
+{
+  message: 'New product created: Blockchain Product Test (BATCH-BLOCKCHAIN-001) by test2@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:32:14'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:32:14 +0000] "POST /api/products HTTP/1.1" 201 1139 "-" "curl/8.14.1"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:32:14'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:41:06 +0000] "GET /api/sharding/stats HTTP/1.1" 401 63 "-" "curl/8.14.1"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:41:06'
+}
+{
+  message: 'Failed to get system stats: Sharding contract not initialized',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:41:23'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:41:23 +0000] "GET /api/sharding/stats HTTP/1.1" 500 852 "-" "curl/8.14.1"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:41:23'
+}
+{
+  message: 'Traceability contract not available, creating product without blockchain',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:41:39'
+}
+{
+  message: 'New product created: Electronic Device 1 (ELEC-001) by test2@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:41:39'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:41:39 +0000] "POST /api/products HTTP/1.1" 201 1112 "-" "curl/8.14.1"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:41:39'
+}
+{
+  message: 'Traceability contract not available, creating product without blockchain',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:13'
+}
+{
+  message: 'New product created: Test Product 1 (BATCH-TEST-1756014373107-0) by test2@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:46:13 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:13'
+}
+{
+  message: 'Traceability contract not available, creating product without blockchain',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:13'
+}
+{
+  message: 'New product created: Test Product 2 (BATCH-TEST-1756014373107-1) by test2@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:46:13 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:13'
+}
+{
+  message: 'Traceability contract not available, creating product without blockchain',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:13'
+}
+{
+  message: 'New product created: Test Product 3 (BATCH-TEST-1756014373107-2) by test2@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:46:13 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:13'
+}
+{
+  message: 'Traceability contract not available, creating product without blockchain',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:13'
+}
+{
+  message: 'New product created: Test Product 4 (BATCH-TEST-1756014373107-3) by test2@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:46:13 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:13'
+}
+{
+  message: 'Traceability contract not available, creating product without blockchain',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:13'
+}
+{
+  message: 'New product created: Test Product 5 (BATCH-TEST-1756014373107-4) by test2@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:46:13 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:46:13 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:46:18 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:18'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:46:23 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:23'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:46:28 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:28'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:46:33 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:33'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:46:38 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:38'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:46:43 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:43'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:46:48 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:48'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:46:53 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:53'
+}
+{
+  message: 'Traceability contract not available, creating product without blockchain',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:55'
+}
+{
+  message: 'New product created: High-Performance Laptop (LAPTOP-2025-001) by test2@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:55'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:46:55 +0000] "POST /api/products HTTP/1.1" 201 1124 "-" "curl/8.14.1"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:55'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:46:58 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:46:58'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:47:03 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:47:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:47:06 +0000] "GET /api/products HTTP/1.1" 200 9398 "-" "curl/8.14.1"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:47:06'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:47:08 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:47:08'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:47:13 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:47:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:47:15 +0000] "GET /api/products/stats HTTP/1.1" 500 1607 "-" "curl/8.14.1"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:47:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:47:18 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:47:18'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:47:23 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:47:23'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:47:28 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:47:28'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:47:33 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:47:33'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:47:38 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:47:38'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:47:43 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:47:43'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:47:48 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:47:48'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:47:53 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:47:53'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:47:58 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:47:58'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:48:03 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:48:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:48:08 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:48:08'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:48:13 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:48:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:48:18 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:48:18'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:48:23 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:48:23'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:48:28 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:48:28'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:48:33 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:48:33'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:48:38 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:48:38'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:48:43 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:48:43'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:48:48 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:48:48'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:48:53 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:48:53'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:48:58 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:48:58'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:49:03 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:49:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:49:08 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:49:08'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:49:13 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:49:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:49:18 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:49:18'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:49:23 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:49:23'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:49:28 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:49:28'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:49:33 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:49:33'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:49:38 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:49:38'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:49:43 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:49:43'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:49:48 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:49:48'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:49:53 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:49:53'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:49:58 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:49:58'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:50:03 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:50:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:50:08 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:50:08'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:50:13 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:50:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:50:18 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:50:18'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:50:23 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:50:23'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:50:28 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:50:28'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:50:33 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:50:33'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:50:38 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:50:38'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:50:43 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:50:43'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:50:48 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:50:48'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:50:53 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:50:53'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:50:58 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:50:58'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:51:03 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:51:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:51:08 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:51:08'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:51:13 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:51:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:51:18 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:51:18'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:51:23 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:51:23'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:51:28 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:51:28'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:51:33 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:51:33'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:51:38 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:51:38'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:51:43 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:51:43'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:51:48 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:51:48'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:51:53 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:51:53'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:51:58 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:51:58'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:52:03 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:52:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:52:08 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:52:08'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:52:13 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:52:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:52:18 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:52:18'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:52:23 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:52:23'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:52:28 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:52:28'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:52:33 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:52:33'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:52:38 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:52:38'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:52:43 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:52:43'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:52:48 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:52:48'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:52:53 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:52:53'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:52:58 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:52:58'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:03 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:08 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:08'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:13 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:18 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:18'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:20 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:20'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:23 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:23'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:25 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:25'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:28 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:28'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:30 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:30'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:33 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:33'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:35 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:35'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:38 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:38'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:40 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:40'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:43 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:43'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:45 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:45'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:48 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:48'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:50 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:50'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:53 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:53'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:55 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:55'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:53:58 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:53:58'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:54:00 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:54:00'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:54:03 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:54:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:54:05 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:54:05'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:54:08 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:54:08'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:54:10 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:54:10'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:54:14 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:54:14'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:54:15 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:54:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:54:16 +0000] "GET / HTTP/1.1" 404 63 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:54:16'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:54:16 +0000] "GET /favicon.ico HTTP/1.1" 404 74 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:54:16'
+}
+{
+  message: '::1 - - [24/Aug/2025:05:54:19 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:54:19'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:02:19 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:02:19'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:02:24 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:02:24'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:02:29 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:02:29'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:02:34 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:02:34'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:02:39 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:02:39'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:02:44 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:02:44'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:02:49 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:02:49'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:02:54 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:02:54'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:02:59 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:02:59'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:03:04 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:03:04'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:03:09 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:03:09'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:03:14 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:03:14'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:03:19 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:03:19'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:03:24 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:03:24'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:03:29 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:03:29'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:03:34 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:03:34'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:03:39 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:03:39'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:03:44 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:03:44'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:03:49 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:03:49'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:03:54 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:03:54'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:03:59 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:03:59'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:04:04 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:04:04'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:04:09 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:04:09'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:04:14 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:04:14'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:04:19 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:04:19'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:04:24 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:04:24'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:04:29 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:04:29'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:04:34 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:04:34'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:04:39 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:04:39'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:04:44 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:04:44'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:04:49 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:04:49'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:04:54 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:04:54'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:04:59 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:04:59'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:05:05 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:05:05'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:05:10 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:05:10'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:05:15 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:05:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:05:20 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:05:20'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:05:25 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:05:25'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:05:30 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:05:30'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:05:35 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:05:35'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:05:40 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:05:40'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:05:45 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:05:45'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:05:50 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:05:50'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:05:55 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:05:55'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:06:00 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:06:00'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:06:05 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:06:05'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:06:10 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:06:10'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:06:15 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:06:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:06:20 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:06:20'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:06:25 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:06:25'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:06:30 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:06:30'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:06:35 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:06:35'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:06:40 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:06:40'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:06:45 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:06:45'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:06:50 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:06:50'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:06:55 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:06:55'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:07:00 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:07:00'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:07:05 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:07:05'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:07:10 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:07:10'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:07:15 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:07:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:07:20 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:07:20'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:07:25 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:07:25'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:07:30 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:07:30'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:07:35 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:07:35'
+}
+{
+  message: 'Traceability contract not available, creating product without blockchain',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:07:38'
+}
+{
+  message: 'New product created: API Test Product (API-TEST-001) by test2@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:07:38'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:07:38 +0000] "POST /api/products HTTP/1.1" 201 1092 "-" "curl/8.14.1"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:07:38'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:07:40 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:07:40'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:07:45 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:07:45'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:07:50 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:07:50'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:07:52 +0000] "GET /api/products HTTP/1.1" 200 9400 "-" "curl/8.14.1"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:07:52'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:07:55 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:07:55'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:08:00 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:08:00'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:08:05 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:08:05'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:08:10 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:08:10'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:08:15 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:08:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:08:20 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:08:20'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:08:25 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:08:25'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:08:30 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:08:30'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:08:35 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:08:35'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:08:40 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:08:40'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:08:45 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:08:45'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:08:50 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:08:50'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:08:55 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:08:55'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:08:59 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 211 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:08:59'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:08:59 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 211 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:08:59'
+}
+{
+  message: '127.0.0.1 - - [24/Aug/2025:06:08:59 +0000] "GET /logo192.png HTTP/1.1" 404 74 "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:08:59'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:09:00 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:09:00'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:09:05 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:09:05'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:09:10 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:09:10'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:09:15 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:09:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:09:20 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:09:20'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:09:25 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:09:25'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:09:30 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:09:30'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:09:35 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:09:35'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:09:40 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:09:40'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:09:45 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:09:45'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:09:50 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:09:50'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:09:55 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:09:55'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:10:00 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:10:00'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:10:05 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:10:05'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:10:10 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:10:10'
+}
+{
+  message: 'Server running on port 5000',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:02'
+}
+{
+  message: 'API Documentation available at http://localhost:5000/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:02'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:02'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:02'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:02'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:02'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:02'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:02'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:02'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:02'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:02'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:12:05 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:05'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:12:10 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:10'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:12:15 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:12:20 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:20'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:12:25 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:25'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:12:30 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:30'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:12:35 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:35'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:12:40 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:40'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:12:45 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:45'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:12:50 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:50'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:12:55 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:12:55'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:13:00 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:13:00'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:13:05 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:13:05'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:13:10 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:13:10'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:13:15 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:13:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:13:20 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:13:20'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:13:25 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:13:25'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:13:30 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:13:30'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:13:35 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:13:35'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:13:40 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:13:40'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:13:45 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:13:45'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:13:50 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:13:50'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:13:55 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:13:55'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:14:00 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:14:00'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:14:05 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:14:05'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:14:10 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:14:10'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:14:15 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:14:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:14:20 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:14:20'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:14:25 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:14:25'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:14:31 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:14:31'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:14:36 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:14:36'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:14:41 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:14:41'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:14:46 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:14:46'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:14:51 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:14:51'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:14:56 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:14:56'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:15:01 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:15:01'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:15:06 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:15:06'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:15:11 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:15:11'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:15:16 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:15:16'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:15:21 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:15:21'
+}
+{
+  message: 'Server running on port 5000',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:15:23'
+}
+{
+  message: 'API Documentation available at http://localhost:5000/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:15:23'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:15:23'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:15:23'
+}
+{
+  message: 'Application will continue without blockchain functionality',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:15:23'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:15:23'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:15:23'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:15:23'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:15:26 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:15:26'
+}
+{
+  message: 'Server running on port 5000',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:17:59'
+}
+{
+  message: 'API Documentation available at http://localhost:5000/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:17:59'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:17:59'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:17:59'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:17:59'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:17:59'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:17:59'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:17:59'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:17:59'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:17:59'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:17:59'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:18:01 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:18:01'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:18:06 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:18:06'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:18:11 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:18:11'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:18:16 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:18:16'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:18:21 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:18:21'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:18:26 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:18:26'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:18:31 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:18:31'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:18:36 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:18:36'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:18:41 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:18:41'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:18:46 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:18:46'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:18:51 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:18:51'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:18:56 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:18:56'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:19:01 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:19:01'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:19:06 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:19:06'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:19:11 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:19:11'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:19:16 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:19:16'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:19:21 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:19:21'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:19:26 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:19:26'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:19:31 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:19:31'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:19:36 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:19:36'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:19:41 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:19:41'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:19:46 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:19:46'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:19:51 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:19:51'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:19:56 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:19:56'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:20:01 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:20:01'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:20:06 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:20:06'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:20:11 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:20:11'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:20:16 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:20:16'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:20:21 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:20:21'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:20:26 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:20:26'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:20:31 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:20:31'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:20:36 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:20:36'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:20:41 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:20:41'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:20:46 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:20:46'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:20:51 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:20:51'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:20:56 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:20:56'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:21:01 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:21:01'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:21:06 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 211 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:21:06'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:21:06 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 207 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:21:06'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:21:06 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:21:06'
+}
+{
+  message: '127.0.0.1 - - [24/Aug/2025:06:21:06 +0000] "GET /logo192.png HTTP/1.1" 404 74 "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:21:06'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:21:11 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:21:11'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:21:16 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:21:16'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:21:21 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:21:21'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:21:26 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:21:26'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:21:31 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:21:31'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:21:36 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:21:36'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:21:41 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:21:41'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:21:46 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:21:46'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:21:50 +0000] "GET /api/products HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:21:50'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:21:50 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:21:50'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:21:51 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:21:51'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:21:56 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:21:56'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:22:01 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:22:01'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:22:06 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:22:06'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:22:11 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:22:11'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:22:16 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:22:16'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:22:21 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:22:21'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:22:26 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:22:26'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:22:26 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:22:26'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:22:26 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:22:26'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:22:31 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:22:31'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:22:36 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:22:36'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:22:41 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:22:41'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:22:43 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 210 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:22:43'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:22:43 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 210 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:22:43'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:22:46 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:22:46'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:22:51 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:22:51'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:22:56 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:22:56'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:23:01 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:23:01'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:23:06 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:23:06'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:23:11 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:23:11'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:23:16 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:23:16'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:23:21 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:23:21'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:23:26 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:23:26'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:23:31 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:23:31'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:23:36 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:23:36'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:23:41 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:23:41'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:23:46 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:23:46'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:23:51 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:23:51'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:23:56 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:23:56'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:24:00 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:24:00'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:24:00 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:24:00'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:24:01 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:24:01'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:24:06 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:24:06'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:24:11 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:24:11'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:24:16 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:24:16'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:24:21 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:24:21'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:24:26 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:24:26'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:24:31 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:24:31'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:24:36 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:24:36'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:24:41 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:24:41'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:24:46 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:24:46'
+}
+{
+  message: 'Traceability contract not available, creating product without blockchain',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:24:47'
+}
+{
+  message: 'New product created: Pen (P1) by test@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:24:47'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:24:47 +0000] "POST /api/products HTTP/1.1" 201 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:24:47'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:24:47 +0000] "GET /api/products HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:24:47'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:24:51 +0000] "GET /api/products/68aab02f2eb1b16e3adfae99/trace HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:24:51'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:24:51 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:24:51'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:24:56 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:24:56'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:25:02 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:25:02'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:25:07 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:25:07'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:25:12 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:25:12'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:33:02 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:33:02'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:33:07 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:33:07'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:33:12 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:33:12'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:33:17 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:33:17'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:33:22 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:33:22'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:33:27 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:33:27'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:33:32 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:33:32'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:33:37 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:33:37'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:33:42 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:33:42'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:33:47 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:33:47'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:33:52 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:33:52'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:33:57 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:33:57'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:34:02 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:34:02'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:34:07 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:34:07'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:34:12 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:34:12'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:34:17 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:34:17'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:34:22 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:34:22'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:34:27 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:34:27'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:34:32 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:34:32'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:34:37 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:34:37'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:34:42 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:34:42'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:34:47 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:34:47'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:34:52 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:34:52'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:34:57 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:34:57'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:35:02 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:35:02'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:35:07 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:35:07'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:35:12 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:35:12'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:35:18 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:35:18'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:35:23 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:35:23'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:35:28 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:35:28'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:35:33 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:35:33'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:35:38 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:35:38'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:35:43 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:35:43'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:35:48 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:35:48'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:35:53 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:35:53'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:35:58 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:35:58'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:36:03 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:36:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:36:08 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:36:08'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:36:13 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:36:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:36:18 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:36:18'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:36:23 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:36:23'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:36:28 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:36:28'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:36:33 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:36:33'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:36:38 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:36:38'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:36:43 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:36:43'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:36:48 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:36:48'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:36:53 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:36:53'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:36:58 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:36:58'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:37:03 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:37:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:37:08 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:37:08'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:37:13 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:37:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:37:18 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:37:18'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:37:23 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:37:23'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:37:28 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:37:28'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:37:33 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:37:33'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:37:38 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:37:38'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:37:43 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:37:43'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:37:48 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:37:48'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:37:53 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:37:53'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:37:58 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:37:58'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:38:03 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:38:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:38:08 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:38:08'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:38:13 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:38:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:38:18 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:38:18'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:38:23 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:38:23'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:38:28 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:38:28'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:38:33 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:38:33'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:38:38 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:38:38'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:38:43 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:38:43'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:38:48 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:38:48'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:38:53 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:38:53'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:38:58 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:38:58'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:39:03 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:39:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:39:08 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:39:08'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:39:13 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:39:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:39:18 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:39:18'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:39:23 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:39:23'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:39:28 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:39:28'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:39:33 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:39:33'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:39:38 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:39:38'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:39:43 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:39:43'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:39:48 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:39:48'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:39:53 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:39:53'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:39:58 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:39:58'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:40:03 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:40:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:40:08 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:40:08'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:40:13 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:40:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:40:18 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:40:18'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:40:23 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:40:23'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:40:28 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:40:28'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:40:33 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:40:33'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:40:38 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:40:38'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:40:43 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:40:43'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:40:48 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:40:48'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:40:53 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:40:53'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:40:58 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:40:58'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:41:03 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:41:03'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:41:08 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:41:08'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:41:13 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:41:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:41:18 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:41:18'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:48:04 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:48:04'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:48:09 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:48:09'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:48:14 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:48:14'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:48:19 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:48:19'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:48:24 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:48:24'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:48:29 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:48:29'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:48:34 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:48:34'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:48:39 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:48:39'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:48:44 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:48:44'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:48:49 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:48:49'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:48:54 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:48:54'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:48:59 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:48:59'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:49:04 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:49:04'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:49:09 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:49:09'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:49:14 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:49:14'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:49:19 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:49:19'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:49:24 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:49:24'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:49:29 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:49:29'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:49:34 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:49:34'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:49:39 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:49:39'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:49:44 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:49:44'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:49:49 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:49:49'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:49:54 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:49:54'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:49:59 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:49:59'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:50:04 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:50:04'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:50:09 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:50:09'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:50:14 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:50:14'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:50:19 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:50:19'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:50:24 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:50:24'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:50:29 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:50:29'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:50:34 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:50:34'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:50:39 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:50:39'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:50:44 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:50:44'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:50:49 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:50:49'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:50:54 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:50:54'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:50:59 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:50:59'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:51:04 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:51:04'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:51:09 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:51:09'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:51:14 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:51:14'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:51:19 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:51:19'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:51:24 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:51:24'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:51:29 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:51:29'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:51:34 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:51:34'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:51:39 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:51:39'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:51:44 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:51:44'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:51:49 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:51:49'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:51:54 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:51:54'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:51:59 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:51:59'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:52:04 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:52:04'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:52:09 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:52:09'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:52:14 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:52:14'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:52:19 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:52:19'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:52:24 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:52:24'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:52:29 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:52:29'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:52:34 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:52:34'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:52:39 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:52:39'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:52:44 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:52:44'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:52:49 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:52:49'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:52:54 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:52:54'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:52:59 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:52:59'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:53:04 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:53:04'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:53:09 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:53:09'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:53:14 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:53:14'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:53:19 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:53:19'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:53:24 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:53:24'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:53:29 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:53:29'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:53:34 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:53:34'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:53:39 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:53:39'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:53:44 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:53:44'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:53:49 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:53:49'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:53:54 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:53:54'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:53:59 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:53:59'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:54:04 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:54:04'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:54:09 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:54:09'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:54:14 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:54:14'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:54:19 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:54:19'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:54:25 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:54:25'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:54:30 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:54:30'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:54:35 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:54:35'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:54:40 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:54:40'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:54:45 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:54:45'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:54:50 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:54:50'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:54:55 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:54:55'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:55:00 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:55:00'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:55:05 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:55:05'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:55:10 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:55:10'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:55:15 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:55:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:55:20 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:55:20'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:55:25 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:55:25'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:55:30 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:55:30'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:55:35 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:55:35'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:55:40 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:55:40'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:55:45 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:55:45'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:55:50 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:55:50'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:55:55 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:55:55'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:56:00 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:56:00'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:56:05 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:56:05'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:56:10 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:56:10'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:56:15 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:56:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:06:56:20 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:56:20'
+}

@@ -14,7 +14,8 @@
       "Bash(npm install:*)",
       "Bash(npm run build:*)",
       "Bash(npx tsc:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(ganache-cli:*)"
     ],
     "deny": [],
     "ask": [],

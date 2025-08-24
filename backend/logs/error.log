@@ -42928,3 +42928,15 @@
   service: 'supply-chain-api',
   timestamp: '2025-08-24 11:14:09'
 }
+{
+  message: 'Failed to get system stats: Sharding contract not initialized',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:41:23'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 12:15:23'
+}
