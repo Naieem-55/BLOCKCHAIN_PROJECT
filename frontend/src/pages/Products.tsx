@@ -50,6 +50,7 @@ import { format } from 'date-fns';
 import toast from 'react-hot-toast';
 import api, { apiRequest } from '../services/api';
 import productService from '../services/productService';
+import ImmutabilityTest from '../components/ImmutabilityTest';
 
 interface Product {
   _id: string;
@@ -816,6 +817,11 @@ const Products: React.FC = () => {
                     )}
                   </CardContent>
                 </Card>
+              </Grid>
+
+              {/* Immutability Test Section */}
+              <Grid item xs={12}>
+                <ImmutabilityTest product={selectedProduct.product} />
               </Grid>
 
               {/* Traceability History */}

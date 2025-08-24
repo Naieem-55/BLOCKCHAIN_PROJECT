@@ -23,6 +23,7 @@ const analyticsRoutes = require('./routes/analytics');
 const shardingRoutes = require('./routes/sharding');
 const lifecycleRoutes = require('./routes/lifecycle');
 const locationRoutes = require('./routes/location');
+const immutabilityRoutes = require('./routes/immutability');
 const blockchainService = require('./services/blockchainService');
 
 const app = express();
@@ -131,6 +132,7 @@ app.use('/api/analytics', analyticsRoutes);
 app.use('/api/sharding', shardingRoutes);
 app.use('/api/lifecycle', lifecycleRoutes);
 app.use('/api/location', locationRoutes);
+app.use('/api/immutability', immutabilityRoutes);
 
 // WebSocket handling for real-time updates
 io.on('connection', (socket) => {

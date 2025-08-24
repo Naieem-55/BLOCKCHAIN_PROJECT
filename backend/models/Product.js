@@ -198,6 +198,30 @@ const productSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
+  
+  // Immutability and Security Fields
+  merkleRoot: {
+    type: String,
+    index: true,
+    description: 'SHA-256 hash for tamper detection'
+  },
+  immutabilityEnabled: {
+    type: Boolean,
+    default: true,
+    description: 'Whether immutability checking is active'
+  },
+  lastIntegrityCheck: {
+    timestamp: { type: Date },
+    result: { type: String, enum: ['VERIFIED', 'COMPROMISED', 'ERROR'] },
+    checkedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+  },
+  tamperingAttempts: [{
+    detectedAt: { type: Date, default: Date.now },
+    changedFields: [String],
+    severity: { type: String, enum: ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'] },
+    sourceIP: String,
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+  }]
 }, {
   timestamps: true,
 });

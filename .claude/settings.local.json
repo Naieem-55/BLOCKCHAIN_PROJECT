@@ -20,7 +20,8 @@
     "deny": [],
     "ask": [],
     "additionalDirectories": [
-      "C:\\mnt\\c\\projects"
+      "C:\\mnt\\c\\projects",
+      "C:\\c\\projects\\BLOCKCHAIN_PROJECT"
     ]
   }
 }

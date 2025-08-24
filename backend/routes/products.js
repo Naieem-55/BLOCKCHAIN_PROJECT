@@ -5,6 +5,7 @@ const { auth } = require('../middleware/auth');
 const { catchAsync, AppError } = require('../middleware/errorHandler');
 const logger = require('../utils/logger');
 const blockchainService = require('../services/blockchainService');
+const MerkleRootGenerator = require('../utils/merkleRoot');
 
 const router = express.Router();
 
@@ -213,6 +214,18 @@ router.post('/', auth, [
   });
 
   await product.save();
+
+  // Generate Merkle root for immutability protection
+  try {
+    const merkleRoot = MerkleRootGenerator.generateMerkleRoot(product.toObject());
+    product.merkleRoot = merkleRoot;
+    product.immutabilityEnabled = true;
+    await product.save();
+    logger.info(`Merkle root generated for product ${product._id}: ${merkleRoot}`);
+  } catch (error) {
+    logger.error('Failed to generate Merkle root for product', error);
+    // Continue without failing the product creation
+  }
 
   // Try to create product on blockchain with adaptive sharding
   let blockchainData = null;
