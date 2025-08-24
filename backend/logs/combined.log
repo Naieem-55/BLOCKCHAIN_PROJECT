@@ -54514,3 +54514,537 @@
   service: 'supply-chain-api',
   timestamp: '2025-08-24 15:27:31'
 }
+{
+  message: 'Server running on port 5000',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:34:53'
+}
+{
+  message: 'API Documentation available at http://localhost:5000/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:34:53'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:34:53'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:34:53'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:34:53'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:34:53'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:34:53'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:34:53'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:34:53'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:34:53'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:34:53'
+}
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:39:29'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:39:29'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:39:29'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:39:29'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:39:29'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:39:29'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:39:29'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:39:29'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:39:29'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:39:29'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:39:29'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:40:07 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "curl/8.14.1"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:07'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:40:21 +0000] "GET /api/products HTTP/1.1" 200 9346 "-" "curl/8.14.1"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:21'
+}
+{
+  message: 'Traceability contract not available, creating product without blockchain',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:42'
+}
+{
+  message: 'New product created: Test Product 1 (BATCH-TEST-1756035642783-0) by test2@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:42'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:40:42 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:42'
+}
+{
+  message: 'Traceability contract not available, creating product without blockchain',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:42'
+}
+{
+  message: 'New product created: Test Product 2 (BATCH-TEST-1756035642783-1) by test2@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:42'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:40:42 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:42'
+}
+{
+  message: 'Traceability contract not available, creating product without blockchain',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:42'
+}
+{
+  message: 'New product created: Test Product 3 (BATCH-TEST-1756035642783-2) by test2@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:42'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:40:42 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:42'
+}
+{
+  message: 'Traceability contract not available, creating product without blockchain',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:42'
+}
+{
+  message: 'New product created: Test Product 4 (BATCH-TEST-1756035642783-3) by test2@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:42'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:40:42 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:42'
+}
+{
+  message: 'Traceability contract not available, creating product without blockchain',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:42'
+}
+{
+  message: 'New product created: Test Product 5 (BATCH-TEST-1756035642783-4) by test2@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:42'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:40:42 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:42'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:40:42 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:42'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:40:47 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:47'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:40:52 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:52'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:40:57 +0000] "GET /api/health HTTP/1.1" 404 73 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:40:57'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:50:08 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 211 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:50:08'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:50:08 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 211 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:50:08'
+}
+{
+  message: '127.0.0.1 - - [24/Aug/2025:11:50:08 +0000] "GET /logo192.png HTTP/1.1" 404 74 "http://localhost:3001/dashboard" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:50:08'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:50:10 +0000] "GET /api HTTP/1.1" 404 66 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:50:10'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:50:11 +0000] "GET /favicon.ico HTTP/1.1" 404 74 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:50:11'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:50:15 +0000] "GET /api-docs HTTP/1.1" 301 158 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:50:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:50:15 +0000] "GET /api-docs/ HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:50:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:50:15 +0000] "GET /api-docs/swagger-ui-init.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:50:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:50:15 +0000] "GET /api-docs/swagger-ui.css HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:50:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:50:15 +0000] "GET /api-docs/swagger-ui-standalone-preset.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:50:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:50:15 +0000] "GET /api-docs/swagger-ui-bundle.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:50:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:50:15 +0000] "GET /api-docs/favicon-32x32.png HTTP/1.1" 200 628 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:50:15'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:50:16 +0000] "GET /api-docs/favicon-32x32.png HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:50:16'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:50:22 +0000] "GET /api/products HTTP/1.1" 401 63 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:50:22'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:50:27 +0000] "GET /api/products HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:50:27'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:50:27 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:50:27'
+}
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:54:42'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:54:42'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:54:42'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:54:42'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:54:42'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:54:42'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:54:42'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:54:42'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:54:42'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:54:42'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:54:42'
+}
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:55:08'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:55:08'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:55:08'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:55:08'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:55:08'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:55:08'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:55:08'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:55:09'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:55:09'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:55:09'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:55:09'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:55:13 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 211 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:55:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:55:13 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 211 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:55:13'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:55:35 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:55:35'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:55:35 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:55:35'
+}
+{
+  message: 'Traceability contract not available, creating product without blockchain',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:56:05'
+}
+{
+  message: 'New product created: Peccil (P2) by test@example.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:56:05'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:56:05 +0000] "POST /api/products HTTP/1.1" 201 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:56:05'
+}
+{
+  message: '::1 - - [24/Aug/2025:11:56:05 +0000] "GET /api/products HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 17:56:05'
+}

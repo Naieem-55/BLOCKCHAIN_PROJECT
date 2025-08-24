@@ -13,7 +13,7 @@ const colors = require('colors');
 
 // Configuration
 const CONFIG = {
-  API_URL: 'http://localhost:5000/api',
+  API_URL: 'http://localhost:5003/api',
   BLOCKCHAIN_URL: 'http://localhost:8545',
   MONGODB_URL: 'mongodb://localhost:27017/supply_chain_traceability',
   REDIS_URL: 'redis://localhost:6379',
@@ -150,7 +150,7 @@ class SystemMonitor {
     // API Status
     console.log(colors.yellow.bold('📡 API Server'));
     console.log(`   Status: ${this.getStatusColor(this.stats.api.status)}`);
-    console.log(`   URL: http://localhost:5000`);
+    console.log(`   URL: http://localhost:5003`);
     console.log(`   Last Check: ${this.stats.api.lastCheck || 'Never'}\n`);
     
     // Blockchain Status

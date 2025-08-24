@@ -10986,12 +10986,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x3224dC44ED0931FA2Ad456a98d9D4dFE8B1562E1",
-      "transactionHash": "0x0a42f20882f3948885bb2181e643f61af0286b8338e3c9839d5159a08929f6ea"
+      "address": "0xbE729C91F3919e525C17FceAD1518424B0c4d708",
+      "transactionHash": "0xd3c12d500f2fe0421f70340df37b9673bdb8ebffbeeb65c45065ace8ccafa083"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-08-24T09:22:29.918Z",
+  "updatedAt": "2025-08-24T11:55:03.006Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "Role-based access control for supply chain participants",

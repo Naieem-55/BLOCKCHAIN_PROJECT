@@ -2,9 +2,9 @@ import axios, { AxiosInstance, AxiosError, AxiosResponse } from 'axios';
 import { ApiResponse, ApiError } from '../types/api';
 
 // Create axios instance
-// Force use port 5000 regardless of any cached values
-const apiBaseURL = 'http://localhost:5000/api';
-console.log('🔧 API Base URL (forced to port 5000):', apiBaseURL);
+// Use port 5003 as configured in deployment script
+const apiBaseURL = 'http://localhost:5003/api';
+console.log('🔧 API Base URL (using port 5003):', apiBaseURL);
 
 const api: AxiosInstance = axios.create({
   baseURL: apiBaseURL,
