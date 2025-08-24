@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Set Test Token</title>
+</head>
+<body>
+    <h1>Set Test Token for Development</h1>
+    <button onclick="setToken()">Set Token and Redirect to Products</button>
+    <script>
+        function setToken() {
+            // This is the token we generated earlier for test2@example.com
+            const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGFhOGY0YmNmNGMzMTU3MGJhMzhkMjgiLCJpYXQiOjE3NTYwMDgyNjcsImV4cCI6MTc1NjYxMzA2N30.KZZVYvuH8hSvaZJ0IZS5pWdO67ahetNBJOxlwp3MsTc';
+            localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify({
+                id: '68aa8f4bcf4c31570ba38d28',
+                email: 'test2@example.com',
+                name: 'Test User',
+                role: 'manufacturer',
+                company: 'Test Company'
+            }));
+            alert('Token set! Redirecting to products page...');
+            window.location.href = '/products';
+        }
+    </script>
+</body>
+</html>

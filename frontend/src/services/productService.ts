@@ -124,6 +124,30 @@ class ProductService {
     return apiRequest.get<ProductStats>('/products/stats');
   }
 
+  // Enhanced blockchain integration methods
+  async getProductTrace(productId: string): Promise<any> {
+    return apiRequest.get(`/products/${productId}/trace`);
+  }
+
+  async getBlockchainEfficiency(): Promise<{
+    enabled: boolean;
+    systemStats: {
+      totalShards: number;
+      activeShards: number;
+      totalTransactions: number;
+      avgSystemLoad: number;
+      systemEfficiency: number;
+    } | null;
+    systemEfficiency: number;
+    recommendedShard: {
+      shardId: string | null;
+      reason: string;
+    };
+    timestamp: string;
+  }> {
+    return apiRequest.get('/products/blockchain/efficiency');
+  }
+
   async getProductsByCategory(): Promise<Record<string, number>> {
     return apiRequest.get('/products/stats/by-category');
   }

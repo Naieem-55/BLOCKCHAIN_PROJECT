@@ -14,13 +14,33 @@ const productSchema = new mongoose.Schema({
   category: {
     type: String,
     required: true,
-    enum: ['food', 'pharmaceutical', 'electronics', 'textiles', 'automotive', 'chemicals', 'other'],
   },
   batchNumber: {
     type: String,
     required: true,
     unique: true,
     trim: true,
+  },
+  quantity: {
+    type: Number,
+    default: 0,
+  },
+  unit: {
+    type: String,
+    default: 'pcs',
+  },
+  price: {
+    type: Number,
+    default: 0,
+  },
+  status: {
+    type: String,
+    enum: ['active', 'inactive', 'recalled'],
+    default: 'active',
+  },
+  stage: {
+    type: Number,
+    default: 0,
   },
   expiryDate: {
     type: Date,
@@ -102,6 +122,19 @@ const productSchema = new mongoose.Schema({
     uploadedAt: { type: Date, default: Date.now },
     verified: { type: Boolean, default: false },
   }],
+  blockchainId: {
+    type: String,
+  },
+  transactionHash: {
+    type: String,
+  },
+  shardId: {
+    type: String,
+  },
+  blockchainEnabled: {
+    type: Boolean,
+    default: false,
+  },
   blockchain: {
     productId: Number,
     contractAddress: String,
@@ -156,6 +189,10 @@ const productSchema = new mongoose.Schema({
     }],
     documents: [String], // URLs to supporting documents
   }],
+  manufacturer: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

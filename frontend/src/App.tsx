@@ -19,6 +19,7 @@ import Analytics from './pages/Analytics';
 import QRScanner from './pages/QRScanner';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import TestLogin from './pages/TestLogin';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import ShardingDashboard from './pages/ShardingDashboard';
@@ -128,6 +129,7 @@ const App: React.FC = () => {
                     {/* Public Routes */}
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/test-login" element={<TestLogin />} />
                     
                     {/* Protected Routes */}
                     <Route

@@ -15,6 +15,7 @@ const { connectRedis } = require('./config/redis');
 const logger = require('./utils/logger');
 const { globalErrorHandler } = require('./middleware/errorHandler');
 const authRoutes = require('./routes/auth');
+const testAuthRoutes = require('./routes/testAuth');
 const productRoutes = require('./routes/products');
 const participantRoutes = require('./routes/participants');
 const iotRoutes = require('./routes/iot');
@@ -122,6 +123,7 @@ app.get('/health', (req, res) => {
 
 // API routes
 app.use('/api/auth', authRoutes);
+app.use('/api/test-auth', testAuthRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/participants', participantRoutes);
 app.use('/api/iot', iotRoutes);

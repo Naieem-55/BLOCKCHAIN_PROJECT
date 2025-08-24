@@ -4,6 +4,7 @@ const Product = require('../models/Product');
 const { auth } = require('../middleware/auth');
 const { catchAsync, AppError } = require('../middleware/errorHandler');
 const logger = require('../utils/logger');
+const blockchainService = require('../services/blockchainService');
 
 const router = express.Router();
 
@@ -67,7 +68,8 @@ router.get('/', auth, [
 
   const [products, total] = await Promise.all([
     Product.find(query)
-      .populate('currentOwner', 'name company')
+      .populate('currentOwner', 'name company email')
+      .populate('manufacturer', 'name company email')
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit),
@@ -159,18 +161,19 @@ router.get('/:id', auth, catchAsync(async (req, res) => {
  *         description: Product created successfully
  */
 router.post('/', auth, [
-  body('name').trim().isLength({ min: 2 }),
-  body('description').trim().isLength({ min: 5 }),
-  body('category').trim().isLength({ min: 2 }),
-  body('batchNumber').trim().isLength({ min: 1 }),
-  body('expiryDate').optional().isISO8601(),
+  body('name').trim().isLength({ min: 2 }).withMessage('Product name must be at least 2 characters'),
+  body('description').trim().isLength({ min: 3 }).withMessage('Description must be at least 3 characters'),
+  body('category').trim().isLength({ min: 2 }).withMessage('Category must be at least 2 characters'),
+  body('batchNumber').trim().isLength({ min: 1 }).withMessage('Batch number is required'),
+  body('expiryDate').optional().isISO8601().withMessage('Invalid expiry date format'),
   body('initialLocation').optional().trim(),
 ], catchAsync(async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
+    const errorMessages = errors.array().map(err => err.msg).join(', ');
     return res.status(400).json({
       success: false,
-      message: 'Validation failed',
+      message: errorMessages,
       errors: errors.array(),
     });
   }
@@ -182,6 +185,7 @@ router.post('/', auth, [
     batchNumber,
     expiryDate,
     initialLocation,
+    metadata,
   } = req.body;
 
   // Check if batch number already exists
@@ -199,22 +203,72 @@ router.post('/', auth, [
     currentLocation: initialLocation || 'Unknown',
     currentOwner: req.user.id,
     createdBy: req.user.id,
+    manufacturer: req.user.id, // Set manufacturer to the creating user
     currentStage: 0, // Created
+    quantity: metadata?.quantity || 0,
+    unit: metadata?.unit || 'pcs',
+    price: metadata?.price || 0,
+    status: 'active', // Set default status
+    stage: 0, // Set default stage
   });
 
   await product.save();
 
+  // Try to create product on blockchain with adaptive sharding
+  let blockchainData = null;
+  try {
+    if (blockchainService.isInitialized) {
+      const accounts = blockchainService.accounts;
+      if (accounts && accounts.length > 0) {
+        blockchainData = await blockchainService.createProduct({
+          name,
+          description,
+          category,
+          batchNumber,
+          expiryDate: expiryDate ? Math.floor(new Date(expiryDate).getTime() / 1000) : 0,
+          initialLocation: initialLocation || 'Unknown'
+        }, accounts[0]);
+
+        // Update product with blockchain data
+        if (blockchainData.productId) {
+          product.blockchainId = blockchainData.productId;
+          product.transactionHash = blockchainData.transactionHash;
+          product.shardId = blockchainData.shardId;
+          product.blockchainEnabled = blockchainData.blockchainEnabled;
+          await product.save();
+        }
+      }
+    }
+  } catch (blockchainError) {
+    logger.warn(`Blockchain integration failed: ${blockchainError.message}`);
+    // Continue without blockchain - product still created in database
+  }
+
   // Populate the response
   await product.populate('currentOwner', 'name company email');
   await product.populate('createdBy', 'name company');
+  await product.populate('manufacturer', 'name company email');
 
   logger.info(`New product created: ${name} (${batchNumber}) by ${req.user.email}`);
 
-  res.status(201).json({
+  const responseData = {
     success: true,
     data: product,
     message: 'Product created successfully',
-  });
+  };
+
+  // Add blockchain info if available
+  if (blockchainData) {
+    responseData.blockchain = {
+      enabled: blockchainData.blockchainEnabled,
+      productId: blockchainData.productId,
+      transactionHash: blockchainData.transactionHash,
+      shardId: blockchainData.shardId,
+      error: blockchainData.error
+    };
+  }
+
+  res.status(201).json(responseData);
 }));
 
 /**
@@ -421,6 +475,7 @@ router.get('/stats', auth, catchAsync(async (req, res) => {
     productsByStage,
     productsByCategory,
     recentProducts,
+    blockchainEnabledProducts,
   ] = await Promise.all([
     Product.countDocuments(),
     Product.countDocuments({ isActive: true }),
@@ -433,11 +488,25 @@ router.get('/stats', auth, catchAsync(async (req, res) => {
     Product.countDocuments({
       createdAt: { $gte: new Date(Date.now() - 24 * 60 * 60 * 1000) },
     }),
+    Product.countDocuments({ blockchainEnabled: true }),
   ]);
+
+  // Get blockchain system stats
+  let blockchainStats = null;
+  let systemEfficiency = 0;
+  try {
+    if (blockchainService.isInitialized) {
+      blockchainStats = await blockchainService.getSystemStats();
+      systemEfficiency = await blockchainService.getSystemEfficiencyScore();
+    }
+  } catch (error) {
+    logger.warn(`Could not get blockchain stats: ${error.message}`);
+  }
 
   const stats = {
     totalProducts,
     activeProducts,
+    blockchainEnabledProducts,
     productsByStage: productsByStage.reduce((acc, item) => {
       acc[item._id] = item.count;
       return acc;
@@ -447,11 +516,120 @@ router.get('/stats', auth, catchAsync(async (req, res) => {
       return acc;
     }, {}),
     productsCreatedToday: recentProducts,
+    blockchain: {
+      enabled: blockchainService.isInitialized,
+      systemStats: blockchainStats,
+      systemEfficiency,
+      integrationPercentage: totalProducts > 0 ? Math.round((blockchainEnabledProducts / totalProducts) * 100) : 0
+    }
   };
 
   res.json({
     success: true,
     data: stats,
+  });
+}));
+
+/**
+ * @swagger
+ * /products/{id}/trace:
+ *   get:
+ *     summary: Get complete product traceability data
+ *     tags: [Products]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Product traceability data retrieved successfully
+ */
+router.get('/:id/trace', auth, catchAsync(async (req, res) => {
+  const product = await Product.findById(req.params.id)
+    .populate('currentOwner', 'name company email')
+    .populate('createdBy', 'name company');
+
+  if (!product) {
+    throw new AppError('Product not found', 404);
+  }
+
+  let blockchainHistory = null;
+  let blockchainVerification = null;
+  
+  // Get blockchain data if available
+  try {
+    if (blockchainService.isInitialized && product.blockchainId) {
+      [blockchainHistory, blockchainVerification] = await Promise.all([
+        blockchainService.getProductHistory(product.blockchainId),
+        blockchainService.isProductAuthentic(product.blockchainId)
+      ]);
+    }
+  } catch (error) {
+    logger.warn(`Could not get blockchain trace data: ${error.message}`);
+  }
+
+  const traceData = {
+    product,
+    databaseHistory: product.history || [],
+    blockchain: {
+      enabled: !!product.blockchainId,
+      productId: product.blockchainId,
+      transactionHash: product.transactionHash,
+      shardId: product.shardId,
+      history: blockchainHistory,
+      isAuthentic: blockchainVerification
+    }
+  };
+
+  res.json({
+    success: true,
+    data: traceData,
+  });
+}));
+
+/**
+ * @swagger
+ * /products/blockchain/efficiency:
+ *   get:
+ *     summary: Get blockchain system efficiency metrics
+ *     tags: [Products]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Blockchain efficiency metrics retrieved successfully
+ */
+router.get('/blockchain/efficiency', auth, catchAsync(async (req, res) => {
+  if (!blockchainService.isInitialized) {
+    return res.json({
+      success: true,
+      data: {
+        enabled: false,
+        message: 'Blockchain service not initialized'
+      }
+    });
+  }
+
+  const [systemStats, systemEfficiency] = await Promise.all([
+    blockchainService.getSystemStats(),
+    blockchainService.getSystemEfficiencyScore()
+  ]);
+
+  const recommendedShard = await blockchainService.getRecommendedShard('product', 300000, 5);
+
+  res.json({
+    success: true,
+    data: {
+      enabled: true,
+      systemStats,
+      systemEfficiency,
+      recommendedShard,
+      timestamp: new Date().toISOString()
+    }
   });
 }));
 

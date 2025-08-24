@@ -17,6 +17,9 @@
       "Bash(node:*)"
     ],
     "deny": [],
-    "ask": []
+    "ask": [],
+    "additionalDirectories": [
+      "C:\\mnt\\c\\projects"
+    ]
   }
 }

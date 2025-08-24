@@ -2,8 +2,9 @@ import axios, { AxiosInstance, AxiosError, AxiosResponse } from 'axios';
 import { ApiResponse, ApiError } from '../types/api';
 
 // Create axios instance
-const apiBaseURL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
-console.log('🔧 API Base URL:', apiBaseURL);
+// Force use port 5000 regardless of any cached values
+const apiBaseURL = 'http://localhost:5000/api';
+console.log('🔧 API Base URL (forced to port 5000):', apiBaseURL);
 
 const api: AxiosInstance = axios.create({
   baseURL: apiBaseURL,
@@ -119,13 +120,21 @@ api.interceptors.response.use(
 // API helper functions
 export const apiRequest = {
   get: async <T>(url: string, params?: any): Promise<T> => {
-    const response = await api.get<ApiResponse<T>>(url, { params });
-    return response.data.data!;
+    const response = await api.get(url, { params });
+    // Handle both wrapped and unwrapped responses
+    if (response.data && typeof response.data === 'object' && 'data' in response.data) {
+      return response.data.data as T;
+    }
+    return response.data as T;
   },
 
   post: async <T>(url: string, data?: any): Promise<T> => {
-    const response = await api.post<ApiResponse<T>>(url, data);
-    return response.data.data!;
+    const response = await api.post(url, data);
+    // Handle both wrapped and unwrapped responses
+    if (response.data && typeof response.data === 'object' && 'data' in response.data) {
+      return response.data.data as T;
+    }
+    return response.data as T;
   },
 
   put: async <T>(url: string, data?: any): Promise<T> => {

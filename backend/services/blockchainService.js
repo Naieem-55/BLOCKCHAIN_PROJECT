@@ -43,60 +43,59 @@ class BlockchainService {
     try {
       const contractsPath = path.join(__dirname, '../../build/contracts');
       
-      // Load SupplyChain contract
-      const supplyChainPath = path.join(contractsPath, 'SupplyChain.json');
-      if (fs.existsSync(supplyChainPath)) {
-        const supplyChainArtifact = JSON.parse(fs.readFileSync(supplyChainPath, 'utf8'));
-        const networkId = await this.web3.eth.net.getId();
-        
-        if (supplyChainArtifact.networks[networkId]) {
-          this.contracts.supplyChain = new this.web3.eth.Contract(
-            supplyChainArtifact.abi,
-            supplyChainArtifact.networks[networkId].address
-          );
-          this.contract = this.contracts.supplyChain; // Alias for compatibility
-          logger.info(`SupplyChain contract loaded at: ${supplyChainArtifact.networks[networkId].address}`);
-        }
-      }
+      // Try client artifacts first, then build directory
+      const clientArtifactsPath = path.join(__dirname, '../../client/src/artifacts');
       
-      // Load IoTIntegration contract
-      const iotPath = path.join(contractsPath, 'IoTIntegration.json');
-      if (fs.existsSync(iotPath)) {
-        const iotArtifact = JSON.parse(fs.readFileSync(iotPath, 'utf8'));
-        const networkId = await this.web3.eth.net.getId();
-        
-        if (iotArtifact.networks[networkId]) {
-          this.contracts.iot = new this.web3.eth.Contract(
-            iotArtifact.abi,
-            iotArtifact.networks[networkId].address
-          );
-          this.iotContract = this.contracts.iot; // Alias for compatibility
-          logger.info(`IoTIntegration contract loaded at: ${iotArtifact.networks[networkId].address}`);
-        }
-      }
-      
-      // Try to load other contracts if they exist
-      const contractFiles = ['AccessControl.json', 'SupplyChainTraceability.json', 'AdaptiveSharding.json'];
-      
-      for (const file of contractFiles) {
-        const filePath = path.join(contractsPath, file);
-        if (fs.existsSync(filePath)) {
-          try {
-            const artifact = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-            const networkId = await this.web3.eth.net.getId();
-            
-            if (artifact.networks[networkId]) {
-              const contractName = file.replace('.json', '');
-              this.contracts[contractName.toLowerCase()] = new this.web3.eth.Contract(
-                artifact.abi,
-                artifact.networks[networkId].address
-              );
-              logger.info(`${contractName} contract loaded`);
+      const loadContractFromPath = async (contractName, searchPaths) => {
+        for (const basePath of searchPaths) {
+          const filePath = path.join(basePath, `${contractName}.json`);
+          if (fs.existsSync(filePath)) {
+            try {
+              const artifact = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+              const networkId = await this.web3.eth.net.getId();
+              
+              if (artifact.networks && artifact.networks[networkId]) {
+                this.contracts[contractName.toLowerCase()] = new this.web3.eth.Contract(
+                  artifact.abi,
+                  artifact.networks[networkId].address
+                );
+                logger.info(`${contractName} contract loaded from ${basePath}`);
+                return true;
+              }
+            } catch (err) {
+              logger.warn(`Could not load ${contractName} from ${filePath}: ${err.message}`);
             }
-          } catch (err) {
-            logger.warn(`Could not load ${file}: ${err.message}`);
           }
         }
+        return false;
+      };
+
+      const searchPaths = [clientArtifactsPath, contractsPath];
+
+      // Load core contracts
+      await loadContractFromPath('SupplyChain', searchPaths);
+      await loadContractFromPath('SupplyChainTraceability', searchPaths);
+      await loadContractFromPath('AdaptiveSharding', searchPaths);
+      await loadContractFromPath('IoTIntegration', searchPaths);
+      await loadContractFromPath('AccessControl', searchPaths);
+      await loadContractFromPath('HighEfficiencyProcessor', searchPaths);
+
+      // Set aliases for backward compatibility
+      if (this.contracts.supplychain) {
+        this.contract = this.contracts.supplychain;
+      }
+      if (this.contracts.supplychaintraceability) {
+        this.contracts.traceability = this.contracts.supplychaintraceability;
+      }
+      if (this.contracts.adaptivesharding) {
+        this.contracts.sharding = this.contracts.adaptivesharding;
+      }
+      if (this.contracts.iotintegration) {
+        this.contracts.iot = this.contracts.iotintegration;
+        this.iotContract = this.contracts.iot;
+      }
+      if (this.contracts.highefficiencyprocessor) {
+        this.contracts.processor = this.contracts.highefficiencyprocessor;
       }
       
       logger.info('Smart contracts loaded successfully');
@@ -107,23 +106,62 @@ class BlockchainService {
     }
   }
 
-  // Product Management Functions
+  // Product Management Functions with Adaptive Sharding
   async createProduct(productData, fromAccount) {
     try {
+      if (!this.contracts.traceability) {
+        logger.warn('Traceability contract not available, creating product without blockchain');
+        return { productId: null, transactionHash: null, blockchainEnabled: false };
+      }
+
       const { name, description, category, batchNumber, expiryDate, initialLocation } = productData;
       
+      // Get optimal shard for this product
+      let optimalShard = null;
+      try {
+        if (this.contracts.sharding) {
+          optimalShard = await this.contracts.sharding.methods
+            .getOptimalShard('product')
+            .call();
+          logger.info(`Optimal shard selected: ${optimalShard}`);
+        }
+      } catch (shardError) {
+        logger.warn(`Sharding not available: ${shardError.message}`);
+      }
+
+      // Create product on blockchain
       const result = await this.contracts.traceability.methods
-        .createProduct(name, description, category, batchNumber, expiryDate, initialLocation)
+        .createProduct(name, description, category, batchNumber, expiryDate || 0, initialLocation)
         .send({ from: fromAccount, gas: 500000 });
       
       const productId = result.events.ProductCreated.returnValues.productId;
+
+      // Update shard metrics if sharding is available
+      if (this.contracts.sharding && optimalShard) {
+        try {
+          await this.updateShardLoad(optimalShard, 500000, Date.now(), true, fromAccount);
+        } catch (shardError) {
+          logger.warn(`Could not update shard metrics: ${shardError.message}`);
+        }
+      }
       
       logger.info(`Product created on blockchain with ID: ${productId}`);
-      return { productId, transactionHash: result.transactionHash };
+      return { 
+        productId, 
+        transactionHash: result.transactionHash, 
+        shardId: optimalShard,
+        blockchainEnabled: true
+      };
       
     } catch (error) {
       logger.error(`Create product failed: ${error.message}`);
-      throw error;
+      // Return partial success for non-blockchain errors
+      return { 
+        productId: null, 
+        transactionHash: null, 
+        error: error.message,
+        blockchainEnabled: false
+      };
     }
   }
 
@@ -330,13 +368,75 @@ class BlockchainService {
     }
   }
 
+  // High-Efficiency Blockchain Operations
+  async getRecommendedShard(shardType, estimatedGas = 300000, priority = 1) {
+    try {
+      if (!this.contracts.sharding) {
+        return { shardId: null, reason: 'Sharding not available' };
+      }
+
+      const result = await this.contracts.sharding.methods
+        .getRecommendedShard(shardType, estimatedGas, priority)
+        .call();
+      
+      return { shardId: result[0], reason: result[1] };
+    } catch (error) {
+      logger.error(`Get recommended shard failed: ${error.message}`);
+      return { shardId: null, reason: 'Error getting shard' };
+    }
+  }
+
+  async getSystemEfficiencyScore() {
+    try {
+      if (!this.contracts.sharding) {
+        return 0;
+      }
+
+      const score = await this.contracts.sharding.methods
+        .getSystemEfficiencyScore()
+        .call();
+      
+      return parseInt(score);
+    } catch (error) {
+      logger.error(`Get system efficiency failed: ${error.message}`);
+      return 0;
+    }
+  }
+
+  async getSystemStats() {
+    try {
+      if (!this.contracts.sharding) {
+        return null;
+      }
+
+      const stats = await this.contracts.sharding.methods
+        .getSystemStats()
+        .call();
+      
+      return {
+        totalShards: parseInt(stats.totalShards),
+        activeShards: parseInt(stats.activeShards),
+        totalTransactions: parseInt(stats.totalTransactions),
+        avgSystemLoad: parseInt(stats.avgSystemLoad),
+        systemEfficiency: parseInt(stats.systemEfficiency)
+      };
+    } catch (error) {
+      logger.error(`Get system stats failed: ${error.message}`);
+      return null;
+    }
+  }
+
   // Adaptive Sharding Functions
   async createShard(shardData, fromAccount) {
     try {
-      const { shardManager, minCapacity, maxCapacity, region } = shardData;
+      if (!this.contracts.sharding) {
+        throw new Error('Sharding contract not available');
+      }
+
+      const { shardType, shardContract, capacity } = shardData;
       
       const result = await this.contracts.sharding.methods
-        .createShard(shardManager, minCapacity, maxCapacity, region)
+        .createShard(shardType, shardContract, capacity)
         .send({ from: fromAccount, gas: 500000 });
       
       const shardId = result.events.ShardCreated.returnValues.shardId;

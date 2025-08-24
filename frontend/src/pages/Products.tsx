@@ -40,11 +40,16 @@ import {
   LocalShipping,
   Inventory,
   Category,
+  Timeline,
+  Security,
+  Speed,
+  CloudSync,
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import toast from 'react-hot-toast';
 import api, { apiRequest } from '../services/api';
+import productService from '../services/productService';
 
 interface Product {
   _id: string;
@@ -54,6 +59,11 @@ interface Product {
   quantity: number;
   unit: string;
   price: number;
+  batchNumber: string;
+  blockchainId?: string;
+  transactionHash?: string;
+  shardId?: string;
+  blockchainEnabled?: boolean;
   manufacturer: {
     _id: string;
     name: string;
@@ -71,6 +81,19 @@ interface Product {
   qrCode?: string;
 }
 
+interface ProductTraceData {
+  product: Product;
+  databaseHistory: any[];
+  blockchain: {
+    enabled: boolean;
+    productId: string | null;
+    transactionHash: string | null;
+    shardId: string | null;
+    history: any;
+    isAuthentic: boolean | null;
+  };
+}
+
 const Products: React.FC = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState<Product[]>([]);
@@ -81,6 +104,9 @@ const Products: React.FC = () => {
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [statusFilter, setStatusFilter] = useState('all');
   const [openDialog, setOpenDialog] = useState(false);
+  const [openDetailDialog, setOpenDetailDialog] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
+  const [fetchingDetails, setFetchingDetails] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -207,6 +233,25 @@ const Products: React.FC = () => {
       } else {
         toast.error(error.message || 'Failed to create product');
       }
+    }
+  };
+
+  const handleProductClick = async (productId: string) => {
+    try {
+      setFetchingDetails(true);
+      setOpenDetailDialog(true);
+      
+      // Fetch detailed product information with blockchain traceability
+      const traceData = await productService.getProductTrace(productId);
+      setSelectedProduct(traceData);
+      
+      toast.success('Product details loaded with blockchain traceability');
+    } catch (error: any) {
+      console.error('Error fetching product details:', error);
+      toast.error('Failed to load product details');
+      setOpenDetailDialog(false);
+    } finally {
+      setFetchingDetails(false);
     }
   };
 
@@ -506,8 +551,9 @@ const Products: React.FC = () => {
                     <TableCell align="center">
                       <IconButton
                         size="small"
-                        onClick={() => navigate(`/products/${product._id}`)}
+                        onClick={() => handleProductClick(product._id)}
                         color="primary"
+                        title="View Product Details with Blockchain Traceability"
                       >
                         <Visibility />
                       </IconButton>
@@ -515,6 +561,7 @@ const Products: React.FC = () => {
                         size="small"
                         onClick={() => navigate(`/products/${product._id}`)}
                         color="info"
+                        title="Edit Product"
                       >
                         <Edit />
                       </IconButton>
@@ -522,6 +569,7 @@ const Products: React.FC = () => {
                         size="small"
                         onClick={() => handleDeleteProduct(product._id)}
                         color="error"
+                        title="Delete Product"
                       >
                         <Delete />
                       </IconButton>
@@ -664,6 +712,166 @@ const Products: React.FC = () => {
           <Button onClick={handleCreateProduct} variant="contained">
             Create Product
           </Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* Enhanced Product Detail Dialog with Blockchain Traceability */}
+      <Dialog 
+        open={openDetailDialog} 
+        onClose={() => setOpenDetailDialog(false)} 
+        maxWidth="lg" 
+        fullWidth
+      >
+        <DialogTitle>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Timeline color="primary" />
+            Product Traceability Details
+            {selectedProduct?.blockchain.enabled && (
+              <Chip
+                icon={<CloudSync />}
+                label="Blockchain Enabled"
+                color="success"
+                size="small"
+              />
+            )}
+          </Box>
+        </DialogTitle>
+        <DialogContent>
+          {fetchingDetails ? (
+            <Box sx={{ py: 4 }}>
+              <Skeleton variant="rectangular" width="100%" height={60} />
+              <Skeleton variant="text" sx={{ mt: 2 }} />
+              <Skeleton variant="text" />
+              <Skeleton variant="rectangular" width="100%" height={200} sx={{ mt: 2 }} />
+            </Box>
+          ) : selectedProduct ? (
+            <Grid container spacing={3} sx={{ mt: 1 }}>
+              {/* Basic Product Information */}
+              <Grid item xs={12} md={6}>
+                <Card>
+                  <CardContent>
+                    <Typography variant="h6" gutterBottom>
+                      Product Information
+                    </Typography>
+                    <Typography><strong>Name:</strong> {selectedProduct.product.name}</Typography>
+                    <Typography><strong>Description:</strong> {selectedProduct.product.description}</Typography>
+                    <Typography><strong>Category:</strong> {selectedProduct.product.category}</Typography>
+                    <Typography><strong>Batch Number:</strong> {selectedProduct.product.batchNumber}</Typography>
+                    <Typography><strong>Current Stage:</strong> {getStageLabel(selectedProduct.product.stage)}</Typography>
+                    <Typography><strong>Status:</strong> 
+                      <Chip 
+                        label={selectedProduct.product.status} 
+                        color={getStatusColor(selectedProduct.product.status) as any}
+                        size="small"
+                        sx={{ ml: 1 }}
+                      />
+                    </Typography>
+                    <Typography><strong>Created:</strong> {format(new Date(selectedProduct.product.createdAt), 'MMM dd, yyyy HH:mm')}</Typography>
+                    <Typography><strong>Owner:</strong> {selectedProduct.product.currentOwner?.name || 'N/A'}</Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+
+              {/* Blockchain Information */}
+              <Grid item xs={12} md={6}>
+                <Card>
+                  <CardContent>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
+                      <Security color="primary" />
+                      <Typography variant="h6">
+                        Blockchain Integration
+                      </Typography>
+                    </Box>
+                    
+                    {selectedProduct.blockchain.enabled ? (
+                      <>
+                        <Typography><strong>Blockchain ID:</strong> {selectedProduct.blockchain.productId}</Typography>
+                        <Typography><strong>Transaction Hash:</strong> 
+                          <Box component="span" sx={{ fontFamily: 'monospace', fontSize: '0.8em', wordBreak: 'break-all' }}>
+                            {selectedProduct.blockchain.transactionHash}
+                          </Box>
+                        </Typography>
+                        <Typography><strong>Shard ID:</strong> {selectedProduct.blockchain.shardId || 'N/A'}</Typography>
+                        <Typography><strong>Authentic:</strong> 
+                          <Chip 
+                            label={selectedProduct.blockchain.isAuthentic ? 'Verified' : 'Unverified'} 
+                            color={selectedProduct.blockchain.isAuthentic ? 'success' : 'warning'}
+                            size="small"
+                            sx={{ ml: 1 }}
+                          />
+                        </Typography>
+                        <Box sx={{ mt: 2 }}>
+                          <Chip
+                            icon={<Speed />}
+                            label="High Efficiency Sharding Active"
+                            color="info"
+                            size="small"
+                          />
+                        </Box>
+                      </>
+                    ) : (
+                      <Alert severity="info">
+                        This product is not registered on the blockchain. Database tracking only.
+                      </Alert>
+                    )}
+                  </CardContent>
+                </Card>
+              </Grid>
+
+              {/* Traceability History */}
+              <Grid item xs={12}>
+                <Card>
+                  <CardContent>
+                    <Typography variant="h6" gutterBottom>
+                      Traceability History
+                    </Typography>
+                    
+                    {selectedProduct.databaseHistory && selectedProduct.databaseHistory.length > 0 ? (
+                      <TableContainer>
+                        <Table>
+                          <TableHead>
+                            <TableRow>
+                              <TableCell>Action</TableCell>
+                              <TableCell>From</TableCell>
+                              <TableCell>To</TableCell>
+                              <TableCell>Location</TableCell>
+                              <TableCell>Timestamp</TableCell>
+                              <TableCell>Notes</TableCell>
+                            </TableRow>
+                          </TableHead>
+                          <TableBody>
+                            {selectedProduct.databaseHistory.map((record: any, index: number) => (
+                              <TableRow key={index}>
+                                <TableCell>{record.action}</TableCell>
+                                <TableCell>{record.fromOwner || 'N/A'}</TableCell>
+                                <TableCell>{record.toOwner || 'N/A'}</TableCell>
+                                <TableCell>{record.toLocation || record.fromLocation || 'N/A'}</TableCell>
+                                <TableCell>{format(new Date(record.timestamp), 'MMM dd, yyyy HH:mm')}</TableCell>
+                                <TableCell>{record.notes || 'N/A'}</TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </TableContainer>
+                    ) : (
+                      <Typography color="textSecondary">No history records available</Typography>
+                    )}
+                  </CardContent>
+                </Card>
+              </Grid>
+            </Grid>
+          ) : null}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setOpenDetailDialog(false)}>Close</Button>
+          {selectedProduct && (
+            <Button 
+              variant="contained" 
+              onClick={() => navigate(`/products/${selectedProduct.product._id}`)}
+            >
+              Edit Product
+            </Button>
+          )}
         </DialogActions>
       </Dialog>
     </Box>

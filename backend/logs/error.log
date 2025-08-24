@@ -42874,3 +42874,57 @@
   service: 'supply-chain-api',
   timestamp: '2025-08-22 15:17:35'
 }
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-23 17:22:40'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-23 18:12:33'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 09:54:20'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 10:55:04'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 10:55:43'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:01:08'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:08:07'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:10:51'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-24 11:14:09'
+}
