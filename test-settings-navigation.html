@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings Navigation Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .navigation {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .nav-button {
+            padding: 10px 20px;
+            background: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        .nav-button:hover {
+            background: #1565c0;
+        }
+        .nav-button.active {
+            background: #0d47a1;
+        }
+        .content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #e0e0e0;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 15px 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.3s;
+        }
+        .tab:hover {
+            color: #1976d2;
+            background: rgba(25, 118, 210, 0.08);
+        }
+        .tab.active {
+            color: #1976d2;
+            border-bottom-color: #1976d2;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .message {
+            padding: 15px;
+            background: #4caf50;
+            color: white;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .message.info {
+            background: #2196f3;
+        }
+        .settings-preview {
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .flow-diagram {
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #ff9800;
+        }
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Settings Navigation Flow Test</h1>
+            <p>This demonstrates how the Settings button now redirects to the Profile page with the Settings tab selected.</p>
+        </div>
+
+        <div class="flow-diagram">
+            <h3>Navigation Flow:</h3>
+            <ol>
+                <li>User clicks "Settings" button in navigation menu</li>
+                <li>App navigates to <code>/settings</code> route</li>
+                <li>Settings component automatically redirects to <code>/profile?tab=settings</code></li>
+                <li>Profile component reads URL parameter and activates Settings tab (tab index 2)</li>
+                <li>User sees Profile page with Settings tab pre-selected</li>
+            </ol>
+        </div>
+
+        <div class="navigation">
+            <button class="nav-button" onclick="navigateTo('dashboard')">Dashboard</button>
+            <button class="nav-button" onclick="navigateTo('profile')">Profile</button>
+            <button class="nav-button" onclick="navigateTo('settings')">Settings</button>
+            <button class="nav-button" onclick="navigateTo('help')">Help</button>
+        </div>
+
+        <div id="message" class="message" style="display: none;"></div>
+
+        <div class="content">
+            <h2>Profile Page</h2>
+            
+            <div class="tabs">
+                <button class="tab" onclick="selectTab(0)" data-tab="0">Personal Information</button>
+                <button class="tab" onclick="selectTab(1)" data-tab="1">Security</button>
+                <button class="tab active" onclick="selectTab(2)" data-tab="2">Settings</button>
+            </div>
+
+            <div class="tab-content" data-content="0">
+                <h3>Personal Information</h3>
+                <p>User profile details and information would be displayed here.</p>
+            </div>
+
+            <div class="tab-content" data-content="1">
+                <h3>Security</h3>
+                <p>Security settings like password change and 2FA would be here.</p>
+            </div>
+
+            <div class="tab-content active" data-content="2">
+                <h3>Settings</h3>
+                <div class="settings-preview">
+                    <h4>✅ All Settings Now Working:</h4>
+                    <ul>
+                        <li><strong>Notifications:</strong> Email, Push, SMS notifications with customizable frequency</li>
+                        <li><strong>Appearance:</strong> Dark mode, theme colors, font size, high contrast, compact mode</li>
+                        <li><strong>Privacy:</strong> Profile visibility, data sharing, analytics preferences</li>
+                        <li><strong>Regional:</strong> Language, timezone, date format, currency</li>
+                        <li><strong>System:</strong> Auto-sync, cache, performance mode, debug options</li>
+                    </ul>
+                    
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li>Settings persist in localStorage</li>
+                        <li>Real-time UI updates when settings change</li>
+                        <li>Export/Import settings as JSON</li>
+                        <li>Reset to default functionality</li>
+                        <li>Visual feedback with toast notifications</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content" style="margin-top: 20px;">
+            <h3>Implementation Details:</h3>
+            <pre><code>// Settings.tsx - Redirects to Profile with Settings tab
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const Settings: React.FC = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Redirect to Profile page with Settings tab selected
+    navigate('/profile?tab=settings', { replace: true });
+  }, [navigate]);
+
+  return null;
+};
+
+// Profile.tsx - Handles URL parameters
+const urlParams = new URLSearchParams(location.search);
+const tabParam = urlParams.get('tab');
+const initialTab = tabParam === 'settings' ? 2 : 
+                   tabParam === 'security' ? 1 : 0;</code></pre>
+        </div>
+    </div>
+
+    <script>
+        // Simulate navigation
+        function navigateTo(page) {
+            const message = document.getElementById('message');
+            
+            if (page === 'settings') {
+                message.innerHTML = `
+                    <strong>Settings Clicked!</strong><br>
+                    1. Navigating to /settings<br>
+                    2. Settings component redirects to /profile?tab=settings<br>
+                    3. Settings tab is automatically selected
+                `;
+                message.className = 'message info';
+                message.style.display = 'block';
+                
+                // Simulate redirect and tab selection
+                setTimeout(() => {
+                    selectTab(2);
+                    updateURL('profile?tab=settings');
+                }, 500);
+            } else {
+                message.innerHTML = `Navigating to ${page}...`;
+                message.className = 'message';
+                message.style.display = 'block';
+                updateURL(page);
+            }
+            
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Simulate tab selection
+        function selectTab(index) {
+            // Update tabs
+            document.querySelectorAll('.tab').forEach((tab, i) => {
+                if (i === index) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+            
+            // Update content
+            document.querySelectorAll('.tab-content').forEach((content, i) => {
+                if (i === index) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+            
+            // Update URL
+            const tabNames = ['personal', 'security', 'settings'];
+            updateURL(`profile?tab=${tabNames[index]}`);
+        }
+        
+        // Update browser URL (visual only)
+        function updateURL(path) {
+            const url = window.location.origin + '/' + path;
+            window.history.pushState({}, '', '#/' + path);
+            
+            // Show current URL
+            const currentURL = document.getElementById('currentURL');
+            if (currentURL) {
+                currentURL.textContent = '#/' + path;
+            }
+        }
+        
+        // Initialize with Settings tab
+        window.onload = () => {
+            selectTab(2);
+        };
+    </script>
+</body>
+</html>

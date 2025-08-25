@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings Panel Test - Supply Chain Traceability</title>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --primary-color: #1976d2;
+            --base-font-size: 16px;
+            --spacing-unit: 8px;
+            --transition-speed: 300ms;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            transition: all var(--transition-speed);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+
+        .settings-panel {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .settings-group {
+            margin-bottom: 30px;
+        }
+
+        .settings-group h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #f5f5f5;
+            border-radius: 4px;
+        }
+
+        .setting-label {
+            font-weight: 500;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        select {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+        }
+
+        .demo-content {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .demo-content p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        body.dark-mode .settings-panel,
+        body.dark-mode .demo-content {
+            background: #1e1e1e;
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(255,255,255,0.1);
+        }
+
+        body.dark-mode .setting-item {
+            background: #2a2a2a;
+        }
+
+        body.dark-mode select {
+            background: #2a2a2a;
+            color: #ffffff;
+            border-color: #444;
+        }
+
+        /* High contrast mode */
+        body.high-contrast {
+            filter: contrast(1.5);
+        }
+
+        /* Compact mode */
+        body.compact-mode .setting-item {
+            padding: 5px;
+            margin-bottom: 5px;
+        }
+
+        body.compact-mode h2 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        /* Reduced motion */
+        body.reduced-motion * {
+            animation: none !important;
+            transition: none !important;
+        }
+
+        .status-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background: #4caf50;
+            color: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .status-message.show {
+            display: block;
+        }
+
+        .export-import-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Settings Panel Test</h1>
+        
+        <div class="settings-panel">
+            <div class="settings-group">
+                <h2>Appearance</h2>
+                
+                <div class="setting-item">
+                    <span class="setting-label">Dark Mode</span>
+                    <label class="switch">
+                        <input type="checkbox" id="darkMode">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <span class="setting-label">Theme Color</span>
+                    <select id="themeColor">
+                        <option value="#1976d2">Blue</option>
+                        <option value="#4caf50">Green</option>
+                        <option value="#9c27b0">Purple</option>
+                        <option value="#ff9800">Orange</option>
+                    </select>
+                </div>
+                
+                <div class="setting-item">
+                    <span class="setting-label">Font Size</span>
+                    <select id="fontSize">
+                        <option value="14px">Small</option>
+                        <option value="16px" selected>Medium</option>
+                        <option value="18px">Large</option>
+                        <option value="20px">Extra Large</option>
+                    </select>
+                </div>
+                
+                <div class="setting-item">
+                    <span class="setting-label">High Contrast</span>
+                    <label class="switch">
+                        <input type="checkbox" id="highContrast">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <span class="setting-label">Compact Mode</span>
+                    <label class="switch">
+                        <input type="checkbox" id="compactMode">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <span class="setting-label">Reduced Motion</span>
+                    <label class="switch">
+                        <input type="checkbox" id="reducedMotion">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="export-import-buttons">
+                <button onclick="exportSettings()">Export Settings</button>
+                <button onclick="document.getElementById('importFile').click()">Import Settings</button>
+                <input type="file" id="importFile" style="display: none;" accept=".json" onchange="importSettings(event)">
+                <button onclick="resetSettings()">Reset to Default</button>
+            </div>
+        </div>
+        
+        <div class="demo-content">
+            <h2>Demo Content</h2>
+            <p>This is sample content to demonstrate how settings affect the appearance of the application.</p>
+            <p>Toggle the settings above to see how they change the visual presentation:</p>
+            <ul>
+                <li><strong>Dark Mode:</strong> Switches between light and dark themes</li>
+                <li><strong>Theme Color:</strong> Changes the primary accent color</li>
+                <li><strong>Font Size:</strong> Adjusts text size throughout the interface</li>
+                <li><strong>High Contrast:</strong> Increases color contrast for better visibility</li>
+                <li><strong>Compact Mode:</strong> Reduces spacing for more content density</li>
+                <li><strong>Reduced Motion:</strong> Disables animations and transitions</li>
+            </ul>
+            <p>All settings are automatically saved to localStorage and persist across sessions.</p>
+        </div>
+    </div>
+    
+    <div class="status-message" id="statusMessage"></div>
+    
+    <script>
+        // Load settings from localStorage
+        function loadSettings() {
+            const savedSettings = localStorage.getItem('demoSettings');
+            if (savedSettings) {
+                const settings = JSON.parse(savedSettings);
+                applySettings(settings);
+                updateControls(settings);
+                showStatus('Settings loaded from localStorage');
+            }
+        }
+        
+        // Apply settings to the page
+        function applySettings(settings) {
+            const root = document.documentElement;
+            const body = document.body;
+            
+            // Dark mode
+            if (settings.darkMode) {
+                body.classList.add('dark-mode');
+                root.style.setProperty('--bg-color', '#121212');
+                root.style.setProperty('--text-color', '#ffffff');
+            } else {
+                body.classList.remove('dark-mode');
+                root.style.setProperty('--bg-color', '#ffffff');
+                root.style.setProperty('--text-color', '#000000');
+            }
+            
+            // Theme color
+            root.style.setProperty('--primary-color', settings.themeColor || '#1976d2');
+            
+            // Font size
+            root.style.setProperty('--base-font-size', settings.fontSize || '16px');
+            
+            // High contrast
+            if (settings.highContrast) {
+                body.classList.add('high-contrast');
+            } else {
+                body.classList.remove('high-contrast');
+            }
+            
+            // Compact mode
+            if (settings.compactMode) {
+                body.classList.add('compact-mode');
+            } else {
+                body.classList.remove('compact-mode');
+            }
+            
+            // Reduced motion
+            if (settings.reducedMotion) {
+                body.classList.add('reduced-motion');
+                root.style.setProperty('--transition-speed', '0ms');
+            } else {
+                body.classList.remove('reduced-motion');
+                root.style.setProperty('--transition-speed', '300ms');
+            }
+        }
+        
+        // Update control values
+        function updateControls(settings) {
+            document.getElementById('darkMode').checked = settings.darkMode || false;
+            document.getElementById('themeColor').value = settings.themeColor || '#1976d2';
+            document.getElementById('fontSize').value = settings.fontSize || '16px';
+            document.getElementById('highContrast').checked = settings.highContrast || false;
+            document.getElementById('compactMode').checked = settings.compactMode || false;
+            document.getElementById('reducedMotion').checked = settings.reducedMotion || false;
+        }
+        
+        // Save settings to localStorage
+        function saveSettings() {
+            const settings = {
+                darkMode: document.getElementById('darkMode').checked,
+                themeColor: document.getElementById('themeColor').value,
+                fontSize: document.getElementById('fontSize').value,
+                highContrast: document.getElementById('highContrast').checked,
+                compactMode: document.getElementById('compactMode').checked,
+                reducedMotion: document.getElementById('reducedMotion').checked,
+            };
+            
+            localStorage.setItem('demoSettings', JSON.stringify(settings));
+            applySettings(settings);
+            showStatus('Settings saved successfully!');
+        }
+        
+        // Export settings
+        function exportSettings() {
+            const settings = {
+                darkMode: document.getElementById('darkMode').checked,
+                themeColor: document.getElementById('themeColor').value,
+                fontSize: document.getElementById('fontSize').value,
+                highContrast: document.getElementById('highContrast').checked,
+                compactMode: document.getElementById('compactMode').checked,
+                reducedMotion: document.getElementById('reducedMotion').checked,
+                exportDate: new Date().toISOString()
+            };
+            
+            const blob = new Blob([JSON.stringify(settings, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `settings-export-${Date.now()}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showStatus('Settings exported successfully!');
+        }
+        
+        // Import settings
+        function importSettings(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const settings = JSON.parse(e.target.result);
+                        applySettings(settings);
+                        updateControls(settings);
+                        localStorage.setItem('demoSettings', JSON.stringify(settings));
+                        showStatus('Settings imported successfully!');
+                    } catch (error) {
+                        showStatus('Failed to import settings', 'error');
+                    }
+                };
+                reader.readAsText(file);
+            }
+        }
+        
+        // Reset settings
+        function resetSettings() {
+            if (confirm('Are you sure you want to reset all settings to default?')) {
+                localStorage.removeItem('demoSettings');
+                location.reload();
+            }
+        }
+        
+        // Show status message
+        function showStatus(message, type = 'success') {
+            const statusEl = document.getElementById('statusMessage');
+            statusEl.textContent = message;
+            statusEl.style.background = type === 'error' ? '#f44336' : '#4caf50';
+            statusEl.classList.add('show');
+            
+            setTimeout(() => {
+                statusEl.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Add event listeners
+        document.getElementById('darkMode').addEventListener('change', saveSettings);
+        document.getElementById('themeColor').addEventListener('change', saveSettings);
+        document.getElementById('fontSize').addEventListener('change', saveSettings);
+        document.getElementById('highContrast').addEventListener('change', saveSettings);
+        document.getElementById('compactMode').addEventListener('change', saveSettings);
+        document.getElementById('reducedMotion').addEventListener('change', saveSettings);
+        
+        // Load settings on page load
+        loadSettings();
+    </script>
+</body>
+</html>

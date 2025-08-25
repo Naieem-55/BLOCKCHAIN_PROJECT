@@ -1,0 +1,278 @@
+/* Settings-based CSS Variables and Classes */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --primary-color: #1976d2;
+  --base-font-size: 16px;
+  --spacing-unit: 8px;
+  --transition-speed: 300ms;
+  --contrast: 1;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .MuiPaper-root {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .MuiCard-root {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .MuiAppBar-root {
+  background-color: #1e1e1e !important;
+}
+
+body.dark-mode .MuiDrawer-paper {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .MuiListItem-root:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode .MuiDivider-root {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+body.dark-mode .MuiTextField-root .MuiOutlinedInput-root {
+  color: #ffffff !important;
+}
+
+body.dark-mode .MuiTextField-root .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.23) !important;
+}
+
+body.dark-mode .MuiTextField-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+body.dark-mode .MuiInputLabel-root {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+body.dark-mode .MuiTypography-root {
+  color: inherit;
+}
+
+body.dark-mode .MuiButton-outlined {
+  border-color: rgba(255, 255, 255, 0.23) !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .MuiButton-outlined:hover {
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode .MuiTableCell-root {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+body.dark-mode .MuiAccordion-root {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .MuiAccordionSummary-root:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode .MuiSelect-select {
+  color: #ffffff !important;
+}
+
+body.dark-mode .MuiMenuItem-root {
+  color: #000000 !important;
+}
+
+body.dark-mode .MuiSwitch-track {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* High Contrast Mode */
+body.high-contrast {
+  filter: contrast(var(--contrast));
+}
+
+body.high-contrast .MuiButton-root {
+  font-weight: bold !important;
+}
+
+body.high-contrast .MuiOutlinedInput-notchedOutline {
+  border-width: 2px !important;
+}
+
+body.high-contrast .MuiDivider-root {
+  border-width: 2px !important;
+}
+
+/* Compact Mode */
+body.compact-mode .MuiButton-root {
+  padding: 4px 8px !important;
+  min-height: 32px !important;
+}
+
+body.compact-mode .MuiTextField-root {
+  margin: 4px 0 !important;
+}
+
+body.compact-mode .MuiCard-root {
+  padding: 8px !important;
+}
+
+body.compact-mode .MuiCardContent-root {
+  padding: 8px !important;
+}
+
+body.compact-mode .MuiListItem-root {
+  padding: 4px 16px !important;
+  min-height: 40px !important;
+}
+
+body.compact-mode .MuiTableCell-root {
+  padding: 4px 8px !important;
+}
+
+body.compact-mode .MuiAccordionSummary-root {
+  min-height: 40px !important;
+}
+
+body.compact-mode .MuiAccordionSummary-content {
+  margin: 8px 0 !important;
+}
+
+/* Reduced Motion */
+body.reduced-motion * {
+  animation-duration: 0ms !important;
+  transition-duration: 0ms !important;
+  animation-iteration-count: 1 !important;
+}
+
+body.reduced-motion .MuiCircularProgress-root {
+  animation: none !important;
+}
+
+body.reduced-motion .MuiLinearProgress-root {
+  animation: none !important;
+}
+
+/* Font Size Adjustments */
+body {
+  font-size: var(--base-font-size) !important;
+}
+
+body .MuiTypography-body1,
+body .MuiTypography-body2 {
+  font-size: inherit !important;
+}
+
+body .MuiButton-root {
+  font-size: calc(var(--base-font-size) * 0.875) !important;
+}
+
+body .MuiInputBase-input {
+  font-size: inherit !important;
+}
+
+body .MuiTableCell-root {
+  font-size: calc(var(--base-font-size) * 0.875) !important;
+}
+
+/* Theme Color Application */
+.MuiButton-containedPrimary {
+  background-color: var(--primary-color) !important;
+}
+
+.MuiButton-containedPrimary:hover {
+  background-color: var(--primary-color) !important;
+  filter: brightness(0.9);
+}
+
+.MuiCheckbox-colorPrimary.Mui-checked {
+  color: var(--primary-color) !important;
+}
+
+.MuiRadio-colorPrimary.Mui-checked {
+  color: var(--primary-color) !important;
+}
+
+.MuiSwitch-colorPrimary.Mui-checked .MuiSwitch-thumb {
+  color: var(--primary-color) !important;
+}
+
+.MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
+  background-color: var(--primary-color) !important;
+}
+
+.MuiLinearProgress-colorPrimary .MuiLinearProgress-bar {
+  background-color: var(--primary-color) !important;
+}
+
+.MuiCircularProgress-colorPrimary {
+  color: var(--primary-color) !important;
+}
+
+.MuiFab-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.MuiChip-colorPrimary {
+  background-color: var(--primary-color) !important;
+}
+
+.MuiAppBar-colorPrimary {
+  background-color: var(--primary-color) !important;
+}
+
+/* Smooth transitions when settings change */
+body,
+.MuiPaper-root,
+.MuiCard-root,
+.MuiDrawer-paper,
+.MuiAppBar-root {
+  transition: 
+    background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease,
+    filter var(--transition-speed) ease;
+}
+
+/* Accessibility improvements */
+body:focus-visible *:focus {
+  outline: 3px solid var(--primary-color) !important;
+  outline-offset: 2px !important;
+}
+
+/* Print styles */
+@media print {
+  body.dark-mode {
+    background-color: white !important;
+    color: black !important;
+  }
+  
+  body.dark-mode * {
+    background-color: white !important;
+    color: black !important;
+  }
+}
+
+/* Responsive font sizes */
+@media (max-width: 600px) {
+  :root {
+    --base-font-size: calc(var(--base-font-size) * 0.95);
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --base-font-size: calc(var(--base-font-size) * 1.1);
+  }
+}

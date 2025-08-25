@@ -1,21 +1,15 @@
-import React from 'react';
-import { Box, Typography, Card, CardContent } from '@mui/material';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Settings: React.FC = () => {
-  return (
-    <Box>
-      <Typography variant="h4" component="h1" gutterBottom>
-        Settings
-      </Typography>
-      <Card>
-        <CardContent>
-          <Typography variant="body1">
-            Application settings and configuration options will be available here.
-          </Typography>
-        </CardContent>
-      </Card>
-    </Box>
-  );
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Redirect to Profile page with Settings tab selected
+    navigate('/profile?tab=settings', { replace: true });
+  }, [navigate]);
+
+  return null;
 };
 
 export default Settings;
