@@ -27,7 +27,7 @@ import {
   BlockOutlined,
 } from '@mui/icons-material';
 import { format } from 'date-fns';
-import api from '../services/api';
+import { productService } from '../services/productService';
 import { LifecycleTracker } from '../components/ProductLifecycle/LifecycleTracker';
 import { LocationTracker } from '../components/LocationTracking/LocationTracker';
 
@@ -72,11 +72,11 @@ const ProductDetail: React.FC = () => {
   const fetchProduct = async () => {
     try {
       setLoading(true);
-      const response = await api.get(`/products/${id}`);
-      setProduct(response.data.product);
+      const product = await productService.getProductById(id!);
+      setProduct(product);
       setError(null);
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to fetch product');
+      setError(err.message || 'Failed to fetch product');
     } finally {
       setLoading(false);
     }
@@ -84,8 +84,8 @@ const ProductDetail: React.FC = () => {
 
   const verifyProduct = async () => {
     try {
-      const response = await api.get(`/products/${id}/verify`);
-      setVerificationStatus(response.data);
+      const verificationStatus = await productService.verifyProduct(id!);
+      setVerificationStatus(verificationStatus);
     } catch (err) {
       console.error('Failed to verify product:', err);
     }

@@ -106,6 +106,7 @@ const Products: React.FC = () => {
   const [statusFilter, setStatusFilter] = useState('all');
   const [openDialog, setOpenDialog] = useState(false);
   const [openDetailDialog, setOpenDetailDialog] = useState(false);
+  const [openImmutabilityDialog, setOpenImmutabilityDialog] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
   const [fetchingDetails, setFetchingDetails] = useState(false);
   const [formData, setFormData] = useState({
@@ -240,20 +241,25 @@ const Products: React.FC = () => {
     }
   };
 
-  const handleProductClick = async (productId: string) => {
+  const handleProductClick = (productId: string) => {
+    // Navigate to product detail page
+    navigate(`/products/${productId}`);
+  };
+
+  const handleImmutabilityTest = async (productId: string) => {
     try {
       setFetchingDetails(true);
-      setOpenDetailDialog(true);
+      setOpenImmutabilityDialog(true);
       
-      // Fetch detailed product information with blockchain traceability
+      // Fetch detailed product information for immutability testing
       const traceData = await productService.getProductTrace(productId);
       setSelectedProduct(traceData);
       
-      toast.success('Product details loaded with blockchain traceability');
+      toast.success('Product loaded for immutability testing');
     } catch (error: any) {
-      console.error('Error fetching product details:', error);
-      toast.error('Failed to load product details');
-      setOpenDetailDialog(false);
+      console.error('Error fetching product for immutability test:', error);
+      toast.error('Failed to load product for testing');
+      setOpenImmutabilityDialog(false);
     } finally {
       setFetchingDetails(false);
     }
@@ -563,9 +569,9 @@ const Products: React.FC = () => {
                       </IconButton>
                       <IconButton
                         size="small"
-                        onClick={() => navigate(`/products/${product._id}`)}
+                        onClick={() => handleImmutabilityTest(product._id)}
                         color="info"
-                        title="Edit Product"
+                        title="Run Immutability Test"
                       >
                         <Edit />
                       </IconButton>
@@ -891,6 +897,55 @@ const Products: React.FC = () => {
               onClick={() => navigate(`/products/${selectedProduct.product._id}`)}
             >
               Edit Product
+            </Button>
+          )}
+        </DialogActions>
+      </Dialog>
+
+      {/* Immutability Test Dialog */}
+      <Dialog 
+        open={openImmutabilityDialog} 
+        onClose={() => setOpenImmutabilityDialog(false)} 
+        maxWidth="lg" 
+        fullWidth
+      >
+        <DialogTitle>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Security color="primary" />
+            🔐 Blockchain Immutability Test
+            {selectedProduct?.blockchain?.enabled && (
+              <Chip
+                icon={<CloudSync />}
+                label="Blockchain Verified"
+                color="success"
+                size="small"
+              />
+            )}
+          </Box>
+        </DialogTitle>
+        <DialogContent>
+          {fetchingDetails ? (
+            <Box sx={{ py: 4 }}>
+              <Skeleton variant="rectangular" width="100%" height={60} />
+              <Skeleton variant="text" sx={{ mt: 2 }} />
+              <Skeleton variant="text" />
+              <Skeleton variant="text" />
+            </Box>
+          ) : selectedProduct ? (
+            <ImmutabilityTest product={selectedProduct.product} />
+          ) : null}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setOpenImmutabilityDialog(false)}>Close</Button>
+          {selectedProduct && (
+            <Button 
+              variant="contained" 
+              onClick={() => {
+                setOpenImmutabilityDialog(false);
+                navigate(`/products/${selectedProduct.product._id}`);
+              }}
+            >
+              View Product Details
             </Button>
           )}
         </DialogActions>
