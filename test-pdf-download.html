@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test PDF Download - QR Scanner</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .product-info {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .product-info h2 {
+            color: #1976d2;
+            margin-top: 0;
+        }
+        .info-row {
+            display: flex;
+            margin: 10px 0;
+        }
+        .info-label {
+            font-weight: bold;
+            min-width: 150px;
+            color: #666;
+        }
+        .info-value {
+            color: #333;
+        }
+        button {
+            background: #1976d2;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #1565c0;
+        }
+        .success {
+            background: #4caf50;
+        }
+        .success:hover {
+            background: #45a049;
+        }
+        .message {
+            padding: 10px;
+            margin: 20px 0;
+            border-radius: 4px;
+            display: none;
+        }
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QR Scanner - PDF Download Test</h1>
+        
+        <div class="product-info">
+            <h2>Sample Product Data</h2>
+            <div class="info-row">
+                <span class="info-label">Product Name:</span>
+                <span class="info-value">Organic Apples - Premium Grade</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Product ID:</span>
+                <span class="info-value">PROD-12345</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Batch Number:</span>
+                <span class="info-value">BATCH-2024-0845</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Status:</span>
+                <span class="info-value">In Transit</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Quality Score:</span>
+                <span class="info-value">95.8%</span>
+            </div>
+        </div>
+        
+        <button onclick="generatePDF()">Download Product Report (PDF)</button>
+        <button onclick="generateDetailedPDF()" class="success">Download Detailed Report</button>
+        
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        const { jsPDF } = window.jspdf;
+        
+        // Sample product data matching the React component
+        const productData = {
+            id: 'PROD-12345',
+            name: 'Organic Apples - Premium Grade',
+            category: 'Fresh Produce',
+            batchNumber: 'BATCH-2024-0845',
+            producer: 'Green Valley Orchards',
+            currentOwner: 'Fresh Market Distribution',
+            currentLocation: 'Distribution Center - Portland',
+            status: 'In Transit',
+            qualityScore: 95.8,
+            createdAt: '2024-08-15T10:30:00Z',
+            lastUpdated: '2024-08-22T09:15:00Z',
+            expiryDate: '2024-08-30T23:59:59Z',
+            traceabilityEvents: [
+                {
+                    id: '1',
+                    timestamp: '2024-08-15T10:30:00Z',
+                    stage: 'Production',
+                    location: 'Green Valley Farm - Orchard Section 3',
+                    participant: 'Green Valley Orchards',
+                    action: 'Harvested',
+                    temperature: 18.5,
+                    humidity: 65,
+                    qualityCheck: { passed: true, score: 98.2 },
+                },
+                {
+                    id: '2',
+                    timestamp: '2024-08-16T08:00:00Z',
+                    stage: 'Processing',
+                    location: 'Green Valley Processing Facility',
+                    participant: 'Green Valley Orchards',
+                    action: 'Quality inspection and packaging',
+                    temperature: 4.2,
+                    humidity: 85,
+                    qualityCheck: { passed: true, score: 96.5 },
+                },
+                {
+                    id: '3',
+                    timestamp: '2024-08-18T14:20:00Z',
+                    stage: 'Distribution',
+                    location: 'Regional Distribution Hub - Seattle',
+                    participant: 'Northwest Logistics',
+                    action: 'Transferred to distributor',
+                    temperature: 3.8,
+                    humidity: 82,
+                    qualityCheck: { passed: true, score: 95.8 },
+                },
+            ],
+            certifications: [
+                { name: 'USDA Organic', verified: true },
+                { name: 'Non-GMO Verified', verified: true },
+                { name: 'Fair Trade Certified', verified: true },
+            ],
+            blockchain: {
+                contractAddress: '0xprod12345567890abcdef1234567890abcdef123',
+                transactionHash: '0xtxhash12345567890abcdef1234567890abcdef123',
+            }
+        };
+        
+        function showMessage(text, type = 'success') {
+            const messageEl = document.getElementById('message');
+            messageEl.textContent = text;
+            messageEl.className = `message ${type}`;
+            setTimeout(() => {
+                messageEl.className = 'message';
+            }, 5000);
+        }
+        
+        function generatePDF() {
+            try {
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const pageWidth = pdf.internal.pageSize.getWidth();
+                let yPosition = 20;
+                
+                // Title
+                pdf.setFontSize(20);
+                pdf.text('Product Traceability Report', pageWidth / 2, yPosition, { align: 'center' });
+                yPosition += 20;
+                
+                // Product Information
+                pdf.setFontSize(14);
+                pdf.text('Product Information', 15, yPosition);
+                yPosition += 10;
+                
+                pdf.setFontSize(10);
+                pdf.text(`Product Name: ${productData.name}`, 15, yPosition);
+                yPosition += 7;
+                pdf.text(`Product ID: ${productData.id}`, 15, yPosition);
+                yPosition += 7;
+                pdf.text(`Batch Number: ${productData.batchNumber}`, 15, yPosition);
+                yPosition += 7;
+                pdf.text(`Status: ${productData.status}`, 15, yPosition);
+                yPosition += 7;
+                pdf.text(`Quality Score: ${productData.qualityScore}%`, 15, yPosition);
+                
+                // Save PDF
+                pdf.save(`product-report-${productData.id}-${Date.now()}.pdf`);
+                showMessage('Basic PDF report downloaded successfully!');
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+                showMessage('Failed to generate PDF report', 'error');
+            }
+        }
+        
+        function generateDetailedPDF() {
+            try {
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const pageWidth = pdf.internal.pageSize.getWidth();
+                const pageHeight = pdf.internal.pageSize.getHeight();
+                let yPosition = 20;
+                const lineHeight = 7;
+                const margin = 15;
+                
+                // Title
+                pdf.setFontSize(20);
+                pdf.text('Product Traceability Report', pageWidth / 2, yPosition, { align: 'center' });
+                yPosition += 15;
+                
+                // Product Information Section
+                pdf.setFontSize(14);
+                pdf.text('Product Information', margin, yPosition);
+                yPosition += 10;
+                
+                pdf.setFontSize(10);
+                const productInfo = [
+                    ['Product Name:', productData.name],
+                    ['Product ID:', productData.id],
+                    ['Batch Number:', productData.batchNumber],
+                    ['Category:', productData.category],
+                    ['Status:', productData.status],
+                    ['Quality Score:', `${productData.qualityScore}%`],
+                ];
+                
+                productInfo.forEach(([label, value]) => {
+                    pdf.text(label, margin, yPosition);
+                    pdf.text(value, margin + 35, yPosition);
+                    yPosition += lineHeight;
+                });
+                
+                yPosition += 5;
+                
+                // Current Status Section
+                pdf.setFontSize(14);
+                pdf.text('Current Status', margin, yPosition);
+                yPosition += 10;
+                
+                pdf.setFontSize(10);
+                const statusInfo = [
+                    ['Producer:', productData.producer],
+                    ['Current Owner:', productData.currentOwner],
+                    ['Current Location:', productData.currentLocation],
+                    ['Last Updated:', new Date(productData.lastUpdated).toLocaleString()],
+                    ['Expiry Date:', new Date(productData.expiryDate).toLocaleString()],
+                ];
+                
+                statusInfo.forEach(([label, value]) => {
+                    pdf.text(label, margin, yPosition);
+                    pdf.text(value, margin + 35, yPosition);
+                    yPosition += lineHeight;
+                });
+                
+                yPosition += 5;
+                
+                // Certifications
+                if (productData.certifications && productData.certifications.length > 0) {
+                    pdf.setFontSize(14);
+                    pdf.text('Certifications', margin, yPosition);
+                    yPosition += 10;
+                    
+                    pdf.setFontSize(10);
+                    productData.certifications.forEach(cert => {
+                        const status = cert.verified ? 'Verified' : 'Unverified';
+                        pdf.text(`• ${cert.name} - ${status}`, margin + 5, yPosition);
+                        yPosition += lineHeight;
+                    });
+                    
+                    yPosition += 5;
+                }
+                
+                // Check if we need a new page for traceability history
+                if (yPosition > pageHeight - 80) {
+                    pdf.addPage();
+                    yPosition = 20;
+                }
+                
+                // Traceability History
+                pdf.setFontSize(14);
+                pdf.text('Traceability History', margin, yPosition);
+                yPosition += 10;
+                
+                pdf.setFontSize(9);
+                productData.traceabilityEvents.forEach((event, index) => {
+                    // Check if we need a new page
+                    if (yPosition > pageHeight - 40) {
+                        pdf.addPage();
+                        yPosition = 20;
+                    }
+                    
+                    pdf.text(`Event ${index + 1}: ${event.stage}`, margin, yPosition);
+                    yPosition += lineHeight;
+                    
+                    pdf.text(`  Date: ${new Date(event.timestamp).toLocaleString()}`, margin + 5, yPosition);
+                    yPosition += lineHeight;
+                    pdf.text(`  Location: ${event.location}`, margin + 5, yPosition);
+                    yPosition += lineHeight;
+                    pdf.text(`  Action: ${event.action}`, margin + 5, yPosition);
+                    yPosition += lineHeight;
+                    
+                    if (event.temperature || event.humidity) {
+                        let conditions = '  Conditions: ';
+                        if (event.temperature) conditions += `Temp: ${event.temperature}°C`;
+                        if (event.humidity) conditions += ` Humidity: ${event.humidity}%`;
+                        pdf.text(conditions, margin + 5, yPosition);
+                        yPosition += lineHeight;
+                    }
+                    
+                    if (event.qualityCheck) {
+                        const qualityStatus = event.qualityCheck.passed ? 'Passed' : 'Failed';
+                        pdf.text(`  Quality: ${qualityStatus} - Score: ${event.qualityCheck.score}%`, margin + 5, yPosition);
+                        yPosition += lineHeight;
+                    }
+                    
+                    yPosition += 3;
+                });
+                
+                // Footer
+                pdf.setFontSize(8);
+                pdf.text(`Generated on: ${new Date().toLocaleString()}`, margin, pageHeight - 10);
+                pdf.text(`QR Code: QR-PROD-12345`, pageWidth - margin - 30, pageHeight - 10);
+                
+                // Save PDF
+                pdf.save(`detailed-product-report-${productData.id}-${Date.now()}.pdf`);
+                showMessage('Detailed PDF report downloaded successfully!');
+            } catch (error) {
+                console.error('Error generating detailed PDF:', error);
+                showMessage('Failed to generate detailed PDF report', 'error');
+            }
+        }
+    </script>
+</body>
+</html>

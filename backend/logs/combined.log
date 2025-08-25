@@ -64072,3 +64072,51 @@
   service: 'supply-chain-api',
   timestamp: '2025-08-25 23:11:24'
 }
+{
+  message: 'QR Code lookup successful for: 68a871ffffc72a2e08356940 -> Test Product 2025-08-22T13:34:55.222Z',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 23:23:18'
+}
+{
+  message: '::1 - - [25/Aug/2025:17:23:18 +0000] "GET /api/products/qr/68a871ffffc72a2e08356940 HTTP/1.1" 200 1019 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 23:23:18'
+}
+{
+  message: '::1 - - [25/Aug/2025:17:29:57 +0000] "GET /api/participants?page=1&limit=100 HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 23:29:57'
+}
+{
+  message: '::1 - - [25/Aug/2025:17:29:57 +0000] "GET /api/participants?page=1&limit=100 HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 23:29:57'
+}
+{
+  message: 'Invitation sent to ab@gmail.com for role producer by naieemislam27@gmail.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 23:38:32'
+}
+{
+  message: '::1 - - [25/Aug/2025:17:38:32 +0000] "POST /api/participants/invite HTTP/1.1" 200 73 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 23:38:32'
+}
+{
+  message: 'Invitation sent to islam1907055@stud.kuet.ac.bd for role producer by naieemislam27@gmail.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 23:38:44'
+}
+{
+  message: '::1 - - [25/Aug/2025:17:38:44 +0000] "POST /api/participants/invite HTTP/1.1" 200 89 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 23:38:44'
+}

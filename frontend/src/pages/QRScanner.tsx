@@ -60,6 +60,7 @@ import QrScanner from 'qr-scanner';
 import QRCode from 'react-qr-code';
 import { apiRequest } from '../services/api';
 import toast from 'react-hot-toast';
+import jsPDF from 'jspdf';
 
 // Mock product data for QR lookup
 const mockProductData = {
@@ -377,9 +378,218 @@ const QRScanner: React.FC = () => {
   };
 
   const downloadProductReport = () => {
-    if (productData) {
-      // In production, generate and download PDF report
-      toast.success('Generating product report...');
+    if (!productData) return;
+    
+    try {
+      // Create new PDF document
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      let yPosition = 20;
+      const lineHeight = 7;
+      const margin = 15;
+      const contentWidth = pageWidth - (2 * margin);
+      
+      // Helper function to check if new page is needed
+      const checkNewPage = (requiredSpace: number) => {
+        if (yPosition + requiredSpace > pageHeight - 20) {
+          pdf.addPage();
+          yPosition = 20;
+        }
+      };
+      
+      // Title
+      pdf.setFontSize(20);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('Product Traceability Report', pageWidth / 2, yPosition, { align: 'center' });
+      yPosition += 15;
+      
+      // Product Information Section
+      pdf.setFontSize(14);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('Product Information', margin, yPosition);
+      yPosition += 10;
+      
+      pdf.setFontSize(10);
+      pdf.setFont('helvetica', 'normal');
+      
+      // Product details
+      const productInfo = [
+        ['Product Name:', productData.name || 'N/A'],
+        ['Product ID:', productData.id || 'N/A'],
+        ['Batch Number:', productData.batchNumber || 'N/A'],
+        ['Category:', productData.category || 'N/A'],
+        ['Status:', productData.status || 'N/A'],
+        ['Quality Score:', productData.qualityScore ? `${productData.qualityScore}%` : 'N/A'],
+      ];
+      
+      productInfo.forEach(([label, value]) => {
+        checkNewPage(lineHeight);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text(label, margin, yPosition);
+        pdf.setFont('helvetica', 'normal');
+        pdf.text(value, margin + 35, yPosition);
+        yPosition += lineHeight;
+      });
+      
+      yPosition += 5;
+      
+      // Current Status Section
+      checkNewPage(40);
+      pdf.setFontSize(14);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('Current Status', margin, yPosition);
+      yPosition += 10;
+      
+      pdf.setFontSize(10);
+      pdf.setFont('helvetica', 'normal');
+      
+      const statusInfo = [
+        ['Producer:', productData.producer || 'N/A'],
+        ['Current Owner:', productData.currentOwner || 'N/A'],
+        ['Current Location:', productData.currentLocation || 'N/A'],
+        ['Last Updated:', productData.lastUpdated ? new Date(productData.lastUpdated).toLocaleString() : 'N/A'],
+        ['Expiry Date:', productData.expiryDate ? new Date(productData.expiryDate).toLocaleString() : 'N/A'],
+      ];
+      
+      statusInfo.forEach(([label, value]) => {
+        checkNewPage(lineHeight);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text(label, margin, yPosition);
+        pdf.setFont('helvetica', 'normal');
+        const textLines = pdf.splitTextToSize(value, contentWidth - 35);
+        pdf.text(textLines, margin + 35, yPosition);
+        yPosition += lineHeight * Math.max(1, textLines.length);
+      });
+      
+      yPosition += 5;
+      
+      // Certifications Section (if available)
+      if (productData.certifications && productData.certifications.length > 0) {
+        checkNewPage(30 + (productData.certifications.length * lineHeight));
+        pdf.setFontSize(14);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('Certifications', margin, yPosition);
+        yPosition += 10;
+        
+        pdf.setFontSize(10);
+        pdf.setFont('helvetica', 'normal');
+        productData.certifications.forEach((cert: any) => {
+          checkNewPage(lineHeight);
+          const status = cert.verified ? '✓ Verified' : '⚠ Unverified';
+          pdf.text(`• ${cert.name} - ${status}`, margin + 5, yPosition);
+          yPosition += lineHeight;
+        });
+        
+        yPosition += 5;
+      }
+      
+      // Traceability History Section
+      if (productData.traceabilityEvents && productData.traceabilityEvents.length > 0) {
+        checkNewPage(30);
+        pdf.setFontSize(14);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('Traceability History', margin, yPosition);
+        yPosition += 10;
+        
+        pdf.setFontSize(9);
+        productData.traceabilityEvents.forEach((event: any, index: number) => {
+          checkNewPage(35);
+          
+          // Event header
+          pdf.setFont('helvetica', 'bold');
+          pdf.text(`Event ${index + 1}: ${event.stage || 'N/A'}`, margin, yPosition);
+          yPosition += lineHeight;
+          
+          pdf.setFont('helvetica', 'normal');
+          
+          // Event details
+          const eventDetails = [
+            ['Date & Time:', event.timestamp ? new Date(event.timestamp).toLocaleString() : 'N/A'],
+            ['Location:', event.location || 'N/A'],
+            ['Participant:', event.participant || 'N/A'],
+            ['Action:', event.action || 'N/A'],
+          ];
+          
+          // Add conditions if available
+          if (event.temperature || event.humidity) {
+            let conditions = 'Conditions: ';
+            if (event.temperature) conditions += `Temp: ${event.temperature}°C`;
+            if (event.humidity) conditions += ` Humidity: ${event.humidity}%`;
+            eventDetails.push(['', conditions]);
+          }
+          
+          // Add quality check if available
+          if (event.qualityCheck) {
+            const qualityStatus = event.qualityCheck.passed ? 'Passed' : 'Failed';
+            eventDetails.push(['Quality Check:', `${qualityStatus} - Score: ${event.qualityCheck.score}%`]);
+          }
+          
+          eventDetails.forEach(([label, value]) => {
+            checkNewPage(lineHeight);
+            if (label) {
+              pdf.setFont('helvetica', 'italic');
+              pdf.text(label, margin + 5, yPosition);
+              pdf.setFont('helvetica', 'normal');
+              const textLines = pdf.splitTextToSize(value, contentWidth - 40);
+              pdf.text(textLines, margin + 30, yPosition);
+              yPosition += lineHeight * Math.max(1, textLines.length);
+            } else {
+              pdf.text(value, margin + 5, yPosition);
+              yPosition += lineHeight;
+            }
+          });
+          
+          yPosition += 5;
+        });
+      }
+      
+      // Blockchain Information (if available)
+      if (productData.blockchain) {
+        checkNewPage(30);
+        pdf.setFontSize(14);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('Blockchain Information', margin, yPosition);
+        yPosition += 10;
+        
+        pdf.setFontSize(9);
+        pdf.setFont('helvetica', 'normal');
+        
+        if (productData.blockchain.contractAddress) {
+          checkNewPage(lineHeight);
+          pdf.setFont('helvetica', 'bold');
+          pdf.text('Contract Address:', margin, yPosition);
+          pdf.setFont('helvetica', 'normal');
+          const addressLines = pdf.splitTextToSize(productData.blockchain.contractAddress, contentWidth - 35);
+          pdf.text(addressLines, margin + 35, yPosition);
+          yPosition += lineHeight * Math.max(1, addressLines.length);
+        }
+        
+        if (productData.blockchain.transactionHash) {
+          checkNewPage(lineHeight);
+          pdf.setFont('helvetica', 'bold');
+          pdf.text('Transaction Hash:', margin, yPosition);
+          pdf.setFont('helvetica', 'normal');
+          const hashLines = pdf.splitTextToSize(productData.blockchain.transactionHash, contentWidth - 35);
+          pdf.text(hashLines, margin + 35, yPosition);
+          yPosition += lineHeight * Math.max(1, hashLines.length);
+        }
+      }
+      
+      // Footer
+      pdf.setFontSize(8);
+      pdf.setFont('helvetica', 'italic');
+      pdf.text(`Generated on: ${new Date().toLocaleString()}`, margin, pageHeight - 10);
+      pdf.text(`QR Code: ${scanResult || 'N/A'}`, pageWidth - margin, pageHeight - 10, { align: 'right' });
+      
+      // Save the PDF
+      const fileName = `product-report-${productData.id || 'unknown'}-${Date.now()}.pdf`;
+      pdf.save(fileName);
+      
+      toast.success('Product report downloaded successfully!');
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      toast.error('Failed to generate product report');
     }
   };
 
