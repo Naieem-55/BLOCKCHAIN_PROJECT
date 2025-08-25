@@ -62008,3 +62008,969 @@
   service: 'supply-chain-api',
   timestamp: '2025-08-25 18:58:51'
 }
+{
+  message: 'User logged in: admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:59:28'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:59:28 +0000] "POST /api/auth/login HTTP/1.1" 200 947 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:59:28'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:59:28 +0000] "GET /api/products HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:59:28'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:59:28 +0000] "POST /api/products HTTP/1.1" 400 195 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:59:28'
+}
+{
+  message: 'User logged in: admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:59:44'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:59:44 +0000] "POST /api/auth/login HTTP/1.1" 200 947 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:59:44'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:59:44 +0000] "GET /api/products HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:59:44'
+}
+{
+  message: 'Merkle root generated for product 68ac5e4000e6dcc659c9a1b9: 0x7fbe9f50c7379eed8b074e68ff679cb8a13dbdc2f586b0584b3b253659a6a37d',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:59:44'
+}
+{
+  message: 'Product created on blockchain using addMedicine method',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:59:44'
+}
+{
+  message: "Could not retrieve product ID: Parameter decoding error: Returned values aren't valid, did it run Out of Gas? You might also see this error if you are not using the correct ABI for the contract you are retrieving data from, requesting data from a block number that does not exist, or querying a node which is not fully synced.",
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:59:45'
+}
+{
+  message: 'Product created on blockchain with ID: 0x04c923e9fde6062c22b1ad8178824bd6cd788b9c766c2dba17ab0a488e777b88',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:59:45'
+}
+{
+  message: 'New product created: Final Blockchain Test 1756126784839 (FINAL-TEST-1756126784839) by admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:59:45'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:59:45 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:59:45'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:59:45 +0000] "PUT /api/lifecycle/product/68ac5e4000e6dcc659c9a1b9/stage HTTP/1.1" 200 203 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:59:45'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:59:45 +0000] "GET /api/products HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:59:45'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:00:07 +0000] "GET /api/products HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:00:07'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:00:07 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:00:07'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:00:08 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 210 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:00:08'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:00:08 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 210 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:00:08'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:00:09 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:00:09'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:00:09 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:00:09'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:00:10 +0000] "GET /api/participants?page=1&limit=100 HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:00:10'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:00:10 +0000] "GET /api/participants?page=1&limit=100 HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:00:10'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:00:11 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:00:11'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:00:11 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:00:11'
+}
+{
+  message: 'Invalid user key attempt for product creation by user: admin@supplychain.com',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:00:49'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:00:49 +0000] "POST /api/products HTTP/1.1" 403 358 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:00:49'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:01:11 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:01:11'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:01:11 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:01:11'
+}
+{
+  message: 'Merkle root generated for product 68ac5ed700e6dcc659c9a2ad: 0x838b471fcd2815e3d8d7da47917d8f64c14da11bee64c3a60f1e5d15251bf2e8',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:02:15'
+}
+{
+  message: 'Product created on blockchain using addMedicine method',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:02:15'
+}
+{
+  message: "Could not retrieve product ID: Parameter decoding error: Returned values aren't valid, did it run Out of Gas? You might also see this error if you are not using the correct ABI for the contract you are retrieving data from, requesting data from a block number that does not exist, or querying a node which is not fully synced.",
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:02:16'
+}
+{
+  message: 'Product created on blockchain with ID: 0xe809abfe5b62ecf72582a8d19218a0846c99f8024f3aae9d23e190c4e4ba80a9',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:02:16'
+}
+{
+  message: 'New product created: Phone (P4) by admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:02:16'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:02:16 +0000] "POST /api/products HTTP/1.1" 201 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:02:16'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:02:16 +0000] "GET /api/products HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:02:16'
+}
+{
+  message: 'User logged in: admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:24'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:12:24 +0000] "POST /api/auth/login HTTP/1.1" 200 947 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:24'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:24'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:24'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:24'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:24'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:24'
+}
+{
+  message: 'Merkle root generated for product 68ac613800e6dcc659c9a2d1: 0x36ed445f19e1ddd02080255d5646828957bdc57c6d603b9b35619a4936311ed4',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:24'
+}
+{
+  message: 'Product created on blockchain using addMedicine method',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:24'
+}
+{
+  message: "Could not retrieve product ID: Parameter decoding error: Returned values aren't valid, did it run Out of Gas? You might also see this error if you are not using the correct ABI for the contract you are retrieving data from, requesting data from a block number that does not exist, or querying a node which is not fully synced.",
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:24'
+}
+{
+  message: 'Product created on blockchain with ID: 0x8740d16d39c41d352603a58151d8fb458546ef66fb06b6db6b2d84294d61d1ac',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:24'
+}
+{
+  message: 'New product created: Traceable Product 1 - 1756127544794 (TRACE-BATCH-1756127544794-0) by admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:24'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:12:24 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:24'
+}
+{
+  message: 'Merkle root generated for product 68ac613800e6dcc659c9a2dc: 0xc669e1b1a99d5a18553c6ac8184789402dfad674ab7f7b905f57d4c6ad8077d6',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:24'
+}
+{
+  message: 'Product created on blockchain using addMedicine method',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:25'
+}
+{
+  message: "Could not retrieve product ID: Parameter decoding error: Returned values aren't valid, did it run Out of Gas? You might also see this error if you are not using the correct ABI for the contract you are retrieving data from, requesting data from a block number that does not exist, or querying a node which is not fully synced.",
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:25'
+}
+{
+  message: 'Product created on blockchain with ID: 0x9e8d9163e7034dedc72c0f4a764c8910ed040e113b3364e92434aa6ab886e25b',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:25'
+}
+{
+  message: 'New product created: Traceable Product 2 - 1756127544988 (TRACE-BATCH-1756127544988-1) by admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:25'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:12:25 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:25'
+}
+{
+  message: 'Merkle root generated for product 68ac613900e6dcc659c9a2e7: 0xf1795bdfd30b52cde037a444cf2e984a74e031ac8f00fc6bc406bf9ebeff1cc8',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:25'
+}
+{
+  message: 'Product created on blockchain using addMedicine method',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:25'
+}
+{
+  message: "Could not retrieve product ID: Parameter decoding error: Returned values aren't valid, did it run Out of Gas? You might also see this error if you are not using the correct ABI for the contract you are retrieving data from, requesting data from a block number that does not exist, or querying a node which is not fully synced.",
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:25'
+}
+{
+  message: 'Product created on blockchain with ID: 0x380e33ab9b92bd07d988747b57e0b1483a76815f85eeb71ce329533bdfa4e731',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:25'
+}
+{
+  message: 'New product created: Traceable Product 3 - 1756127545265 (TRACE-BATCH-1756127545265-2) by admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:25'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:12:25 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:25'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:12:25 +0000] "PUT /api/lifecycle/product/68ac613800e6dcc659c9a2d1/stage HTTP/1.1" 200 208 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:25'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:12:26 +0000] "PUT /api/lifecycle/product/68ac613800e6dcc659c9a2d1/stage HTTP/1.1" 200 204 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:26'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:12:27 +0000] "PUT /api/lifecycle/product/68ac613800e6dcc659c9a2d1/stage HTTP/1.1" 200 205 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:27'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:12:28 +0000] "PUT /api/lifecycle/product/68ac613800e6dcc659c9a2d1/stage HTTP/1.1" 200 196 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:28'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:12:29 +0000] "PUT /api/lifecycle/product/68ac613800e6dcc659c9a2d1/stage HTTP/1.1" 200 205 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:29'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:12:30 +0000] "GET /api/lifecycle/product/68ac613800e6dcc659c9a2d1/lifecycle HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:30'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:12:30 +0000] "GET /api/lifecycle/product/68ac613800e6dcc659c9a2d1/timeline HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:30'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:12:30 +0000] "GET /api/lifecycle/product/68ac613800e6dcc659c9a2dc/lifecycle HTTP/1.1" 200 476 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:30'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:12:30 +0000] "GET /api/lifecycle/product/68ac613800e6dcc659c9a2dc/timeline HTTP/1.1" 200 649 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:30'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:12:30 +0000] "GET /api/lifecycle/product/68ac613900e6dcc659c9a2e7/lifecycle HTTP/1.1" 200 476 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:30'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:12:30 +0000] "GET /api/lifecycle/product/68ac613900e6dcc659c9a2e7/timeline HTTP/1.1" 200 649 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:30'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:12:30 +0000] "GET /api/lifecycle/analytics HTTP/1.1" 404 86 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:12:30'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:13:38'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:13:38'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:13:38'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:13:39'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:13:39'
+}
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:14:42'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:14:42'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:14:42'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:14:42'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:14:42'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:14:42'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:14:42'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:14:42'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:14:42'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:14:42'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:14:42'
+}
+{
+  message: 'User logged in: admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:19:56 +0000] "POST /api/auth/login HTTP/1.1" 200 947 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'Connected to blockchain network ID: 5777',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'SupplyChainTraceability contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'AdaptiveSharding contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'IoTIntegration contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'AccessControl contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'HighEfficiencyProcessor contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'Merkle root generated for product 68ac62fcfb99e0d6a2909b6b: 0x1c7311270188d1f7cf483c4db37631f621320a1d0299be04ae1a22ea25cbc519',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'Product created on blockchain using addMedicine method',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: "Could not retrieve product ID: Parameter decoding error: Returned values aren't valid, did it run Out of Gas? You might also see this error if you are not using the correct ABI for the contract you are retrieving data from, requesting data from a block number that does not exist, or querying a node which is not fully synced.",
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'Product created on blockchain with ID: 0x8b09cac1e61028f7b6b880bb29680c63c4532ad23f1f6374fd8608ecad832a87',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'New product created: Traceable Product 1 - 1756127996388 (TRACE-BATCH-1756127996388-0) by admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:19:56 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'Merkle root generated for product 68ac62fcfb99e0d6a2909b76: 0x495ef190ba5154299b25085e61fd424b23b43fc36e21fe62ad8ac1f78d42e9b4',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'Product created on blockchain using addMedicine method',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: "Could not retrieve product ID: Parameter decoding error: Returned values aren't valid, did it run Out of Gas? You might also see this error if you are not using the correct ABI for the contract you are retrieving data from, requesting data from a block number that does not exist, or querying a node which is not fully synced.",
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'Product created on blockchain with ID: 0x8fc7edba0906a739da93ce0de146c267d7bcde38698033f26002f93d057d2f1d',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'New product created: Traceable Product 2 - 1756127996613 (TRACE-BATCH-1756127996613-1) by admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:19:56 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'Merkle root generated for product 68ac62fcfb99e0d6a2909b81: 0xacb3990f64ebb4d6c70c4e0a39b5f6a81631c8eb27c7cdbb88614f0f66451e2a',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:56'
+}
+{
+  message: 'Product created on blockchain using addMedicine method',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:57'
+}
+{
+  message: "Could not retrieve product ID: Parameter decoding error: Returned values aren't valid, did it run Out of Gas? You might also see this error if you are not using the correct ABI for the contract you are retrieving data from, requesting data from a block number that does not exist, or querying a node which is not fully synced.",
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:57'
+}
+{
+  message: 'Product created on blockchain with ID: 0x735e1ba6cf5b155a06fa9ececdf05f56351f6fd120ecdec2dcba878c4e7689ea',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:57'
+}
+{
+  message: 'New product created: Traceable Product 3 - 1756127996841 (TRACE-BATCH-1756127996841-2) by admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:57'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:19:57 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:57'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:19:57 +0000] "PUT /api/lifecycle/product/68ac62fcfb99e0d6a2909b6b/stage HTTP/1.1" 200 208 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:57'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:19:58 +0000] "PUT /api/lifecycle/product/68ac62fcfb99e0d6a2909b6b/stage HTTP/1.1" 200 204 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:58'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:19:59 +0000] "PUT /api/lifecycle/product/68ac62fcfb99e0d6a2909b6b/stage HTTP/1.1" 200 205 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:19:59'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:20:00 +0000] "PUT /api/lifecycle/product/68ac62fcfb99e0d6a2909b6b/stage HTTP/1.1" 200 196 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:20:00'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:20:01 +0000] "PUT /api/lifecycle/product/68ac62fcfb99e0d6a2909b6b/stage HTTP/1.1" 200 205 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:20:01'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:20:02 +0000] "GET /api/lifecycle/product/68ac62fcfb99e0d6a2909b6b/lifecycle HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:20:02'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:20:02 +0000] "GET /api/lifecycle/product/68ac62fcfb99e0d6a2909b6b/timeline HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:20:02'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:20:02 +0000] "GET /api/lifecycle/product/68ac62fcfb99e0d6a2909b76/lifecycle HTTP/1.1" 200 476 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:20:02'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:20:02 +0000] "GET /api/lifecycle/product/68ac62fcfb99e0d6a2909b76/timeline HTTP/1.1" 200 649 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:20:02'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:20:02 +0000] "GET /api/lifecycle/product/68ac62fcfb99e0d6a2909b81/lifecycle HTTP/1.1" 200 476 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:20:02'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:20:02 +0000] "GET /api/lifecycle/product/68ac62fcfb99e0d6a2909b81/timeline HTTP/1.1" 200 649 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:20:02'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:20:02 +0000] "GET /api/lifecycle/analytics HTTP/1.1" 404 86 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:20:02'
+}
+{
+  message: 'User logged in: admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:05'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:22:05 +0000] "POST /api/auth/login HTTP/1.1" 200 947 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:05'
+}
+{
+  message: 'Connected to blockchain network ID: 5777',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:05'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:05'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:05'
+}
+{
+  message: 'SupplyChainTraceability contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:05'
+}
+{
+  message: 'AdaptiveSharding contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:05'
+}
+{
+  message: 'IoTIntegration contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:05'
+}
+{
+  message: 'AccessControl contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:05'
+}
+{
+  message: 'HighEfficiencyProcessor contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:05'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:05'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:05'
+}
+{
+  message: 'Merkle root generated for product 68ac637dfb99e0d6a2909bec: 0xffa269ca0434d6908dd5a9985b9f12e562a0b5c87b0c4fab8c1b5775ec7fa5a7',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:05'
+}
+{
+  message: 'Product created on blockchain using addMedicine method',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:06'
+}
+{
+  message: "Could not retrieve product ID: Parameter decoding error: Returned values aren't valid, did it run Out of Gas? You might also see this error if you are not using the correct ABI for the contract you are retrieving data from, requesting data from a block number that does not exist, or querying a node which is not fully synced.",
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:06'
+}
+{
+  message: 'Product created on blockchain with ID: 0x761ff712a118385c3e399dd94738f55b7c0338f49f2ea34fefc2e77bb0006de8',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:06'
+}
+{
+  message: 'New product created: Advanced Traceable Product 1 - 1756128125877 (ADV-TRACE-1756128125877-0) by admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:06'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:22:06 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:06'
+}
+{
+  message: 'Merkle root generated for product 68ac637efb99e0d6a2909bf7: 0x50982a20dc8feddd514d3f2b21d07dc71ae6e8fbed3f15614da16f184871b7ea',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:06'
+}
+{
+  message: 'Product created on blockchain using addMedicine method',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:06'
+}
+{
+  message: "Could not retrieve product ID: Parameter decoding error: Returned values aren't valid, did it run Out of Gas? You might also see this error if you are not using the correct ABI for the contract you are retrieving data from, requesting data from a block number that does not exist, or querying a node which is not fully synced.",
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:06'
+}
+{
+  message: 'Product created on blockchain with ID: 0x5dbf6c2958d58c5691da79b59eb5a47030ca922e652d24b187dcbb4129610074',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:06'
+}
+{
+  message: 'New product created: Advanced Traceable Product 2 - 1756128126068 (ADV-TRACE-1756128126068-1) by admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:06'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:22:06 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:06'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:22:06 +0000] "PUT /api/lifecycle/product/68ac637dfb99e0d6a2909bec/stage HTTP/1.1" 200 217 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:06'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:22:06 +0000] "PUT /api/lifecycle/product/68ac637dfb99e0d6a2909bec/stage HTTP/1.1" 200 211 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:06'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:22:07 +0000] "PUT /api/lifecycle/product/68ac637dfb99e0d6a2909bec/stage HTTP/1.1" 200 212 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:07'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:22:07 +0000] "PUT /api/lifecycle/product/68ac637dfb99e0d6a2909bec/stage HTTP/1.1" 200 206 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:07'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:22:08 +0000] "PUT /api/lifecycle/product/68ac637dfb99e0d6a2909bec/stage HTTP/1.1" 200 213 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:08'
+}
+{
+  message: '::1 - - [25/Aug/2025:13:22:08 +0000] "GET /api/products?batchNumber=ADV-TRACE-1756128125877-0 HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 19:22:08'
+}

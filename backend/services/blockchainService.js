@@ -14,7 +14,7 @@ class BlockchainService {
   async initialize() {
     try {
       // Connect to blockchain network
-      const providerUrl = process.env.WEB3_PROVIDER_URL || 'http://localhost:8545';
+      const providerUrl = process.env.WEB3_PROVIDER_URL || 'http://localhost:7545';
       this.web3 = new Web3(providerUrl);
       
       // Test connection

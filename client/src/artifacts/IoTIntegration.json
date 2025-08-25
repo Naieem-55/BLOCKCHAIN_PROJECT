@@ -41143,12 +41143,12 @@
         }
       },
       "links": {},
-      "address": "0x4603B29137e91fB1a982B03C05CbBA871F8C2cbC",
-      "transactionHash": "0x5f42398747560738ba41f73112159094cb40c3b70a809a6d1e769a12757b6816"
+      "address": "0xb0bC095F74dA2569C55cB3B56ABa12EB6F40E718",
+      "transactionHash": "0x3bc26bb61906672a2b74185907061dc8bafff07d7d7f4c239448d72a75b71259"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-08-25T11:35:42.689Z",
+  "updatedAt": "2025-08-25T13:14:14.900Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "Contract for integrating IoT devices and sensor data into supply chain",
