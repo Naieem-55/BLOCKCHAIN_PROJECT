@@ -106,7 +106,7 @@ router.put('/product/:id/stage', auth, asyncHandler(async (req, res) => {
     toLocation: location || oldLocation,
     timestamp: new Date(),
     notes,
-    performedBy: req.user._id
+    performedBy: req.user.id
   });
 
   // Update blockchain if available
@@ -262,7 +262,7 @@ router.post('/product/:id/recall', auth, asyncHandler(async (req, res) => {
     stage: 8,
     timestamp: new Date(),
     notes: `Recall Reason: ${reason}. Severity: ${severity}`,
-    performedBy: req.user._id
+    performedBy: req.user.id
   });
 
   await product.save();
@@ -282,7 +282,7 @@ router.post('/product/:id/recall', auth, asyncHandler(async (req, res) => {
             stage: 8,
             timestamp: new Date(),
             notes: `Batch Recall - Reason: ${reason}`,
-            performedBy: req.user._id
+            performedBy: req.user.id
           }
         }
       }

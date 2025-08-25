@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage Update Flow Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .test-result {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .success {
+            color: green;
+            background: #e0ffe0;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+        .error {
+            color: red;
+            background: #ffe0e0;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+        .info {
+            color: blue;
+            background: #e0f0ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        .stage-progress {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .stage {
+            padding: 8px 16px;
+            margin: 0 5px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .stage.completed {
+            background: #4CAF50;
+            color: white;
+        }
+        .stage.current {
+            background: #2196F3;
+            color: white;
+        }
+        .stage.pending {
+            background: #f0f0f0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 Stage Update Flow Test</h1>
+        
+        <div>
+            <button onclick="runFullTest()">🚀 Run Complete Test</button>
+            <button onclick="testSingleStageUpdate()">➡️ Test Single Stage Update</button>
+            <button onclick="testMultipleStages()">⏭️ Test Multiple Stages</button>
+            <button onclick="resetTestProduct()" id="resetBtn" disabled>🔄 Reset Test Product</button>
+        </div>
+        
+        <div id="results"></div>
+        <div id="progress"></div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:5003/api';
+        let token = '';
+        let currentTestProduct = null;
+
+        async function login() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: 'admin@supplychain.com',
+                        password: 'Admin@123456'
+                    })
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    token = data.data.token;
+                    return true;
+                } else {
+                    throw new Error(data.message);
+                }
+            } catch (error) {
+                console.error('Login failed:', error);
+                return false;
+            }
+        }
+
+        async function getTestProduct() {
+            const response = await fetch(`${API_BASE_URL}/products`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                }
+            });
+            
+            const data = await response.json();
+            if (data.success && data.data.length > 0) {
+                // Find a product that's not at final stage
+                currentTestProduct = data.data.find(p => p.currentStage < 7) || data.data[0];
+                return currentTestProduct;
+            }
+            throw new Error('No products found');
+        }
+
+        async function getLifecycle(productId) {
+            const response = await fetch(`${API_BASE_URL}/lifecycle/product/${productId}/lifecycle`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                }
+            });
+            
+            const data = await response.json();
+            if (data.success) {
+                return data.lifecycle;
+            }
+            throw new Error('Failed to get lifecycle');
+        }
+
+        async function updateStage(productId, newStage, location, notes) {
+            const response = await fetch(`${API_BASE_URL}/lifecycle/product/${productId}/stage`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    newStage: newStage,
+                    location: location || 'Test Location',
+                    notes: notes || 'Stage update test'
+                })
+            });
+            
+            const data = await response.json();
+            if (data.success) {
+                return data;
+            }
+            throw new Error(data.message || 'Stage update failed');
+        }
+
+        function updateResults(html, append = false) {
+            const results = document.getElementById('results');
+            if (append) {
+                results.innerHTML += html;
+            } else {
+                results.innerHTML = html;
+            }
+        }
+
+        function updateProgress(lifecycle) {
+            const stageNames = [
+                'Created', 'Raw Material', 'Manufacturing', 'Quality Control', 
+                'Packaging', 'Distribution', 'Retail', 'Sold'
+            ];
+            
+            let progressHtml = '<h3>📊 Stage Progress</h3><div class="stage-progress">';
+            
+            stageNames.forEach((name, index) => {
+                let className = 'stage ';
+                if (index < lifecycle.currentStage) {
+                    className += 'completed';
+                } else if (index === lifecycle.currentStage) {
+                    className += 'current';
+                } else {
+                    className += 'pending';
+                }
+                
+                progressHtml += `<div class="${className}">${index}: ${name}</div>`;
+            });
+            
+            progressHtml += '</div>';
+            
+            progressHtml += `<div class="info">
+                <strong>Current:</strong> Stage ${lifecycle.currentStage} - ${lifecycle.stageName}<br>
+                <strong>Next Options:</strong> ${lifecycle.possibleNextStages.map(s => s.name).join(', ') || 'None (Final Stage)'}
+            </div>`;
+            
+            document.getElementById('progress').innerHTML = progressHtml;
+        }
+
+        async function runFullTest() {
+            updateResults('<div class="info">🚀 Starting complete stage update flow test...</div>');
+            
+            try {
+                // Step 1: Login
+                updateResults('<div class="test-result">Step 1: Authenticating...</div>', true);
+                const loginSuccess = await login();
+                if (!loginSuccess) {
+                    throw new Error('Login failed');
+                }
+                updateResults('<div class="success">✅ Authentication successful</div>', true);
+                
+                // Step 2: Get test product
+                updateResults('<div class="test-result">Step 2: Getting test product...</div>', true);
+                const product = await getTestProduct();
+                updateResults(`<div class="success">✅ Using product: ${product.name} (ID: ${product._id})</div>`, true);
+                
+                // Step 3: Get initial lifecycle
+                updateResults('<div class="test-result">Step 3: Fetching lifecycle status...</div>', true);
+                const lifecycle = await getLifecycle(product._id);
+                updateResults(`<div class="success">✅ Current stage: ${lifecycle.currentStage} - ${lifecycle.stageName}</div>`, true);
+                updateProgress(lifecycle);
+                
+                // Step 4: Test stage update
+                if (lifecycle.possibleNextStages.length > 0) {
+                    const nextStage = lifecycle.possibleNextStages[0];
+                    updateResults(`<div class="test-result">Step 4: Updating to ${nextStage.name}...</div>`, true);
+                    
+                    const updateResult = await updateStage(
+                        product._id, 
+                        nextStage.stage, 
+                        'Test Location - ' + nextStage.name,
+                        'Test notes: Moving to ' + nextStage.name + ' stage'
+                    );
+                    
+                    updateResults(`<div class="success">✅ Stage update successful: ${updateResult.message}</div>`, true);
+                    
+                    // Step 5: Verify update
+                    updateResults('<div class="test-result">Step 5: Verifying update...</div>', true);
+                    const updatedLifecycle = await getLifecycle(product._id);
+                    updateResults(`<div class="success">✅ Verified: Now at stage ${updatedLifecycle.currentStage} - ${updatedLifecycle.stageName}</div>`, true);
+                    updateProgress(updatedLifecycle);
+                    
+                    document.getElementById('resetBtn').disabled = false;
+                } else {
+                    updateResults('<div class="info">ℹ️ Product is at final stage - no further updates possible</div>', true);
+                }
+                
+                updateResults('<div class="success"><h3>🎉 Complete test successful!</h3></div>', true);
+                
+            } catch (error) {
+                updateResults(`<div class="error">❌ Test failed: ${error.message}</div>`, true);
+            }
+        }
+
+        async function testSingleStageUpdate() {
+            updateResults('<div class="info">➡️ Testing single stage update...</div>');
+            
+            try {
+                await login();
+                const product = await getTestProduct();
+                const lifecycle = await getLifecycle(product._id);
+                
+                updateResults(`<div class="info">Current: ${lifecycle.stageName} (${lifecycle.currentStage})</div>`, true);
+                updateProgress(lifecycle);
+                
+                if (lifecycle.possibleNextStages.length > 0) {
+                    const nextStage = lifecycle.possibleNextStages[0];
+                    const result = await updateStage(
+                        product._id,
+                        nextStage.stage,
+                        'Single Update Test Location',
+                        'Single stage update test'
+                    );
+                    
+                    updateResults(`<div class="success">✅ ${result.message}</div>`, true);
+                    
+                    // Show updated status
+                    const updated = await getLifecycle(product._id);
+                    updateResults(`<div class="success">✅ Now at: ${updated.stageName} (${updated.currentStage})</div>`, true);
+                    updateProgress(updated);
+                } else {
+                    updateResults('<div class="info">No further stages available</div>', true);
+                }
+                
+            } catch (error) {
+                updateResults(`<div class="error">❌ Error: ${error.message}</div>`, true);
+            }
+        }
+
+        async function testMultipleStages() {
+            updateResults('<div class="info">⏭️ Testing multiple stage progression...</div>');
+            
+            try {
+                await login();
+                const product = await getTestProduct();
+                let lifecycle = await getLifecycle(product._id);
+                
+                updateResults(`<div class="info">Starting from: ${lifecycle.stageName}</div>`, true);
+                
+                let updatesCount = 0;
+                while (lifecycle.possibleNextStages.length > 0 && updatesCount < 3) {
+                    const nextStage = lifecycle.possibleNextStages[0];
+                    
+                    updateResults(`<div class="test-result">Progressing to: ${nextStage.name}...</div>`, true);
+                    
+                    await updateStage(
+                        product._id,
+                        nextStage.stage,
+                        `Multi-stage Location ${updatesCount + 1}`,
+                        `Multi-stage progression ${updatesCount + 1}`
+                    );
+                    
+                    lifecycle = await getLifecycle(product._id);
+                    updateResults(`<div class="success">✅ Reached: ${lifecycle.stageName}</div>`, true);
+                    updateProgress(lifecycle);
+                    
+                    updatesCount++;
+                    
+                    // Small delay for better UX
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+                
+                updateResults(`<div class="success">🏁 Completed ${updatesCount} stage transitions</div>`, true);
+                
+            } catch (error) {
+                updateResults(`<div class="error">❌ Error: ${error.message}</div>`, true);
+            }
+        }
+
+        async function resetTestProduct() {
+            // This is just a placeholder - in a real scenario you'd need to reset the product stage
+            updateResults('<div class="info">Note: Product reset would require database modification</div>');
+            document.getElementById('resetBtn').disabled = true;
+        }
+
+        // Auto-run basic test on load
+        window.onload = () => {
+            runFullTest();
+        };
+    </script>
+</body>
+</html>

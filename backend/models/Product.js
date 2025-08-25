@@ -57,7 +57,7 @@ const productSchema = new mongoose.Schema({
   },
   createdByUserKey: {
     type: String,
-    required: true,
+    required: false, // Made optional for backward compatibility
     index: true,
   },
   currentLocation: {

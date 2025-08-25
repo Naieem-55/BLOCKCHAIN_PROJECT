@@ -27575,12 +27575,12 @@
         }
       },
       "links": {},
-      "address": "0x26ef43dB726E2758e9723C0DF679B36816f9D33b",
-      "transactionHash": "0x9081dfed188350688536372bcdc0d8fca72f8dd405fe65b75306e712114e0df5"
+      "address": "0x09c7eb5A9095c7ecb60d2B0361B4dC676f9Bda68",
+      "transactionHash": "0x52da8b508c3aff710bd53ab6f2fd2770993c687a2fb54891c704ee61494e3055"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-08-25T07:30:44.974Z",
+  "updatedAt": "2025-08-25T11:35:43.820Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "Implements high-efficiency batch processing and optimization techniques",
