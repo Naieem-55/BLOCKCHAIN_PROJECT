@@ -757,34 +757,37 @@ router.get('/qr/:qrCode', catchAsync(async (req, res) => {
     throw new AppError('QR code is required', 400);
   }
 
-  // Find product by QR code
-  let product = await Product.findOne({ 
-    qrCode: decodeURIComponent(qrCode),
-    isActive: true 
-  })
-    .populate('currentOwner', 'name email company location')
-    .populate('createdBy', 'name email company')
-    .populate('history.performedBy', 'name email role')
-    .populate('qualityChecks.inspector', 'name email');
+  const decodedQrCode = decodeURIComponent(qrCode);
+  let product = null;
 
-  if (!product) {
-    // If not found by qrCode field, try to find by name or ID (for backward compatibility)
-    product = await Product.findOne({
-      $or: [
-        { name: { $regex: qrCode, $options: 'i' } },
-        { batchNumber: qrCode },
-        { _id: qrCode.match(/^[0-9a-fA-F]{24}$/) ? qrCode : null }
-      ],
-      isActive: true
-    })
+  // First, try to find by ID (since QR codes now contain product ID)
+  if (decodedQrCode.match(/^[0-9a-fA-F]{24}$/)) {
+    product = await Product.findById(decodedQrCode)
       .populate('currentOwner', 'name email company location')
+      .populate('manufacturer', 'name email company')
       .populate('createdBy', 'name email company')
       .populate('history.performedBy', 'name email role')
       .populate('qualityChecks.inspector', 'name email');
-    
-    if (!product) {
-      throw new AppError('Product not found for the provided QR code', 404);
-    }
+  }
+
+  // If not found by ID, try other methods
+  if (!product) {
+    product = await Product.findOne({
+      $or: [
+        { qrCode: decodedQrCode },
+        { batchNumber: decodedQrCode },
+        { name: { $regex: decodedQrCode, $options: 'i' } }
+      ]
+    })
+      .populate('currentOwner', 'name email company location')
+      .populate('manufacturer', 'name email company')
+      .populate('createdBy', 'name email company')
+      .populate('history.performedBy', 'name email role')
+      .populate('qualityChecks.inspector', 'name email');
+  }
+  
+  if (!product) {
+    throw new AppError('Product not found for the provided QR code', 404);
   }
 
   // Calculate quality score based on recent quality checks
@@ -815,9 +818,9 @@ router.get('/qr/:qrCode', catchAsync(async (req, res) => {
     description: product.description,
     category: product.category,
     batchNumber: product.batchNumber,
-    qrCode: product.qrCode || qrCode,
-    currentStage: product.currentStage,
-    stageName: stageNames[product.currentStage] || 'Unknown',
+    qrCode: product._id.toString(), // Use product ID as QR code
+    currentStage: product.currentStage || product.stage || 0,
+    stageName: stageNames[product.currentStage || product.stage || 0] || 'Unknown',
     status: product.status,
     qualityScore: qualityScore,
     currentOwner: product.currentOwner?.name || 'Unknown',
@@ -825,6 +828,7 @@ router.get('/qr/:qrCode', catchAsync(async (req, res) => {
     expiryDate: product.expiryDate,
     createdAt: product.createdAt,
     createdBy: product.createdBy,
+    manufacturer: product.manufacturer,
     lastUpdated: product.updatedAt,
     
     // Traceability events from history

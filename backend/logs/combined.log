@@ -63994,3 +63994,81 @@
   service: 'supply-chain-api',
   timestamp: '2025-08-25 22:32:45'
 }
+{
+  message: '::1 - - [25/Aug/2025:16:40:21 +0000] "GET /api/products/qr/QR-PROD-12345 HTTP/1.1" 404 357 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 22:40:21'
+}
+{
+  message: '::1 - - [25/Aug/2025:16:42:10 +0000] "GET /api/products/qr/QR-PROD-12345 HTTP/1.1" 404 357 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 22:42:10'
+}
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 23:11:24'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 23:11:24'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 23:11:24'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 23:11:24'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 23:11:24'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 23:11:24'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 23:11:24'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 23:11:24'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 23:11:24'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 23:11:24'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 23:11:24'
+}

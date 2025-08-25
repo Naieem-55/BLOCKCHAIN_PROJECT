@@ -44,6 +44,8 @@ import {
   Security,
   Speed,
   CloudSync,
+  Download,
+  Close as CloseIcon,
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
@@ -51,6 +53,7 @@ import toast from 'react-hot-toast';
 import api, { apiRequest } from '../services/api';
 import productService from '../services/productService';
 import ImmutabilityTest from '../components/ImmutabilityTest';
+import QRCode from 'react-qr-code';
 
 interface Product {
   _id: string;
@@ -118,7 +121,9 @@ const Products: React.FC = () => {
   const [openDetailDialog, setOpenDetailDialog] = useState(false);
   const [openImmutabilityDialog, setOpenImmutabilityDialog] = useState(false);
   const [openSearchDialog, setOpenSearchDialog] = useState(false);
+  const [openQRDialog, setOpenQRDialog] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
+  const [selectedQRProduct, setSelectedQRProduct] = useState<Product | null>(null);
   const [fetchingDetails, setFetchingDetails] = useState(false);
   const [searchProductId, setSearchProductId] = useState('');
   const [searchError, setSearchError] = useState('');
@@ -333,6 +338,39 @@ const Products: React.FC = () => {
       setSearchLoading(false);
       setFetchingDetails(false);
     }
+  };
+
+  const handleShowQRCode = (product: Product) => {
+    setSelectedQRProduct(product);
+    setOpenQRDialog(true);
+  };
+
+  const handleDownloadQRCode = () => {
+    if (!selectedQRProduct) return;
+    
+    const svg = document.getElementById('product-qr-code');
+    if (svg) {
+      const svgData = new XMLSerializer().serializeToString(svg);
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      
+      img.onload = () => {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx?.drawImage(img, 0, 0);
+        const pngFile = canvas.toDataURL('image/png');
+        
+        const downloadLink = document.createElement('a');
+        downloadLink.download = `QR-${selectedQRProduct.batchNumber}-${selectedQRProduct._id}.png`;
+        downloadLink.href = pngFile;
+        downloadLink.click();
+      };
+      
+      img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
+    }
+    
+    toast.success('QR Code downloaded successfully!');
   };
 
   const handleDeleteProduct = async (id: string) => {
@@ -648,6 +686,14 @@ const Products: React.FC = () => {
                         title="View Product Details with Blockchain Traceability"
                       >
                         <Visibility />
+                      </IconButton>
+                      <IconButton
+                        size="small"
+                        onClick={() => handleShowQRCode(product)}
+                        color="secondary"
+                        title="Generate QR Code"
+                      >
+                        <QrCode />
                       </IconButton>
                       <IconButton
                         size="small"
@@ -1030,6 +1076,95 @@ const Products: React.FC = () => {
               View Product Details
             </Button>
           )}
+        </DialogActions>
+      </Dialog>
+
+      {/* QR Code Dialog */}
+      <Dialog 
+        open={openQRDialog} 
+        onClose={() => setOpenQRDialog(false)} 
+        maxWidth="sm" 
+        fullWidth
+      >
+        <DialogTitle>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <QrCode color="primary" />
+              Product QR Code
+            </Box>
+            <IconButton onClick={() => setOpenQRDialog(false)} size="small">
+              <CloseIcon />
+            </IconButton>
+          </Box>
+        </DialogTitle>
+        <DialogContent>
+          {selectedQRProduct && (
+            <Box>
+              <Box sx={{ textAlign: 'center', mb: 3 }}>
+                <Box sx={{ backgroundColor: 'white', p: 3, borderRadius: 2, display: 'inline-block' }}>
+                  <QRCode
+                    id="product-qr-code"
+                    value={selectedQRProduct._id}
+                    size={256}
+                    style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                    viewBox={`0 0 256 256`}
+                  />
+                </Box>
+              </Box>
+              
+              <Card sx={{ mb: 2 }}>
+                <CardContent>
+                  <Typography variant="h6" gutterBottom>
+                    Product Information
+                  </Typography>
+                  <Grid container spacing={2}>
+                    <Grid item xs={6}>
+                      <Typography variant="body2" color="textSecondary">Product Name</Typography>
+                      <Typography variant="body1">{selectedQRProduct.name}</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Typography variant="body2" color="textSecondary">Batch Number</Typography>
+                      <Typography variant="body1">{selectedQRProduct.batchNumber}</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Typography variant="body2" color="textSecondary">Category</Typography>
+                      <Typography variant="body1">{selectedQRProduct.category}</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Typography variant="body2" color="textSecondary">Status</Typography>
+                      <Chip 
+                        label={selectedQRProduct.status} 
+                        color={getStatusColor(selectedQRProduct.status) as any}
+                        size="small"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Typography variant="body2" color="textSecondary">Product ID</Typography>
+                      <Typography variant="body1" sx={{ fontFamily: 'monospace', fontSize: '0.9em' }}>
+                        {selectedQRProduct._id}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </CardContent>
+              </Card>
+              
+              <Alert severity="info">
+                This QR code contains the Product ID. When scanned, it will display complete product information including traceability history.
+              </Alert>
+            </Box>
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setOpenQRDialog(false)}>
+            Close
+          </Button>
+          <Button 
+            onClick={handleDownloadQRCode} 
+            variant="contained"
+            startIcon={<Download />}
+          >
+            Download QR Code
+          </Button>
         </DialogActions>
       </Dialog>
 

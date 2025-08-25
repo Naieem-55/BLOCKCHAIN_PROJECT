@@ -253,12 +253,39 @@ const QRScanner: React.FC = () => {
       // Make API call to real backend
       let productData: any = null;
       try {
+        // QR code contains product ID, use it to fetch product details
         const response = await apiRequest.get(`/products/qr/${encodeURIComponent(qrData)}`);
         productData = response;
       } catch (apiError) {
-        // Fallback to mock data if API fails
-        console.warn('API lookup failed, falling back to mock data:', apiError);
-        productData = mockProductData[qrData as keyof typeof mockProductData];
+        // If the QR endpoint fails, try to search by ID directly
+        try {
+          console.log('Trying to search product by ID:', qrData);
+          const searchResponse = await apiRequest.post<any>('/products/search', {
+            identifier: qrData
+          });
+          if (searchResponse) {
+            // Format the response to match expected structure
+            productData = {
+              id: searchResponse._id,
+              name: searchResponse.name,
+              category: searchResponse.category,
+              batchNumber: searchResponse.batchNumber,
+              producer: searchResponse.manufacturer?.name || 'Unknown',
+              currentOwner: searchResponse.currentOwner?.name || 'Unknown',
+              currentLocation: searchResponse.currentLocation || 'Unknown',
+              status: searchResponse.status,
+              qualityScore: 95.8, // Default score
+              createdAt: searchResponse.createdAt,
+              lastUpdated: searchResponse.updatedAt,
+              expiryDate: searchResponse.expiryDate,
+              traceabilityEvents: searchResponse.history || []
+            };
+          }
+        } catch (searchError) {
+          // Final fallback to mock data if API fails
+          console.warn('Product search failed, falling back to mock data:', searchError);
+          productData = mockProductData[qrData as keyof typeof mockProductData];
+        }
       }
       
       if (productData && productData.name) {
