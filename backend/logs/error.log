@@ -42970,3 +42970,15 @@
   service: 'supply-chain-api',
   timestamp: '2025-08-25 17:34:32'
 }
+{
+  service: 'supply-chain-api',
+  level: 'error',
+  message: 'Failed to create product on blockchain:',
+  timestamp: '2025-08-25 18:56:27'
+}
+{
+  message: "Create product failed: Parameter decoding error: Returned values aren't valid, did it run Out of Gas? You might also see this error if you are not using the correct ABI for the contract you are retrieving data from, requesting data from a block number that does not exist, or querying a node which is not fully synced.",
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:07'
+}

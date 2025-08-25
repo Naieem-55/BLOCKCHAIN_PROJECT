@@ -126,7 +126,11 @@ router.put('/product/:id/stage', auth, asyncHandler(async (req, res) => {
       if (functionName && blockchainService.contract.methods[functionName]) {
         const tx = await blockchainService.contract.methods[functionName](
           product.blockchain.productId
-        ).send({ from: blockchainService.accounts[0], gas: 300000 });
+        ).send({ 
+          from: blockchainService.accounts[0], 
+          gas: 300000,
+          gasPrice: '20000000000' // 20 Gwei - avoid EIP-1559 issues
+        });
         
         blockchainTx = tx.transactionHash;
         product.history[product.history.length - 1].transactionHash = blockchainTx;

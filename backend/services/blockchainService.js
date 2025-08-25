@@ -83,6 +83,8 @@ class BlockchainService {
       // Set aliases for backward compatibility
       if (this.contracts.supplychain) {
         this.contract = this.contracts.supplychain;
+        // Map supplychain to traceability for compatibility
+        this.contracts.traceability = this.contracts.supplychain;
       }
       if (this.contracts.supplychaintraceability) {
         this.contracts.traceability = this.contracts.supplychaintraceability;
@@ -109,8 +111,9 @@ class BlockchainService {
   // Product Management Functions with Adaptive Sharding
   async createProduct(productData, fromAccount) {
     try {
-      if (!this.contracts.traceability) {
-        logger.warn('Traceability contract not available, creating product without blockchain');
+      // Use supplychain contract (the actual loaded contract)
+      if (!this.contracts.supplychain) {
+        logger.warn('SupplyChain contract not available, creating product without blockchain');
         return { productId: null, transactionHash: null, blockchainEnabled: false };
       }
 
@@ -129,30 +132,34 @@ class BlockchainService {
         logger.warn(`Sharding not available: ${shardError.message}`);
       }
 
-      // Create product on blockchain
-      // Try with userKey first (new contract), fallback to without (old contract)
+      // Create product on blockchain using addMedicine method (SupplyChain contract)
       let result;
       try {
-        if (userKey) {
-          result = await this.contracts.traceability.methods
-            .createProductWithKey(name, description, category, batchNumber, expiryDate || 0, initialLocation, userKey)
-            .send({ from: fromAccount, gas: 500000 });
-          logger.info('Product created with user key validation');
-        } else {
-          result = await this.contracts.traceability.methods
-            .createProduct(name, description, category, batchNumber, expiryDate || 0, initialLocation)
-            .send({ from: fromAccount, gas: 500000 });
-          logger.info('Product created without user key');
-        }
+        // SupplyChain contract uses addMedicine method
+        result = await this.contracts.supplychain.methods
+          .addMedicine(name, description)
+          .send({ 
+            from: fromAccount, 
+            gas: 500000,
+            gasPrice: '20000000000' // 20 Gwei - avoid EIP-1559 issues
+          });
+        logger.info('Product created on blockchain using addMedicine method');
       } catch (err) {
-        // Fallback to basic createProduct if createProductWithKey doesn't exist
-        logger.warn('Falling back to createProduct without userKey');
-        result = await this.contracts.traceability.methods
-          .createProduct(name, description, category, batchNumber, expiryDate || 0, initialLocation)
-          .send({ from: fromAccount, gas: 500000 });
+        logger.error('Failed to create product on blockchain:', err.message);
+        return { productId: null, transactionHash: null, blockchainEnabled: false, error: err.message };
       }
       
-      const productId = result.events.ProductCreated.returnValues.productId;
+      // Get product ID from transaction receipt
+      // SupplyChain contract increments medicineCtr, so we get the latest ID
+      let productId;
+      try {
+        productId = await this.contracts.supplychain.methods.medicineCtr().call();
+        logger.info(`Retrieved product ID from blockchain: ${productId}`);
+      } catch (idError) {
+        logger.warn(`Could not retrieve product ID: ${idError.message}`);
+        // Use transaction hash as fallback identifier
+        productId = result.transactionHash;
+      }
 
       // Update shard metrics if sharding is available
       if (this.contracts.sharding && optimalShard) {

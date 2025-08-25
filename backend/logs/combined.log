@@ -61000,3 +61000,1011 @@
   service: 'supply-chain-api',
   timestamp: '2025-08-25 18:29:16'
 }
+{
+  message: 'User logged in: admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:29:48'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:29:48 +0000] "POST /api/auth/login HTTP/1.1" 200 947 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:29:48'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:29:48 +0000] "GET /api/products HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:29:48'
+}
+{
+  message: 'QR Code lookup successful for: P2 -> Peccil',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:29:48'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:29:48 +0000] "GET /api/products/qr/P2 HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:29:48'
+}
+{
+  message: 'QR Code lookup successful for: Peccil -> Peccil',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:29:48'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:29:48 +0000] "GET /api/products/qr/Peccil HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:29:48'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:29:48 +0000] "GET /api/products/qr/INVALID-QR-12345 HTTP/1.1" 404 358 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:29:48'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:29:48 +0000] "GET /api/products/qr/QR-PROD-12345 HTTP/1.1" 404 358 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:29:48'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:33:09 +0000] "GET /api/products/qr/QR-PROD-12345 HTTP/1.1" 404 358 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:33:09'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:33:21 +0000] "GET /api/products/qr/QR-PROD-12345 HTTP/1.1" 404 358 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:33:21'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:33:24 +0000] "GET /api/products/qr/QR-PROD-12345 HTTP/1.1" 404 358 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:33:24'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:47:42 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:47:42'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:47:42 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:47:42'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:47:43 +0000] "GET /api/participants?page=1&limit=100 HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:47:43'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:47:43 +0000] "GET /api/participants?page=1&limit=100 HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:47:43'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:51:11'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:51:11'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:51:11'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:51:11'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:51:11'
+}
+{
+  message: 'User logged in: admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:51:55'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:51:55 +0000] "POST /api/auth/login HTTP/1.1" 200 947 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:51:55'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:51:55 +0000] "GET /api/products HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:51:55'
+}
+{
+  message: 'User logged in: admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:53:45'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:53:45 +0000] "POST /api/auth/login HTTP/1.1" 200 947 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:53:45'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:53:45 +0000] "GET /api/products HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:53:45'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:53:45'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:53:45'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:53:45'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:53:45'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:53:45'
+}
+{
+  message: 'Merkle root generated for product 68ac5cd9b561407b5c8414c9: 0xf45759dbd8da707505a48c5c16fea55dfe11b34895262de6cff00ab7b6f1c2cf',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:53:45'
+}
+{
+  message: 'Traceability contract not available, creating product without blockchain',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:53:45'
+}
+{
+  message: 'New product created: Blockchain Sync Test 1756126425516 (SYNC-TEST-1756126425516) by admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:53:45'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:53:45 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:53:45'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:53:45 +0000] "GET /api/lifecycle/product/68aafdd5f0a93066051ce211/lifecycle HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:53:45'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:54:39'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:54:39'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:54:39'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:54:39'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:54:39'
+}
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:54:52'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:54:52'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:54:52'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:54:52'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:54:52'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:54:52'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:54:52'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:54:52'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:54:52'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:54:52'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:54:52'
+}
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:07'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:07'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:07'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:07'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:07'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:07'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:07'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:07'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:07'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:07'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:07'
+}
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:27'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:27'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:27'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:27'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:27'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:27'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:27'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:27'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:27'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:27'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:55:27'
+}
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:17'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:17'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:17'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:17'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:17'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:17'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:17'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:17'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:17'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:17'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:17'
+}
+{
+  message: 'User logged in: admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:26'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:56:26 +0000] "POST /api/auth/login HTTP/1.1" 200 947 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:26'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:56:26 +0000] "GET /api/products HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:26'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:27'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:27'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:27'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:27'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:27'
+}
+{
+  message: 'Merkle root generated for product 68ac5d7b3f61ede30b7078ae: 0x8a625e218e85a0b0dc910a9421fdcb425ba6ccfc5ae28737124b5b4090fbf909',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:27'
+}
+{
+  service: 'supply-chain-api',
+  level: 'error',
+  message: 'Failed to create product on blockchain:',
+  timestamp: '2025-08-25 18:56:27'
+}
+{
+  message: 'New product created: Blockchain Sync Test 1756126587174 (SYNC-TEST-1756126587174) by admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:27'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:56:27 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:27'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:56:27 +0000] "GET /api/lifecycle/product/68ac5cd9b561407b5c8414c9/lifecycle HTTP/1.1" 200 476 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:27'
+}
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:39'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:39'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:39'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:39'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:39'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:39'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:39'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:39'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:40'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:40'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:40'
+}
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:59'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:59'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:59'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:59'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:59'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:59'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:59'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:59'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:59'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:59'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:56:59'
+}
+{
+  message: 'User logged in: admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:07'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:57:07 +0000] "POST /api/auth/login HTTP/1.1" 200 947 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:07'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:57:07 +0000] "GET /api/products HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:07'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:07'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:07'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:07'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:07'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:07'
+}
+{
+  message: 'Merkle root generated for product 68ac5da38d9260bd1516f3cf: 0x901973d8f5c510159b442c58858889146cd2eadd72ab84089060582ff1e4ed57',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:07'
+}
+{
+  message: 'Product created on blockchain using addMedicine method',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:07'
+}
+{
+  message: "Create product failed: Parameter decoding error: Returned values aren't valid, did it run Out of Gas? You might also see this error if you are not using the correct ABI for the contract you are retrieving data from, requesting data from a block number that does not exist, or querying a node which is not fully synced.",
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:07'
+}
+{
+  message: 'New product created: Blockchain Sync Test 1756126627607 (SYNC-TEST-1756126627607) by admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:07'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:57:07 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:07'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:57:07 +0000] "GET /api/lifecycle/product/68ac5d7b3f61ede30b7078ae/lifecycle HTTP/1.1" 200 476 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:07'
+}
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:20'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:20'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:20'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:20'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:20'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:20'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:20'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:20'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:20'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:21'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:57:21'
+}
+{
+  message: 'User logged in: admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:11'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:58:11 +0000] "POST /api/auth/login HTTP/1.1" 200 947 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:11'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:58:11 +0000] "GET /api/products HTTP/1.1" 200 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:11'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:11'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:11'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:11'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:11'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:11'
+}
+{
+  message: 'Merkle root generated for product 68ac5de300e6dcc659c9a15e: 0xd277d2591e4994909e72026124f509e0ec481c310fe907d52d924d1c7fca352f',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:11'
+}
+{
+  message: 'Product created on blockchain using addMedicine method',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:11'
+}
+{
+  message: "Could not retrieve product ID: Parameter decoding error: Returned values aren't valid, did it run Out of Gas? You might also see this error if you are not using the correct ABI for the contract you are retrieving data from, requesting data from a block number that does not exist, or querying a node which is not fully synced.",
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:11'
+}
+{
+  message: 'Product created on blockchain with ID: 0x661df9370edf43ec412433998bdc62c918bac6ab6c753fa00843fc6e4b03a656',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:11'
+}
+{
+  message: 'New product created: Blockchain Sync Test 1756126691700 (SYNC-TEST-1756126691700) by admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:11'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:58:11 +0000] "POST /api/products HTTP/1.1" 201 - "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:11'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:58:11 +0000] "GET /api/lifecycle/product/68ac5da38d9260bd1516f3cf/lifecycle HTTP/1.1" 200 476 "-" "axios/1.5.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:11'
+}
+{
+  message: 'User logged in: admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:25'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:58:25 +0000] "POST /api/auth/login HTTP/1.1" 200 947 "-" "curl/8.14.1"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:25'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:58:26 +0000] "POST /api/lifecycle/product/66cd9de6a13e7d0d4c3e1f7e/stage HTTP/1.1" 404 115 "-" "curl/8.14.1"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:26'
+}
+{
+  message: 'User logged in: admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:31'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:58:31 +0000] "POST /api/auth/login HTTP/1.1" 200 947 "-" "curl/8.14.1"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:31'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:58:38 +0000] "GET /api/products HTTP/1.1" 200 12029 "-" "curl/8.14.1"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:38'
+}
+{
+  message: '::1 - - [25/Aug/2025:12:58:51 +0000] "PUT /api/lifecycle/product/68ac5de300e6dcc659c9a15e/stage HTTP/1.1" 200 209 "-" "curl/8.14.1"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-25 18:58:51'
+}
