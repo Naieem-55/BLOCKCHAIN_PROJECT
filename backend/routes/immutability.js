@@ -334,7 +334,9 @@ router.post('/browser-test', auth, [
         description: 'Testing price alteration detection',
         tamperedData: {
           ...productData,
-          price: parseFloat(productData.price || 0) * 2
+          price: productData.price !== undefined 
+            ? parseFloat(productData.price) * 2 + 100
+            : 100
         }
       },
       {
@@ -350,7 +352,9 @@ router.post('/browser-test', auth, [
         description: 'Testing quantity manipulation detection',
         tamperedData: {
           ...productData,
-          quantity: parseInt(productData.quantity || 0) * 5
+          quantity: productData.quantity !== undefined
+            ? parseInt(productData.quantity) * 5 + 10
+            : 50
         }
       },
       {
