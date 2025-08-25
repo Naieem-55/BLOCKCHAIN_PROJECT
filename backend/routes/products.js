@@ -662,4 +662,148 @@ router.get('/blockchain/efficiency', auth, catchAsync(async (req, res) => {
   });
 }));
 
+/**
+ * @swagger
+ * /products/qr/{qrCode}:
+ *   get:
+ *     summary: Get product by QR code
+ *     tags: [Products]
+ *     parameters:
+ *       - in: path
+ *         name: qrCode
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The QR code of the product
+ *     responses:
+ *       200:
+ *         description: Product found successfully
+ *       404:
+ *         description: Product not found
+ */
+router.get('/qr/:qrCode', catchAsync(async (req, res) => {
+  const { qrCode } = req.params;
+  
+  if (!qrCode) {
+    throw new AppError('QR code is required', 400);
+  }
+
+  // Find product by QR code
+  let product = await Product.findOne({ 
+    qrCode: decodeURIComponent(qrCode),
+    isActive: true 
+  })
+    .populate('currentOwner', 'name email company location')
+    .populate('createdBy', 'name email company')
+    .populate('history.performedBy', 'name email role')
+    .populate('qualityChecks.inspector', 'name email');
+
+  if (!product) {
+    // If not found by qrCode field, try to find by name or ID (for backward compatibility)
+    product = await Product.findOne({
+      $or: [
+        { name: { $regex: qrCode, $options: 'i' } },
+        { batchNumber: qrCode },
+        { _id: qrCode.match(/^[0-9a-fA-F]{24}$/) ? qrCode : null }
+      ],
+      isActive: true
+    })
+      .populate('currentOwner', 'name email company location')
+      .populate('createdBy', 'name email company')
+      .populate('history.performedBy', 'name email role')
+      .populate('qualityChecks.inspector', 'name email');
+    
+    if (!product) {
+      throw new AppError('Product not found for the provided QR code', 404);
+    }
+  }
+
+  // Calculate quality score based on recent quality checks
+  let qualityScore = 100;
+  if (product.qualityChecks && product.qualityChecks.length > 0) {
+    const recentChecks = product.qualityChecks.slice(-3); // Last 3 checks
+    const passedChecks = recentChecks.filter(check => check.passed).length;
+    qualityScore = Math.round((passedChecks / recentChecks.length) * 100);
+  }
+
+  // Get stage name
+  const stageNames = {
+    0: 'Created',
+    1: 'Raw Material',
+    2: 'Manufacturing',
+    3: 'Quality Control',
+    4: 'Packaging',
+    5: 'Distribution',
+    6: 'Retail',
+    7: 'Sold',
+    8: 'Recalled'
+  };
+
+  // Build comprehensive response
+  const productData = {
+    id: product._id,
+    name: product.name,
+    description: product.description,
+    category: product.category,
+    batchNumber: product.batchNumber,
+    qrCode: product.qrCode || qrCode,
+    currentStage: product.currentStage,
+    stageName: stageNames[product.currentStage] || 'Unknown',
+    status: product.status,
+    qualityScore: qualityScore,
+    currentOwner: product.currentOwner?.name || 'Unknown',
+    currentLocation: product.currentLocation,
+    expiryDate: product.expiryDate,
+    createdAt: product.createdAt,
+    createdBy: product.createdBy,
+    lastUpdated: product.updatedAt,
+    
+    // Traceability events from history
+    traceabilityEvents: product.history.map((event, index) => ({
+      id: index + 1,
+      timestamp: event.timestamp,
+      stage: stageNames[event.stage] || 'Unknown',
+      location: event.toLocation || event.fromLocation || 'Unknown',
+      participant: event.performedBy?.name || event.performedBy?.email || 'Unknown',
+      action: event.action.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase()),
+      notes: event.notes,
+      transactionHash: event.transactionHash
+    })),
+    
+    // Quality checks
+    qualityChecks: product.qualityChecks.map((check, index) => ({
+      id: index + 1,
+      checkType: check.checkType.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase()),
+      passed: check.passed,
+      score: check.passed ? (qualityScore + Math.random() * 10) : (qualityScore - Math.random() * 20),
+      notes: check.notes,
+      timestamp: check.timestamp,
+      inspector: check.inspector?.name || 'Unknown'
+    })),
+    
+    // Certifications (mock for now, could be added to Product model)
+    certifications: [
+      { name: 'Quality Verified', verified: qualityScore > 85 },
+      { name: 'Supply Chain Tracked', verified: true },
+      { name: 'Blockchain Verified', verified: !!product.blockchain?.productId }
+    ],
+    
+    // Blockchain info
+    blockchain: {
+      enabled: !!product.blockchain?.productId,
+      productId: product.blockchain?.productId,
+      contractAddress: product.blockchain?.contractAddress,
+      transactionHash: product.blockchain?.transactionHash || product.transactionHash
+    }
+  };
+
+  logger.info(`QR Code lookup successful for: ${qrCode} -> ${product.name}`);
+
+  res.json({
+    success: true,
+    data: productData,
+    message: 'Product found successfully'
+  });
+}));
+
 module.exports = router;

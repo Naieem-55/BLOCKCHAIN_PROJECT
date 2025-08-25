@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Manual Input Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .test-result {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .success {
+            color: green;
+            background: #e0ffe0;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+        .error {
+            color: red;
+            background: #ffe0e0;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+        .warning {
+            color: orange;
+            background: #fff5e0;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 300px;
+            margin: 5px;
+        }
+        .qr-test-area {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .product-details {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .trace-event {
+            background: white;
+            padding: 10px;
+            margin: 5px 0;
+            border-left: 4px solid #2196F3;
+            border-radius: 0 5px 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 QR Manual Input Test</h1>
+        <p>Testing the QR Scanner manual input functionality to see if it actually works with the mock data.</p>
+        
+        <div class="qr-test-area">
+            <h3>Manual QR Code Input Simulation</h3>
+            
+            <div>
+                <label>Enter QR Code:</label><br>
+                <input type="text" id="qrInput" placeholder="Enter QR code here" value="">
+                <button onclick="lookupProduct()">Lookup Product</button>
+                <button onclick="useSampleQR()">Use Sample QR</button>
+                <button onclick="testInvalidQR()">Test Invalid QR</button>
+            </div>
+            
+            <div style="margin: 10px 0;">
+                <strong>Available Test QR Codes:</strong>
+                <ul>
+                    <li><code>QR-PROD-12345</code> - Organic Apples (Should work)</li>
+                    <li><code>INVALID-QR-123</code> - Invalid QR (Should fail)</li>
+                    <li><code>EMPTY-QR</code> - Empty string test</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="results"></div>
+        <div id="productDetails"></div>
+    </div>
+
+    <script>
+        // Mock data from the QRScanner component
+        const mockProductData = {
+            'QR-PROD-12345': {
+                id: 'PROD-12345',
+                name: 'Organic Apples - Premium Grade',
+                category: 'Fresh Produce',
+                batchNumber: 'BATCH-2024-0845',
+                producer: 'Green Valley Orchards',
+                currentOwner: 'Fresh Market Distribution',
+                currentLocation: 'Distribution Center - Portland',
+                status: 'In Transit',
+                qualityScore: 95.8,
+                createdAt: '2024-08-15T10:30:00Z',
+                lastUpdated: '2024-08-22T09:15:00Z',
+                expiryDate: '2024-08-30T23:59:59Z',
+                traceabilityEvents: [
+                    {
+                        id: '1',
+                        timestamp: '2024-08-15T10:30:00Z',
+                        stage: 'Production',
+                        location: 'Green Valley Farm - Orchard Section 3',
+                        participant: 'Green Valley Orchards',
+                        action: 'Harvested',
+                        temperature: 18.5,
+                        humidity: 65,
+                        qualityCheck: { passed: true, score: 98.2 },
+                    },
+                    {
+                        id: '2',
+                        timestamp: '2024-08-16T08:00:00Z',
+                        stage: 'Processing',
+                        location: 'Green Valley Processing Facility',
+                        participant: 'Green Valley Orchards',
+                        action: 'Quality inspection and packaging',
+                        temperature: 4.2,
+                        humidity: 85,
+                        qualityCheck: { passed: true, score: 96.5 },
+                    },
+                    {
+                        id: '3',
+                        timestamp: '2024-08-18T14:20:00Z',
+                        stage: 'Distribution',
+                        location: 'Regional Distribution Hub - Seattle',
+                        participant: 'Northwest Logistics',
+                        action: 'Transferred to distributor',
+                        temperature: 3.8,
+                        humidity: 82,
+                        qualityCheck: { passed: true, score: 95.8 },
+                    },
+                    {
+                        id: '4',
+                        timestamp: '2024-08-20T11:45:00Z',
+                        stage: 'Distribution',
+                        location: 'Distribution Center - Portland',
+                        participant: 'Fresh Market Distribution',
+                        action: 'Received and stored',
+                        temperature: 4.1,
+                        humidity: 80,
+                        qualityCheck: { passed: true, score: 95.8 },
+                    },
+                ],
+                certifications: [
+                    { name: 'USDA Organic', verified: true },
+                    { name: 'Non-GMO Verified', verified: true },
+                    { name: 'Fair Trade Certified', verified: true },
+                ],
+                blockchain: {
+                    contractAddress: '0xprod12345567890abcdef1234567890abcdef123',
+                    transactionHash: '0xtxhash12345567890abcdef1234567890abcdef123',
+                },
+            },
+        };
+
+        let scanHistory = [];
+
+        function updateResults(message, type = 'info') {
+            const results = document.getElementById('results');
+            const className = type === 'success' ? 'success' : type === 'error' ? 'error' : type === 'warning' ? 'warning' : 'test-result';
+            results.innerHTML += `<div class="${className}">${message}</div>`;
+        }
+
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+            document.getElementById('productDetails').innerHTML = '';
+        }
+
+        function useSampleQR() {
+            document.getElementById('qrInput').value = 'QR-PROD-12345';
+        }
+
+        function testInvalidQR() {
+            document.getElementById('qrInput').value = 'INVALID-QR-123';
+        }
+
+        function lookupProduct() {
+            clearResults();
+            const qrInput = document.getElementById('qrInput').value.trim();
+            
+            updateResults(`🔍 Testing QR Manual Input with: "${qrInput}"`);
+            
+            if (!qrInput) {
+                updateResults('❌ Empty QR code input', 'error');
+                return;
+            }
+            
+            try {
+                updateResults('📡 Simulating product lookup...');
+                
+                // Simulate the lookup logic from QRScanner.tsx
+                const mockProduct = mockProductData[qrInput];
+                
+                if (mockProduct) {
+                    updateResults(`✅ Product found successfully!`, 'success');
+                    
+                    // Add to scan history simulation
+                    const historyItem = {
+                        id: Date.now().toString(),
+                        qrCode: qrInput,
+                        productName: mockProduct.name,
+                        timestamp: new Date().toISOString(),
+                        status: 'success',
+                    };
+                    
+                    scanHistory = [historyItem, ...scanHistory.slice(0, 9)];
+                    updateResults(`📝 Added to scan history (${scanHistory.length} total scans)`, 'success');
+                    
+                    // Display product details
+                    displayProductDetails(mockProduct, qrInput);
+                    
+                } else {
+                    updateResults('❌ Product not found or invalid QR code', 'error');
+                    
+                    // Add to scan history as failed
+                    const historyItem = {
+                        id: Date.now().toString(),
+                        qrCode: qrInput,
+                        productName: 'Unknown Product',
+                        timestamp: new Date().toISOString(),
+                        status: 'invalid',
+                    };
+                    
+                    scanHistory = [historyItem, ...scanHistory.slice(0, 9)];
+                    updateResults(`📝 Added to scan history as failed lookup`, 'warning');
+                }
+                
+            } catch (error) {
+                updateResults(`❌ Error during lookup: ${error.message}`, 'error');
+                
+                const historyItem = {
+                    id: Date.now().toString(),
+                    qrCode: qrInput,
+                    productName: 'Lookup Failed',
+                    timestamp: new Date().toISOString(),
+                    status: 'failed',
+                };
+                
+                scanHistory = [historyItem, ...scanHistory.slice(0, 9)];
+            }
+        }
+
+        function displayProductDetails(productData, qrCode) {
+            const detailsDiv = document.getElementById('productDetails');
+            
+            let html = `
+                <div class="product-details">
+                    <h3>📦 Product Details</h3>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+                        <div style="flex: 1;">
+                            <h4>${productData.name}</h4>
+                            <p><strong>Product ID:</strong> ${productData.id}</p>
+                            <p><strong>Category:</strong> ${productData.category}</p>
+                            <p><strong>Batch Number:</strong> ${productData.batchNumber}</p>
+                            <p><strong>Producer:</strong> ${productData.producer}</p>
+                            <p><strong>Current Owner:</strong> ${productData.currentOwner}</p>
+                            <p><strong>Current Location:</strong> ${productData.currentLocation}</p>
+                            <p><strong>Status:</strong> <span style="color: ${getStatusColor(productData.status)};">${productData.status}</span></p>
+                            <p><strong>Quality Score:</strong> <span style="color: ${getQualityColor(productData.qualityScore)};">${productData.qualityScore}%</span></p>
+                            <p><strong>Created:</strong> ${new Date(productData.createdAt).toLocaleString()}</p>
+                            <p><strong>Last Updated:</strong> ${new Date(productData.lastUpdated).toLocaleString()}</p>
+                            <p><strong>Expires:</strong> ${new Date(productData.expiryDate).toLocaleString()}</p>
+                        </div>
+                        
+                        <div style="text-align: center; padding: 20px;">
+                            <div style="border: 2px solid #ccc; padding: 10px; background: white;">
+                                <strong>QR Code:</strong><br>
+                                ${qrCode}<br>
+                                <small>(In real app, this would show actual QR image)</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>🏆 Certifications</h4>
+                    <div style="margin-bottom: 20px;">
+            `;
+            
+            productData.certifications.forEach(cert => {
+                const color = cert.verified ? 'green' : 'gray';
+                const icon = cert.verified ? '✅' : '❓';
+                html += `<span style="background: ${color}20; color: ${color}; padding: 5px 10px; margin: 2px; border-radius: 15px; font-size: 12px;">${icon} ${cert.name}</span> `;
+            });
+            
+            html += `
+                    </div>
+                    
+                    <h4>📊 Traceability History</h4>
+                    <div>
+            `;
+            
+            productData.traceabilityEvents.forEach((event, index) => {
+                const qualityColor = getQualityColor(event.qualityCheck.score);
+                html += `
+                    <div class="trace-event">
+                        <div style="display: flex; justify-content: space-between; align-items: start;">
+                            <div style="flex: 1;">
+                                <strong>${event.stage}</strong> - ${event.action}<br>
+                                <small>📍 ${event.location}</small><br>
+                                <small>🏢 ${event.participant}</small><br>
+                                <small>📅 ${new Date(event.timestamp).toLocaleString()}</small>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 12px;">
+                                    🌡️ ${event.temperature}°C<br>
+                                    💧 ${event.humidity}%<br>
+                                    <span style="color: ${qualityColor};">
+                                        ${event.qualityCheck.passed ? '✅' : '❌'} Quality: ${event.qualityCheck.score}%
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `
+                    </div>
+                    
+                    <h4>⛓️ Blockchain Information</h4>
+                    <p><strong>Contract Address:</strong> <code>${productData.blockchain.contractAddress}</code></p>
+                    <p><strong>Transaction Hash:</strong> <code>${productData.blockchain.transactionHash}</code></p>
+                </div>
+            `;
+            
+            detailsDiv.innerHTML = html;
+        }
+
+        function getStatusColor(status) {
+            switch (status.toLowerCase()) {
+                case 'active':
+                case 'delivered':
+                case 'completed': return 'green';
+                case 'in transit':
+                case 'processing': return 'orange';
+                case 'expired':
+                case 'recalled': return 'red';
+                default: return 'black';
+            }
+        }
+
+        function getQualityColor(score) {
+            if (score >= 95) return 'green';
+            if (score >= 85) return 'orange';
+            return 'red';
+        }
+
+        // Auto-test on page load
+        window.onload = () => {
+            updateResults('🚀 QR Manual Input Test Page Loaded');
+            updateResults('ℹ️ This page simulates the QRScanner manual input functionality');
+            updateResults('💡 Try entering "QR-PROD-12345" to test a valid product lookup');
+        };
+    </script>
+</body>
+</html>

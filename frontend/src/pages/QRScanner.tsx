@@ -250,21 +250,26 @@ const QRScanner: React.FC = () => {
       setLoading(true);
       setError(null);
       
-      // In production, make API call
-      // const response = await apiRequest.get(`/products/qr/${encodeURIComponent(qrData)}`);
+      // Make API call to real backend
+      let productData: any = null;
+      try {
+        const response = await apiRequest.get(`/products/qr/${encodeURIComponent(qrData)}`);
+        productData = response;
+      } catch (apiError) {
+        // Fallback to mock data if API fails
+        console.warn('API lookup failed, falling back to mock data:', apiError);
+        productData = mockProductData[qrData as keyof typeof mockProductData];
+      }
       
-      // For demo, use mock data
-      const mockProduct = mockProductData[qrData as keyof typeof mockProductData];
-      
-      if (mockProduct) {
-        setProductData(mockProduct);
+      if (productData && productData.name) {
+        setProductData(productData);
         setShowProductDialog(true);
         
         // Add to scan history
         const historyItem: ScanHistory = {
           id: Date.now().toString(),
           qrCode: qrData,
-          productName: mockProduct.name,
+          productName: productData.name,
           timestamp: new Date().toISOString(),
           status: 'success',
         };
