@@ -37,6 +37,75 @@ const router = express.Router();
  *       200:
  *         description: Products retrieved successfully
  */
+/**
+ * @swagger
+ * /products/search:
+ *   post:
+ *     summary: Search product by ID or Batch Number
+ *     tags: [Products]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - identifier
+ *             properties:
+ *               identifier:
+ *                 type: string
+ *                 description: Product ID or Batch Number
+ *     responses:
+ *       200:
+ *         description: Product found successfully
+ *       404:
+ *         description: Product not found
+ */
+router.post('/search', auth, [
+  body('identifier').trim().isLength({ min: 1 }).withMessage('Identifier is required'),
+], catchAsync(async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      success: false,
+      message: 'Validation failed',
+      errors: errors.array(),
+    });
+  }
+
+  const { identifier } = req.body;
+  
+  let product = null;
+  
+  // Try to find by ID first (if it's a valid MongoDB ObjectId)
+  if (identifier.match(/^[0-9a-fA-F]{24}$/)) {
+    product = await Product.findById(identifier)
+      .populate('currentOwner', 'name company email')
+      .populate('manufacturer', 'name company email')
+      .populate('createdBy', 'name company');
+  }
+  
+  // If not found by ID, try to find by batch number
+  if (!product) {
+    product = await Product.findOne({ batchNumber: identifier })
+      .populate('currentOwner', 'name company email')
+      .populate('manufacturer', 'name company email')
+      .populate('createdBy', 'name company');
+  }
+
+  if (!product) {
+    throw new AppError('Product not found with the provided identifier', 404);
+  }
+
+  res.json({
+    success: true,
+    data: product,
+    searchedBy: product._id.toString() === identifier ? 'id' : 'batchNumber'
+  });
+}));
+
 router.get('/', auth, [
   query('page').optional().isInt({ min: 1 }),
   query('limit').optional().isInt({ min: 1, max: 100 }),

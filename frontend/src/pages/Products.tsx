@@ -80,6 +80,16 @@ interface Product {
   createdAt: string;
   updatedAt: string;
   qrCode?: string;
+  history?: Array<{
+    action: string;
+    fromOwner?: string;
+    toOwner?: string;
+    fromLocation?: string;
+    toLocation?: string;
+    timestamp: string;
+    performedBy?: string;
+    notes?: string;
+  }>;
 }
 
 interface ProductTraceData {
@@ -107,8 +117,12 @@ const Products: React.FC = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [openDetailDialog, setOpenDetailDialog] = useState(false);
   const [openImmutabilityDialog, setOpenImmutabilityDialog] = useState(false);
+  const [openSearchDialog, setOpenSearchDialog] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
   const [fetchingDetails, setFetchingDetails] = useState(false);
+  const [searchProductId, setSearchProductId] = useState('');
+  const [searchError, setSearchError] = useState('');
+  const [searchLoading, setSearchLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -265,6 +279,62 @@ const Products: React.FC = () => {
     }
   };
 
+  const handleSearchProduct = async () => {
+    if (!searchProductId.trim()) {
+      setSearchError('Please enter a Product ID or Batch Number');
+      return;
+    }
+
+    try {
+      setSearchLoading(true);
+      setSearchError('');
+      setFetchingDetails(true);
+      
+      // Search for product by ID or Batch Number using POST endpoint
+      const response = await apiRequest.post<Product>('/products/search', {
+        identifier: searchProductId.trim()
+      });
+      
+      if (response) {
+        // Product found - fetch full trace data
+        try {
+          const traceData = await productService.getProductTrace(response._id);
+          setSelectedProduct(traceData);
+        } catch (traceError) {
+          // If trace fails, still show product with basic data
+          console.log('Could not fetch trace data, showing basic product info');
+          setSelectedProduct({
+            product: response,
+            databaseHistory: response.history || [],
+            blockchain: {
+              enabled: !!response.blockchainId,
+              productId: response.blockchainId || null,
+              transactionHash: response.transactionHash || null,
+              shardId: response.shardId || null,
+              history: null,
+              isAuthentic: null
+            }
+          });
+        }
+        
+        setOpenSearchDialog(false);
+        setOpenDetailDialog(true);
+        setSearchProductId('');
+        toast.success(`Product found!`);
+      }
+    } catch (error: any) {
+      console.error('Error searching for product:', error);
+      if (error.statusCode === 404 || error.message?.includes('not found')) {
+        setSearchError('Product not found. Please check the Product ID or Batch Number.');
+      } else {
+        setSearchError(error.message || 'Failed to search product');
+      }
+    } finally {
+      setSearchLoading(false);
+      setFetchingDetails(false);
+    }
+  };
+
   const handleDeleteProduct = async (id: string) => {
     if (!window.confirm('Are you sure you want to delete this product?')) {
       return;
@@ -334,13 +404,22 @@ const Products: React.FC = () => {
         <Typography variant="h4" fontWeight="bold">
           Products
         </Typography>
-        <Button
-          variant="contained"
-          startIcon={<Add />}
-          onClick={() => setOpenDialog(true)}
-        >
-          Add Product
-        </Button>
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <Button
+            variant="outlined"
+            startIcon={<Search />}
+            onClick={() => setOpenSearchDialog(true)}
+          >
+            Search Product
+          </Button>
+          <Button
+            variant="contained"
+            startIcon={<Add />}
+            onClick={() => setOpenDialog(true)}
+          >
+            Add Product
+          </Button>
+        </Box>
       </Box>
 
       {/* Stats Cards */}
@@ -531,6 +610,9 @@ const Products: React.FC = () => {
                       </Typography>
                       <Typography variant="caption" color="textSecondary">
                         {product.description.substring(0, 50)}...
+                      </Typography>
+                      <Typography variant="caption" color="textSecondary" sx={{ display: 'block', mt: 0.5 }}>
+                        ID: {product._id} | Batch: {product.batchNumber}
                       </Typography>
                     </TableCell>
                     <TableCell>{product.category}</TableCell>
@@ -948,6 +1030,82 @@ const Products: React.FC = () => {
               View Product Details
             </Button>
           )}
+        </DialogActions>
+      </Dialog>
+
+      {/* Search Product Dialog */}
+      <Dialog 
+        open={openSearchDialog} 
+        onClose={() => {
+          setOpenSearchDialog(false);
+          setSearchProductId('');
+          setSearchError('');
+        }} 
+        maxWidth="sm" 
+        fullWidth
+      >
+        <DialogTitle>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Search color="primary" />
+            Search Product
+          </Box>
+        </DialogTitle>
+        <DialogContent>
+          <Box sx={{ mt: 2 }}>
+            <TextField
+              fullWidth
+              label="Product ID or Batch Number"
+              placeholder="Enter Product ID or Batch Number"
+              value={searchProductId}
+              onChange={(e) => {
+                setSearchProductId(e.target.value);
+                setSearchError('');
+              }}
+              error={!!searchError}
+              helperText={searchError || 'Enter either the Product ID or Batch Number to search'}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Search />
+                  </InputAdornment>
+                ),
+              }}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  handleSearchProduct();
+                }
+              }}
+            />
+            <Alert severity="info" sx={{ mt: 2 }}>
+              <Typography variant="body2" component="div">
+                You can search by:
+                <ul style={{ margin: '8px 0', paddingLeft: '20px' }}>
+                  <li><strong>Product ID:</strong> The unique MongoDB ID (e.g., 507f1f77bcf86cd799439011)</li>
+                  <li><strong>Batch Number:</strong> The batch number assigned during product creation</li>
+                </ul>
+                Both identifiers can be found in the products table.
+              </Typography>
+            </Alert>
+          </Box>
+        </DialogContent>
+        <DialogActions>
+          <Button 
+            onClick={() => {
+              setOpenSearchDialog(false);
+              setSearchProductId('');
+              setSearchError('');
+            }}
+          >
+            Cancel
+          </Button>
+          <Button 
+            onClick={handleSearchProduct} 
+            variant="contained"
+            disabled={searchLoading || !searchProductId.trim()}
+            startIcon={searchLoading ? null : <Search />}
+          >
+            {searchLoading ? 'Searching...' : 'Search'}
+          </Button>
         </DialogActions>
       </Dialog>
     </Box>
