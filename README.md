@@ -1,4 +1,4 @@
-# High-Efficiency Blockchain-Based Supply Chain Traceability
+# High-Efficiency Blockchain-Based Supply Chain Traceability with Adaptive Sharding
 
 A comprehensive blockchain-based supply chain traceability system that provides end-to-end visibility, real-time IoT integration, and advanced analytics for supply chain management.
 
