@@ -32,6 +32,17 @@ export interface ApiError {
   code?: string;
   statusCode?: number;
   details?: any;
+  validationErrors?: ValidationError[];
+  timestamp?: string;
+  path?: string;
+}
+
+export interface ValidationError {
+  field?: string;
+  message?: string;
+  msg?: string;
+  param?: string;
+  value?: any;
 }
 
 export interface NotificationData {

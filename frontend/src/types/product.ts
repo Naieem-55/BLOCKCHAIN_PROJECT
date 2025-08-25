@@ -125,6 +125,7 @@ export interface ProductFormData {
   description: string;
   category: ProductCategory;
   batchNumber: string;
+  userKey: string;
   expiryDate: string;
   initialLocation: string;
   images?: File[];

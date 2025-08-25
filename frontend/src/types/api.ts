@@ -16,6 +16,13 @@ export interface ApiError {
   statusCode: number;
   path?: string;
   timestamp: string;
+  validationErrors?: Array<{
+    field?: string;
+    message?: string;
+    msg?: string;
+    param?: string;
+    value?: any;
+  }>;
 }
 
 // Pagination and filtering

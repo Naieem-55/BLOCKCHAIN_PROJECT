@@ -7,6 +7,7 @@ export interface User extends BaseEntity {
   company?: string;
   location?: string;
   walletAddress?: string;
+  userKey: string;
   avatar?: string;
   isActive: boolean;
   lastLogin?: string;

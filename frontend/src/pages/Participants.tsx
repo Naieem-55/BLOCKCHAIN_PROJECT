@@ -55,6 +55,9 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { apiRequest } from '../services/api';
+import { useAppSelector } from '../store';
+import { selectUser } from '../store/authSlice';
+import { participantService } from '../services/participantService';
 import { Participant, ParticipantFormData, UserRole, VerificationLevel } from '../types';
 import toast from 'react-hot-toast';
 
@@ -156,6 +159,7 @@ const mockParticipants: Participant[] = [
 ];
 
 const Participants: React.FC = () => {
+  const currentUser = useAppSelector(selectUser);
   const [participants, setParticipants] = useState<Participant[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -167,6 +171,9 @@ const Participants: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedParticipant, setSelectedParticipant] = useState<Participant | null>(null);
 
+  // Check if current user is admin
+  const isAdmin = currentUser?.role === 'admin';
+
   const {
     control,
     handleSubmit,
@@ -177,7 +184,7 @@ const Participants: React.FC = () => {
     defaultValues: {
       name: '',
       email: '',
-      role: UserRole.PRODUCER,
+      role: UserRole.SUPPLIER,
       company: '',
       location: '',
       contactPerson: '',
@@ -209,91 +216,157 @@ const Participants: React.FC = () => {
   const loadParticipants = async () => {
     try {
       setLoading(true);
-      // For development, use mock data
-      // In production, replace with: const data = await apiRequest.get<Participant[]>('/participants');
-      setTimeout(() => {
-        setParticipants(mockParticipants);
-        setLoading(false);
-      }, 1000);
-    } catch (error) {
+      const response = await participantService.getParticipants({
+        page: 1,
+        limit: 100 // Get all participants for now
+      });
+      
+      console.log('Raw participants response:', response);
+      console.log('Response type:', typeof response);
+      console.log('Is array?', Array.isArray(response));
+      
+      // The response is already unwrapped by apiRequest.get, so it's the array directly
+      const users = Array.isArray(response) ? response : (response as any).data || [];
+      
+      console.log('Users to transform:', users);
+      console.log('Number of users:', users.length);
+      
+      // Transform User data to Participant format
+      const transformedParticipants: Participant[] = users.map((user: any) => ({
+        id: user._id,
+        name: user.name,
+        role: user.role,
+        email: user.email,
+        company: user.company || '',
+        location: user.location || '',
+        contactPerson: user.name, // Use name as contact person for now
+        phone: user.phone || '',
+        website: '', // Not in User model
+        walletAddress: user.walletAddress || '',
+        isActive: user.isActive,
+        isVerified: user.isVerified || false,
+        verificationDate: user.verificationDate,
+        certifications: [], // Not in User model
+        blockchain: {
+          participantId: 0,
+          contractAddress: '',
+          registrationHash: ''
+        },
+        stats: {
+          totalProducts: 0,
+          activeProducts: 0,
+          completedTransfers: 0,
+          qualityScore: 0,
+          avgResponseTime: 0,
+          lastActivity: user.updatedAt,
+          monthlyVolume: 0,
+          complianceRate: 0,
+        },
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt,
+      }));
+      
+      console.log('Transformed participants:', transformedParticipants);
+      console.log('Setting', transformedParticipants.length, 'participants');
+      setParticipants(transformedParticipants);
+    } catch (error: any) {
       console.error('Error loading participants:', error);
-      toast.error('Failed to load participants');
+      // If API fails, show user-friendly message
+      if (error.status === 401) {
+        toast.error('Please login to view participants');
+      } else if (error.status === 403) {
+        toast.error('You do not have permission to view participants');
+      } else {
+        toast.error('Failed to load participants');
+      }
+      setParticipants([]); // Set empty array instead of mock data
+    } finally {
       setLoading(false);
     }
   };
 
   const handleCreateOrUpdate = async (data: ParticipantFormData) => {
+    // Check admin permission
+    if (!isAdmin) {
+      toast.error('Only administrators can create or update participants');
+      return;
+    }
+
     try {
+      // Use the original form data which has all required fields including contactPerson
       if (editingParticipant) {
         // Update participant
-        // await apiRequest.put(`/participants/${editingParticipant.id}`, data);
-        const updatedParticipant = {
-          ...editingParticipant,
-          ...data,
-          updatedAt: new Date().toISOString(),
-        };
-        setParticipants(prev => prev.map(p => p.id === editingParticipant.id ? updatedParticipant : p));
+        await participantService.updateParticipant(editingParticipant.id, data);
         toast.success('Participant updated successfully');
       } else {
         // Create new participant
-        // const newParticipant = await apiRequest.post<Participant>('/participants', data);
-        const newParticipant: Participant = {
-          id: Date.now().toString(),
-          ...data,
-          walletAddress: data.walletAddress || `0x${Math.random().toString(16).substr(2, 40)}`,
-          isActive: true,
-          isVerified: false,
-          certifications: [],
-          blockchain: {
-            participantId: participants.length + 1,
-            contractAddress: `0x${Math.random().toString(16).substr(2, 40)}`,
-            registrationHash: `0x${Math.random().toString(16).substr(2, 40)}`,
-          },
-          stats: {
-            totalProducts: 0,
-            activeProducts: 0,
-            completedTransfers: 0,
-            qualityScore: 0,
-            avgResponseTime: 0,
-            lastActivity: new Date().toISOString(),
-            monthlyVolume: 0,
-            complianceRate: 0,
-          },
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-        };
-        setParticipants(prev => [...prev, newParticipant]);
+        await participantService.createParticipant(data);
         toast.success('Participant created successfully');
       }
       
       handleCloseDialog();
-    } catch (error) {
+      // Refresh participants list to get updated data from server
+      await loadParticipants();
+    } catch (error: any) {
       console.error('Error saving participant:', error);
-      toast.error('Failed to save participant');
+      console.error('Error details:', error.details);
+      console.error('Validation errors:', error.validationErrors);
+      
+      if (error.status === 403) {
+        toast.error('Only administrators can create participants');
+      } else if (error.status === 400) {
+        // Show detailed validation errors
+        if (error.validationErrors && error.validationErrors.length > 0) {
+          const errorMessages = error.validationErrors.map((err: any) => err.msg || err.message || err.field).join(', ');
+          toast.error(`Validation failed: ${errorMessages}`);
+        } else {
+          toast.error(error.message || 'Invalid participant data');
+        }
+      } else {
+        toast.error('Failed to save participant');
+      }
     }
   };
 
   const handleInvite = async (data: any) => {
+    if (!isAdmin) {
+      toast.error('Only administrators can send invitations');
+      return;
+    }
+
     try {
-      // await apiRequest.post('/participants/invite', data);
+      await participantService.inviteParticipant(data);
       toast.success(`Invitation sent to ${data.email}`);
       setOpenInviteDialog(false);
       resetInvite();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error sending invitation:', error);
-      toast.error('Failed to send invitation');
+      if (error.status === 403) {
+        toast.error('Only administrators can send invitations');
+      } else {
+        toast.error('Failed to send invitation');
+      }
     }
   };
 
   const handleDelete = async (participant: Participant) => {
+    if (!isAdmin) {
+      toast.error('Only administrators can delete participants');
+      return;
+    }
+
     if (window.confirm(`Are you sure you want to delete ${participant.name}?`)) {
       try {
-        // await apiRequest.delete(`/participants/${participant.id}`);
+        await participantService.deleteParticipant(participant.id);
         setParticipants(prev => prev.filter(p => p.id !== participant.id));
         toast.success('Participant deleted successfully');
-      } catch (error) {
+      } catch (error: any) {
         console.error('Error deleting participant:', error);
-        toast.error('Failed to delete participant');
+        if (error.status === 403) {
+          toast.error('Only administrators can delete participants');
+        } else {
+          toast.error('Failed to delete participant');
+        }
       }
     }
   };
@@ -389,20 +462,29 @@ const Participants: React.FC = () => {
           Supply Chain Participants
         </Typography>
         <Box sx={{ display: 'flex', gap: 2 }}>
-          <Button
-            variant="outlined"
-            startIcon={<InviteIcon />}
-            onClick={() => setOpenInviteDialog(true)}
-          >
-            Invite Participant
-          </Button>
-          <Button
-            variant="contained"
-            startIcon={<AddIcon />}
-            onClick={() => setOpenDialog(true)}
-          >
-            Add Participant
-          </Button>
+          {isAdmin && (
+            <>
+              <Button
+                variant="outlined"
+                startIcon={<InviteIcon />}
+                onClick={() => setOpenInviteDialog(true)}
+              >
+                Invite Participant
+              </Button>
+              <Button
+                variant="contained"
+                startIcon={<AddIcon />}
+                onClick={() => setOpenDialog(true)}
+              >
+                Add Participant
+              </Button>
+            </>
+          )}
+          {!isAdmin && (
+            <Alert severity="info" sx={{ flex: 1, maxWidth: 400 }}>
+              Only administrators can manage participants
+            </Alert>
+          )}
         </Box>
       </Box>
 
@@ -563,9 +645,15 @@ const Participants: React.FC = () => {
                     </TableCell>
                     
                     <TableCell align="center">
-                      <IconButton onClick={(e) => handleMenuClick(e, participant)}>
-                        <MoreVertIcon />
-                      </IconButton>
+                      {isAdmin ? (
+                        <IconButton onClick={(e) => handleMenuClick(e, participant)}>
+                          <MoreVertIcon />
+                        </IconButton>
+                      ) : (
+                        <Typography variant="body2" color="text.secondary">
+                          View Only
+                        </Typography>
+                      )}
                     </TableCell>
                   </TableRow>
                 ))
@@ -581,14 +669,16 @@ const Participants: React.FC = () => {
         open={Boolean(anchorEl)}
         onClose={handleMenuClose}
       >
-        <MenuItem onClick={() => { handleEdit(selectedParticipant!); handleMenuClose(); }}>
-          <ListItemIcon>
-            <EditIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText>Edit</ListItemText>
-        </MenuItem>
+        {isAdmin && (
+          <MenuItem onClick={() => { handleEdit(selectedParticipant!); handleMenuClose(); }}>
+            <ListItemIcon>
+              <EditIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText>Edit</ListItemText>
+          </MenuItem>
+        )}
         
-        {selectedParticipant && !selectedParticipant.isVerified && (
+        {isAdmin && selectedParticipant && !selectedParticipant.isVerified && (
           <MenuItem onClick={() => { handleVerify(selectedParticipant!); handleMenuClose(); }}>
             <ListItemIcon>
               <VerifiedIcon fontSize="small" />
@@ -604,12 +694,14 @@ const Participants: React.FC = () => {
           <ListItemText>View Analytics</ListItemText>
         </MenuItem>
         
-        <MenuItem onClick={() => { handleDelete(selectedParticipant!); handleMenuClose(); }}>
-          <ListItemIcon>
-            <DeleteIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText>Delete</ListItemText>
-        </MenuItem>
+        {isAdmin && (
+          <MenuItem onClick={() => { handleDelete(selectedParticipant!); handleMenuClose(); }}>
+            <ListItemIcon>
+              <DeleteIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText>Delete</ListItemText>
+          </MenuItem>
+        )}
       </Menu>
 
       {/* Create/Edit Participant Dialog */}

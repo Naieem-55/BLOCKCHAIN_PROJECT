@@ -33,13 +33,14 @@ module.exports = async function(deployer, network, accounts) {
       await shardingInstance.createShard("product", traceabilityInstance.address, 5000, { from: accounts[0] });
       console.log("✅ Product shard created");
       
-      // Grant roles and register participants
+      // Grant roles and register participants (using backward compatibility)
       const PARTICIPANT_ROLE = await processorInstance.PARTICIPANT_ROLE();
       const roles = ["Supplier", "Manufacturer", "Distributor", "Retailer", "Auditor"];
       const locations = ["New York", "Chicago", "Los Angeles", "Houston", "Phoenix"];
       
       for (let i = 1; i < 6; i++) {
         await processorInstance.grantRole(PARTICIPANT_ROLE, accounts[i], { from: accounts[0] });
+        // Use old signature - contract will auto-generate user keys for backward compatibility
         await traceabilityInstance.registerParticipant(
           accounts[i],
           `${roles[i-1]} Company`,
@@ -47,8 +48,9 @@ module.exports = async function(deployer, network, accounts) {
           locations[i-1],
           { from: accounts[0] }
         );
+        console.log(`✅ ${roles[i-1]} registered with auto-generated user key`);
       }
-      console.log("✅ Participant roles granted and registered");
+      console.log("✅ All participant roles granted and registered");
       
       console.log(`
 📊 Deployment Summary:

@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
   role: {
     type: String,
     required: true,
-    enum: ['admin', 'supplier', 'manufacturer', 'distributor', 'retailer', 'auditor', 'consumer'],
+    enum: ['admin', 'supplier', 'manufacturer', 'distributor', 'retailer', 'auditor', 'consumer', 'producer'],
     default: 'consumer',
   },
   company: {
@@ -40,6 +40,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true,
     lowercase: true,
+  },
+  userKey: {
+    type: String,
+    required: true,
+    unique: true,
+    index: true,
   },
   avatar: {
     type: String, // URL to avatar image

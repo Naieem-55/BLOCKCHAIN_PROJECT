@@ -82,6 +82,7 @@ contract SupplyChainTraceability is AccessControl {
         string name;
         string role;
         string location;
+        string userKey;
         bool isActive;
         uint256 registeredAt;
     }
@@ -99,6 +100,7 @@ contract SupplyChainTraceability is AccessControl {
     mapping(address => uint256[]) public participantProducts;
     mapping(uint256 => Participant) public participants;
     mapping(address => uint256) public addressToParticipantId;
+    mapping(string => uint256) public userKeyToParticipantId;
     mapping(string => uint256[]) public batchProducts; // batch number to product IDs
     
     // Gas optimization: Pack multiple operations
@@ -145,7 +147,37 @@ contract SupplyChainTraceability is AccessControl {
     }
     
     /**
-     * @dev Register a new supply chain participant
+     * @dev Register a new supply chain participant with user key
+     */
+    function registerParticipant(
+        address _participantAddress,
+        string memory _name,
+        string memory _role,
+        string memory _location,
+        string memory _userKey
+    ) external onlyRole(ADMIN_ROLE) {
+        require(addressToParticipantId[_participantAddress] == 0, "Participant already registered");
+        require(userKeyToParticipantId[_userKey] == 0, "User key already exists");
+        require(bytes(_userKey).length > 0, "User key cannot be empty");
+        
+        participantCounter++;
+        participants[participantCounter] = Participant({
+            participantAddress: _participantAddress,
+            name: _name,
+            role: _role,
+            location: _location,
+            userKey: _userKey,
+            isActive: true,
+            registeredAt: block.timestamp
+        });
+        
+        addressToParticipantId[_participantAddress] = participantCounter;
+        userKeyToParticipantId[_userKey] = participantCounter;
+        grantRole(PARTICIPANT_ROLE, _participantAddress);
+    }
+    
+    /**
+     * @dev Register a new supply chain participant (backward compatibility - generates user key)
      */
     function registerParticipant(
         address _participantAddress,
@@ -155,31 +187,76 @@ contract SupplyChainTraceability is AccessControl {
     ) external onlyRole(ADMIN_ROLE) {
         require(addressToParticipantId[_participantAddress] == 0, "Participant already registered");
         
+        // Generate a simple user key for backward compatibility
+        string memory generatedUserKey = string(abi.encodePacked(
+            "USR_", 
+            _role, 
+            "_", 
+            uint2str(block.timestamp), 
+            "_", 
+            uint2str(participantCounter + 1)
+        ));
+        
+        require(userKeyToParticipantId[generatedUserKey] == 0, "Generated user key already exists");
+        
         participantCounter++;
         participants[participantCounter] = Participant({
             participantAddress: _participantAddress,
             name: _name,
             role: _role,
             location: _location,
+            userKey: generatedUserKey,
             isActive: true,
             registeredAt: block.timestamp
         });
         
         addressToParticipantId[_participantAddress] = participantCounter;
+        userKeyToParticipantId[generatedUserKey] = participantCounter;
         grantRole(PARTICIPANT_ROLE, _participantAddress);
     }
     
     /**
-     * @dev Create a new product in the supply chain with enhanced validation
+     * @dev Convert uint to string (helper function)
      */
-    function createProduct(
+    function uint2str(uint256 _i) internal pure returns (string memory str) {
+        if (_i == 0) {
+            return "0";
+        }
+        uint256 j = _i;
+        uint256 length;
+        while (j != 0) {
+            length++;
+            j /= 10;
+        }
+        bytes memory bstr = new bytes(length);
+        uint256 k = length;
+        j = _i;
+        while (j != 0) {
+            bstr[--k] = bytes1(uint8(48 + j % 10));
+            j /= 10;
+        }
+        str = string(bstr);
+    }
+    
+    /**
+     * @dev Create a new product in the supply chain with user key validation
+     */
+    function createProductWithKey(
         string memory _name,
         string memory _description,
         string memory _category,
         string memory _batchNumber,
         uint256 _expiryDate,
-        string memory _initialLocation
-    ) external onlyRole(PARTICIPANT_ROLE) onlyActiveParticipant returns (uint256) {
+        string memory _initialLocation,
+        string memory _userKey
+    ) public onlyRole(PARTICIPANT_ROLE) onlyActiveParticipant returns (uint256) {
+        // Validate user key matches the sender
+        uint256 participantId = addressToParticipantId[msg.sender];
+        require(
+            keccak256(bytes(participants[participantId].userKey)) == keccak256(bytes(_userKey)),
+            "Invalid user key"
+        );
+        
         // Additional input validation
         require(bytes(_name).length > 0, "Product name cannot be empty");
         require(bytes(_batchNumber).length > 0, "Batch number cannot be empty");
@@ -224,6 +301,33 @@ contract SupplyChainTraceability is AccessControl {
         emit ProductCreated(productCounter, _name, msg.sender, block.timestamp);
         
         return productCounter;
+    }
+    
+    /**
+     * @dev Create a new product (backward compatibility without user key)
+     */
+    function createProduct(
+        string memory _name,
+        string memory _description,
+        string memory _category,
+        string memory _batchNumber,
+        uint256 _expiryDate,
+        string memory _initialLocation
+    ) external onlyRole(PARTICIPANT_ROLE) onlyActiveParticipant returns (uint256) {
+        // Get user key from storage
+        uint256 participantId = addressToParticipantId[msg.sender];
+        string memory userKey = participants[participantId].userKey;
+        
+        // Call the new function with stored user key
+        return createProductWithKey(
+            _name,
+            _description,
+            _category,
+            _batchNumber,
+            _expiryDate,
+            _initialLocation,
+            userKey
+        );
     }
     
     /**

@@ -55,6 +55,11 @@ const productSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
+  createdByUserKey: {
+    type: String,
+    required: true,
+    index: true,
+  },
   currentLocation: {
     type: String,
     required: true,

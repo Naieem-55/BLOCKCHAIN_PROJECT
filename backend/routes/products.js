@@ -1,6 +1,7 @@
 const express = require('express');
 const { body, validationResult, query } = require('express-validator');
 const Product = require('../models/Product');
+const User = require('../models/User');
 const { auth } = require('../middleware/auth');
 const { catchAsync, AppError } = require('../middleware/errorHandler');
 const logger = require('../utils/logger');
@@ -166,6 +167,7 @@ router.post('/', auth, [
   body('description').trim().isLength({ min: 3 }).withMessage('Description must be at least 3 characters'),
   body('category').trim().isLength({ min: 2 }).withMessage('Category must be at least 2 characters'),
   body('batchNumber').trim().isLength({ min: 1 }).withMessage('Batch number is required'),
+  body('userKey').trim().isLength({ min: 1 }).withMessage('User key is required for product creation'),
   body('expiryDate').optional().isISO8601().withMessage('Invalid expiry date format'),
   body('initialLocation').optional().trim(),
 ], catchAsync(async (req, res) => {
@@ -184,10 +186,22 @@ router.post('/', auth, [
     description,
     category,
     batchNumber,
+    userKey,
     expiryDate,
     initialLocation,
     metadata,
   } = req.body;
+
+  // Validate user key
+  const user = await User.findById(req.user.id);
+  if (!user) {
+    throw new AppError('User not found', 404);
+  }
+
+  if (user.userKey !== userKey) {
+    logger.warn(`Invalid user key attempt for product creation by user: ${user.email}`);
+    throw new AppError('Invalid user key. Product creation failed.', 403);
+  }
 
   // Check if batch number already exists
   const existingProduct = await Product.findOne({ batchNumber });
@@ -204,6 +218,7 @@ router.post('/', auth, [
     currentLocation: initialLocation || 'Unknown',
     currentOwner: req.user.id,
     createdBy: req.user.id,
+    createdByUserKey: user.userKey, // Store the user key that created the product
     manufacturer: req.user.id, // Set manufacturer to the creating user
     currentStage: 0, // Created
     quantity: metadata?.quantity || 0,
@@ -238,6 +253,7 @@ router.post('/', auth, [
           description,
           category,
           batchNumber,
+          userKey: user.userKey, // Pass user key for blockchain validation
           expiryDate: expiryDate ? Math.floor(new Date(expiryDate).getTime() / 1000) : 0,
           initialLocation: initialLocation || 'Unknown'
         }, accounts[0]);

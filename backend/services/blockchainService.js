@@ -114,7 +114,7 @@ class BlockchainService {
         return { productId: null, transactionHash: null, blockchainEnabled: false };
       }
 
-      const { name, description, category, batchNumber, expiryDate, initialLocation } = productData;
+      const { name, description, category, batchNumber, expiryDate, initialLocation, userKey } = productData;
       
       // Get optimal shard for this product
       let optimalShard = null;
@@ -130,9 +130,27 @@ class BlockchainService {
       }
 
       // Create product on blockchain
-      const result = await this.contracts.traceability.methods
-        .createProduct(name, description, category, batchNumber, expiryDate || 0, initialLocation)
-        .send({ from: fromAccount, gas: 500000 });
+      // Try with userKey first (new contract), fallback to without (old contract)
+      let result;
+      try {
+        if (userKey) {
+          result = await this.contracts.traceability.methods
+            .createProductWithKey(name, description, category, batchNumber, expiryDate || 0, initialLocation, userKey)
+            .send({ from: fromAccount, gas: 500000 });
+          logger.info('Product created with user key validation');
+        } else {
+          result = await this.contracts.traceability.methods
+            .createProduct(name, description, category, batchNumber, expiryDate || 0, initialLocation)
+            .send({ from: fromAccount, gas: 500000 });
+          logger.info('Product created without user key');
+        }
+      } catch (err) {
+        // Fallback to basic createProduct if createProductWithKey doesn't exist
+        logger.warn('Falling back to createProduct without userKey');
+        result = await this.contracts.traceability.methods
+          .createProduct(name, description, category, batchNumber, expiryDate || 0, initialLocation)
+          .send({ from: fromAccount, gas: 500000 });
+      }
       
       const productId = result.events.ProductCreated.returnValues.productId;
 
@@ -230,14 +248,27 @@ class BlockchainService {
   // Participant Management Functions
   async registerParticipant(participantData, fromAccount) {
     try {
-      const { address, name, role, location } = participantData;
+      const { address, name, role, location, userKey } = participantData;
       
-      const result = await this.contracts.traceability.methods
-        .registerParticipant(address, name, role, location)
-        .send({ from: fromAccount, gas: 300000 });
-      
-      logger.info(`Participant registered: ${name} at ${address}`);
-      return { transactionHash: result.transactionHash };
+      // Check if the contract expects userKey (new version) or not (old version)
+      // Try with userKey first, fallback to without if it fails
+      try {
+        const result = await this.contracts.traceability.methods
+          .registerParticipant(address, name, role, location, userKey)
+          .send({ from: fromAccount, gas: 300000 });
+        
+        logger.info(`Participant registered with userKey: ${name} at ${address}`);
+        return { transactionHash: result.transactionHash };
+      } catch (err) {
+        // Fallback to old signature without userKey
+        logger.warn('Trying registration without userKey (old contract version)');
+        const result = await this.contracts.traceability.methods
+          .registerParticipant(address, name, role, location)
+          .send({ from: fromAccount, gas: 300000 });
+        
+        logger.info(`Participant registered without userKey: ${name} at ${address}`);
+        return { transactionHash: result.transactionHash };
+      }
       
     } catch (error) {
       logger.error(`Register participant failed: ${error.message}`);

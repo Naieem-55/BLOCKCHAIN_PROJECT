@@ -1,6 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
 const { body, validationResult } = require('express-validator');
 const User = require('../models/User');
 const { auth } = require('../middleware/auth');
@@ -57,6 +58,13 @@ router.post('/register', validateRegistration, catchAsync(async (req, res) => {
   const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS) || 12;
   const hashedPassword = await bcrypt.hash(password, saltRounds);
 
+  // Generate unique user key
+  const generateUserKey = () => {
+    const timestamp = Date.now().toString(36);
+    const randomStr = crypto.randomBytes(8).toString('hex');
+    return `USR_${role.toUpperCase().slice(0, 3)}_${timestamp}_${randomStr}`.toUpperCase();
+  };
+
   // Create user
   const user = new User({
     email: email.toLowerCase(),
@@ -65,6 +73,7 @@ router.post('/register', validateRegistration, catchAsync(async (req, res) => {
     role,
     company,
     location,
+    userKey: generateUserKey(),
     isActive: true,
     profileComplete: !!(name && company && location),
   });
@@ -86,13 +95,14 @@ router.post('/register', validateRegistration, catchAsync(async (req, res) => {
         role: user.role,
         company: user.company,
         location: user.location,
+        userKey: user.userKey,
         permissions: user.getPermissions(),
       },
       token,
       refreshToken: token,
       expiresIn: 7 * 24 * 60 * 60,
     },
-    message: 'User registered successfully',
+    message: 'User registered successfully. Please save your user key securely.',
   });
 }));
 
@@ -146,6 +156,7 @@ router.post('/login', validateLogin, catchAsync(async (req, res) => {
         company: user.company,
         location: user.location,
         walletAddress: user.walletAddress,
+        userKey: user.userKey,
         permissions: user.getPermissions(),
       },
       token,

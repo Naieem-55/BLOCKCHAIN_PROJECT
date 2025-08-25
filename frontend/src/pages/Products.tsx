@@ -113,6 +113,7 @@ const Products: React.FC = () => {
     description: '',
     category: '',
     batchNumber: '',
+    userKey: '',
     quantity: 0,
     unit: 'pcs',
     price: 0,
@@ -183,8 +184,8 @@ const Products: React.FC = () => {
       }
 
       // Validate required fields
-      if (!formData.name || !formData.description || !formData.category || !formData.batchNumber) {
-        toast.error('Please fill all required fields');
+      if (!formData.name || !formData.description || !formData.category || !formData.batchNumber || !formData.userKey) {
+        toast.error('Please fill all required fields including your User Key');
         return;
       }
 
@@ -194,6 +195,7 @@ const Products: React.FC = () => {
         description: formData.description,
         category: formData.category,
         batchNumber: formData.batchNumber,
+        userKey: formData.userKey,
         expiryDate: formData.expiryDate || undefined,
         initialLocation: formData.initialLocation || 'Warehouse',
         // Additional fields can be added to metadata
@@ -216,6 +218,7 @@ const Products: React.FC = () => {
         description: '',
         category: '',
         batchNumber: '',
+        userKey: '',
         quantity: 0,
         unit: 'pcs',
         price: 0,
@@ -623,6 +626,18 @@ const Products: React.FC = () => {
             <Grid item xs={12}>
               <TextField
                 fullWidth
+                label="User Key *"
+                value={formData.userKey}
+                onChange={(e) => setFormData({ ...formData, userKey: e.target.value })}
+                required
+                type="password"
+                helperText="Enter your secure user key to authorize product creation"
+                placeholder="USR_XXX_XXXXXXXXX"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
                 label="Description *"
                 multiline
                 rows={3}
@@ -705,7 +720,7 @@ const Products: React.FC = () => {
             </Grid>
           </Grid>
           <Alert severity="info" sx={{ mt: 2 }}>
-            Fields marked with * are required. Make sure you're logged in to create products.
+            Fields marked with * are required. You must provide your User Key to create products. Your User Key can be found in your profile.
           </Alert>
         </DialogContent>
         <DialogActions>

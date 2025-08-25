@@ -66,6 +66,11 @@ api.interceptors.response.use(
       customError.code = errorData?.code || `HTTP_${status}`;
       customError.details = errorData?.details;
       customError.path = error.config?.url;
+      
+      // Extract validation errors if they exist
+      if (errorData?.errors) {
+        customError.validationErrors = errorData.errors;
+      }
 
       // Handle specific error cases
       switch (status) {
