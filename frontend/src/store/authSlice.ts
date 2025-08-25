@@ -136,6 +136,27 @@ export const refreshToken = createAsyncThunk(
   }
 );
 
+export const logoutUser = createAsyncThunk(
+  'auth/logout',
+  async (_, { dispatch }) => {
+    try {
+      await authService.logout();
+    } catch (error) {
+      console.warn('Logout request failed, but continuing with local logout:', error);
+    } finally {
+      // Clear local storage
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      
+      // Dispatch the logout action to clear state
+      dispatch(logout());
+      
+      // Optionally clear any other app-specific storage
+      sessionStorage.clear();
+    }
+  }
+);
+
 // Auth slice
 const authSlice = createSlice({
   name: 'auth',

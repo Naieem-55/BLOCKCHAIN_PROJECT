@@ -38800,12 +38800,12 @@
         }
       },
       "links": {},
-      "address": "0x6D422bD8e9Ba36B0C61B9e49ae052AE138256b22",
-      "transactionHash": "0x87ae53cc79773ce08c46e879212a2d7e50aa1e4147b7b342212963bf01f3e620"
+      "address": "0xeC32b591633eB68d06BDFdf82Fbf85de6652665D",
+      "transactionHash": "0xa245329c50d94327bb964ff7cfefbdff583946b46ebc84f6a68422af4246e7b1"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-08-24T12:54:07.320Z",
+  "updatedAt": "2025-08-25T04:12:39.667Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "Advanced supply chain traceability system with high efficiency and comprehensive tracking",

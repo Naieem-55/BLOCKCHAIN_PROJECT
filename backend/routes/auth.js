@@ -242,8 +242,34 @@ router.post('/change-password', auth, [
   });
 }));
 
-// Logout
+// Logout with token blacklisting
 router.post('/logout', auth, catchAsync(async (req, res) => {
+  const token = req.header('Authorization')?.replace('Bearer ', '');
+  
+  if (token) {
+    // Add token to blacklist (stored in Redis with expiry)
+    const redis = require('../config/redis');
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret-key');
+    
+    // Calculate remaining time until token expires
+    const now = Math.floor(Date.now() / 1000);
+    const ttl = decoded.exp - now;
+    
+    if (ttl > 0) {
+      // Store blacklisted token in Redis with automatic expiry
+      await redis.cacheSet(`blacklist_${token}`, true, ttl);
+    }
+  }
+  
+  // Update user's last activity
+  if (req.user && req.user.id) {
+    const user = await User.findById(req.user.id);
+    if (user) {
+      user.lastActivity = new Date();
+      await user.save();
+    }
+  }
+  
   logger.info(`User logged out: ${req.user.email}`);
   
   res.json({

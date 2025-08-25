@@ -1,8 +1,10 @@
-import React from 'react';
-import { Box, CssBaseline, AppBar, Toolbar, Typography, IconButton, Drawer } from '@mui/material';
-import { Menu as MenuIcon, AccountCircle, Notifications } from '@mui/icons-material';
+import React, { useState } from 'react';
+import { Box, CssBaseline, AppBar, Toolbar, Typography, IconButton, Drawer, Menu, MenuItem, Divider, Avatar, ListItemIcon, ListItemText } from '@mui/material';
+import { Menu as MenuIcon, AccountCircle, Notifications, Logout, Settings, Person } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../store';
 import { toggleSidebar, selectSidebarOpen } from '../../store/uiSlice';
+import { selectUser, logoutUser } from '../../store/authSlice';
 import Sidebar from './Sidebar';
 
 interface LayoutProps {
@@ -13,10 +15,37 @@ const drawerWidth = 280;
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const sidebarOpen = useAppSelector(selectSidebarOpen);
+  const user = useAppSelector(selectUser);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleToggleSidebar = () => {
     dispatch(toggleSidebar());
+  };
+
+  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleProfile = () => {
+    handleMenuClose();
+    navigate('/profile');
+  };
+
+  const handleSettings = () => {
+    handleMenuClose();
+    navigate('/settings');
+  };
+
+  const handleLogout = async () => {
+    handleMenuClose();
+    await dispatch(logoutUser() as any);
+    navigate('/login');
   };
 
   return (
@@ -51,9 +80,68 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <Notifications />
           </IconButton>
           
-          <IconButton color="inherit">
-            <AccountCircle />
+          <IconButton 
+            color="inherit"
+            onClick={handleMenuOpen}
+            aria-controls="account-menu"
+            aria-haspopup="true"
+          >
+            {user?.name ? (
+              <Avatar sx={{ width: 32, height: 32, bgcolor: 'secondary.main' }}>
+                {user.name.charAt(0).toUpperCase()}
+              </Avatar>
+            ) : (
+              <AccountCircle />
+            )}
           </IconButton>
+
+          <Menu
+            id="account-menu"
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={handleMenuClose}
+            PaperProps={{
+              elevation: 4,
+              sx: {
+                mt: 1.5,
+                minWidth: 200,
+                '& .MuiAvatar-root': {
+                  width: 32,
+                  height: 32,
+                  ml: -0.5,
+                  mr: 1,
+                },
+              },
+            }}
+            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+          >
+            <MenuItem sx={{ pointerEvents: 'none' }}>
+              <Typography variant="body2" color="text.secondary">
+                {user?.email}
+              </Typography>
+            </MenuItem>
+            <Divider />
+            <MenuItem onClick={handleProfile}>
+              <ListItemIcon>
+                <Person fontSize="small" />
+              </ListItemIcon>
+              <ListItemText>Profile</ListItemText>
+            </MenuItem>
+            <MenuItem onClick={handleSettings}>
+              <ListItemIcon>
+                <Settings fontSize="small" />
+              </ListItemIcon>
+              <ListItemText>Settings</ListItemText>
+            </MenuItem>
+            <Divider />
+            <MenuItem onClick={handleLogout}>
+              <ListItemIcon>
+                <Logout fontSize="small" />
+              </ListItemIcon>
+              <ListItemText>Logout</ListItemText>
+            </MenuItem>
+          </Menu>
         </Toolbar>
       </AppBar>
 

@@ -17,23 +17,44 @@ function Home() {
     const redirect_to_track = () => {
         history.push("/track");
     };
+    const handleLogout = () => {
+        // Clear any stored authentication data
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        sessionStorage.clear();
+        
+        // Redirect to login or home page
+        window.location.href = '/';
+    };
     return (
         <div>
             <div className="text-center">
-                <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
-                    <a className="navbar-brand" href="/">
-                        <img
-                            src={require("./assets/images/blockpharm-logo2.png").default}
-                            width="60em"
-                            height="60em"
-                            className="d-inline-block mx-auto align-top"
-                            alt="BlockPharm logo"
-                        />
-                        <strong style={{ fontSize: "1.8em" }}>
-                            <span style={{ color: "#146C94" }}> Block</span>
-                            <span style={{ color: "#F45050" }}>Pharm</span>
-                        </strong>
-                    </a>
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <div className="container-fluid">
+                        <a className="navbar-brand" href="/">
+                            <img
+                                src={require("./assets/images/blockpharm-logo2.png").default}
+                                width="60em"
+                                height="60em"
+                                className="d-inline-block mx-auto align-top"
+                                alt="BlockPharm logo"
+                            />
+                            <strong style={{ fontSize: "1.8em" }}>
+                                <span style={{ color: "#146C94" }}> Block</span>
+                                <span style={{ color: "#F45050" }}>Pharm</span>
+                            </strong>
+                        </a>
+                        <div className="d-flex">
+                            {localStorage.getItem('token') && (
+                                <button 
+                                    onClick={handleLogout}
+                                    className="btn btn-outline-danger btn-sm"
+                                >
+                                    Logout
+                                </button>
+                            )}
+                        </div>
+                    </div>
                 </nav>
             </div>
             <div className="Frontal">

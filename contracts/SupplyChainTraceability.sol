@@ -125,6 +125,13 @@ contract SupplyChainTraceability is AccessControl {
         _;
     }
     
+    modifier onlyActiveParticipant() {
+        uint256 participantId = addressToParticipantId[msg.sender];
+        require(participantId > 0, "Not a registered participant");
+        require(participants[participantId].isActive, "Participant account is suspended");
+        _;
+    }
+    
     constructor(address _shardingContract, address _processorContract) {
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _setupRole(ADMIN_ROLE, msg.sender);
@@ -163,7 +170,7 @@ contract SupplyChainTraceability is AccessControl {
     }
     
     /**
-     * @dev Create a new product in the supply chain
+     * @dev Create a new product in the supply chain with enhanced validation
      */
     function createProduct(
         string memory _name,
@@ -172,7 +179,11 @@ contract SupplyChainTraceability is AccessControl {
         string memory _batchNumber,
         uint256 _expiryDate,
         string memory _initialLocation
-    ) external onlyRole(PARTICIPANT_ROLE) returns (uint256) {
+    ) external onlyRole(PARTICIPANT_ROLE) onlyActiveParticipant returns (uint256) {
+        // Additional input validation
+        require(bytes(_name).length > 0, "Product name cannot be empty");
+        require(bytes(_batchNumber).length > 0, "Batch number cannot be empty");
+        require(_expiryDate > block.timestamp, "Expiry date must be in the future");
         productCounter++;
         
         // Assign product to optimal shard
@@ -216,14 +227,15 @@ contract SupplyChainTraceability is AccessControl {
     }
     
     /**
-     * @dev Transfer product ownership
+     * @dev Transfer product ownership with enhanced validation
      */
     function transferProduct(
         uint256 _productId,
         address _newOwner,
         string memory _newLocation
-    ) external productExists(_productId) onlyProductOwner(_productId) {
+    ) external productExists(_productId) onlyProductOwner(_productId) onlyActiveParticipant {
         require(addressToParticipantId[_newOwner] > 0, "New owner not registered");
+        require(participants[addressToParticipantId[_newOwner]].isActive, "New owner account is suspended");
         
         address previousOwner = products[_productId].currentOwner;
         
@@ -292,14 +304,14 @@ contract SupplyChainTraceability is AccessControl {
     }
     
     /**
-     * @dev Add quality check result
+     * @dev Add quality check result with user validation
      */
     function addQualityCheck(
         uint256 _productId,
         string memory _checkType,
         bool _passed,
         string memory _notes
-    ) external productExists(_productId) onlyRole(PARTICIPANT_ROLE) {
+    ) external productExists(_productId) onlyRole(PARTICIPANT_ROLE) onlyActiveParticipant {
         productQualityChecks[_productId].push(QualityCheck({
             checkType: _checkType,
             passed: _passed,
@@ -312,13 +324,13 @@ contract SupplyChainTraceability is AccessControl {
     }
     
     /**
-     * @dev Log temperature data (IoT integration)
+     * @dev Log temperature data (IoT integration) with validation
      */
     function logTemperature(
         uint256 _productId,
         int256 _temperature,
         string memory _sensorId
-    ) external productExists(_productId) onlyRole(PARTICIPANT_ROLE) {
+    ) external productExists(_productId) onlyRole(PARTICIPANT_ROLE) onlyActiveParticipant {
         productTemperatureLogs[_productId].push(TemperatureLog({
             temperature: _temperature,
             timestamp: block.timestamp,
@@ -346,6 +358,30 @@ contract SupplyChainTraceability is AccessControl {
             inspector: msg.sender,
             timestamp: block.timestamp
         }));
+    }
+    
+    /**
+     * @dev Suspend a participant (admin only)
+     */
+    function suspendParticipant(address _participantAddress) 
+        external 
+        onlyRole(ADMIN_ROLE) {
+        uint256 participantId = addressToParticipantId[_participantAddress];
+        require(participantId > 0, "Participant not found");
+        participants[participantId].isActive = false;
+        revokeRole(PARTICIPANT_ROLE, _participantAddress);
+    }
+    
+    /**
+     * @dev Reactivate a participant (admin only)
+     */
+    function reactivateParticipant(address _participantAddress) 
+        external 
+        onlyRole(ADMIN_ROLE) {
+        uint256 participantId = addressToParticipantId[_participantAddress];
+        require(participantId > 0, "Participant not found");
+        participants[participantId].isActive = true;
+        grantRole(PARTICIPANT_ROLE, _participantAddress);
     }
     
     // View functions for comprehensive traceability

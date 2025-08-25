@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const { AppError } = require('./errorHandler');
+const { cacheExists } = require('../config/redis');
 
 const auth = async (req, res, next) => {
   try {
@@ -14,6 +15,15 @@ const auth = async (req, res, next) => {
     }
 
     const token = authHeader.substring(7); // Remove 'Bearer ' prefix
+
+    // Check if token is blacklisted
+    const isBlacklisted = await cacheExists(`blacklist_${token}`);
+    if (isBlacklisted) {
+      return res.status(401).json({
+        success: false,
+        message: 'Token has been invalidated. Please login again.',
+      });
+    }
 
     // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
