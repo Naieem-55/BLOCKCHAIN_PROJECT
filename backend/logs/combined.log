@@ -64558,3 +64558,399 @@
   service: 'supply-chain-api',
   timestamp: '2025-08-26 16:32:05'
 }
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:23:51'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:23:51'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:23:51'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:23:51'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:23:51'
+}
+{
+  message: 'Connected to blockchain network ID: 1337',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:23:51'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:23:51'
+}
+{
+  message: 'Available accounts: 10',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:23:51'
+}
+{
+  message: 'SupplyChain contract loaded from C:\\projects\\BLOCKCHAIN_PROJECT\\client\\src\\artifacts',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:23:51'
+}
+{
+  message: 'Smart contracts loaded successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:23:51'
+}
+{
+  message: 'Blockchain service initialized successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:23:51'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:24:14 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 210 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:24:14'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:24:14 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 210 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:24:14'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:24:20 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:24:20'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:24:20 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:24:20'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:24:33 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 209 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:24:33'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:24:33 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 210 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:24:33'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:24:35 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:24:35'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:24:36 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:24:36'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:24:40 +0000] "GET /api/products/68ac637efb99e0d6a2909bf7/verify HTTP/1.1" 404 107 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:24:40'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:24:40 +0000] "GET /api/products/68ac637efb99e0d6a2909bf7/verify HTTP/1.1" 404 107 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:24:40'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:24:40 +0000] "GET /api/products/68ac637efb99e0d6a2909bf7 HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:24:40'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:24:40 +0000] "GET /api/products/68ac637efb99e0d6a2909bf7 HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:24:40'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:24:40 +0000] "GET /api/lifecycle/product/68ac637efb99e0d6a2909bf7/timeline HTTP/1.1" 200 665 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:24:40'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:24:40 +0000] "GET /api/lifecycle/product/68ac637efb99e0d6a2909bf7/lifecycle HTTP/1.1" 200 476 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:24:40'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:24:40 +0000] "GET /api/lifecycle/product/68ac637efb99e0d6a2909bf7/timeline HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:24:40'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:24:40 +0000] "GET /api/lifecycle/product/68ac637efb99e0d6a2909bf7/lifecycle HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:24:40'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:24:47 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:24:47'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:24:47 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:24:47'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:25:18 +0000] "GET /api/participants?page=1&limit=100 HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:25:18'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:25:18 +0000] "GET /api/participants?page=1&limit=100 HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:25:18'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:25:40 +0000] "GET /api/products/qr/QR-PROD-12345 HTTP/1.1" 404 358 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:25:40'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:25:40 +0000] "POST /api/products/search HTTP/1.1" 404 365 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:25:40'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:27:06 +0000] "GET /api/products/qr/QR-PROD-12345 HTTP/1.1" 404 358 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:27:06'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:27:06 +0000] "POST /api/products/search HTTP/1.1" 404 365 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:27:06'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:30:36 +0000] "GET /api/participants?page=1&limit=100 HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:30:36'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:30:36 +0000] "GET /api/participants?page=1&limit=100 HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:30:36'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:30:38 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:30:38'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:30:38 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:30:38'
+}
+{
+  message: 'Merkle root generated for product 68b04c2cf77f919f36b269dd: 0xf5c5ff6498bbdeea920ca8536cbf5318d8cfb4991de84c779d0ae9d4908dd5d8',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:31:40'
+}
+{
+  message: 'Product created on blockchain using addMedicine method',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:31:41'
+}
+{
+  message: "Could not retrieve product ID: Parameter decoding error: Returned values aren't valid, did it run Out of Gas? You might also see this error if you are not using the correct ABI for the contract you are retrieving data from, requesting data from a block number that does not exist, or querying a node which is not fully synced.",
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:31:41'
+}
+{
+  message: 'Product created on blockchain with ID: 0x73d4b9e42b6fb50c419b9dc2f95302848c2783cf2e0e8b63e25462ceae69da56',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:31:41'
+}
+{
+  message: 'New product created: Mouse (M-2) by admin@supplychain.com',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:31:41'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:31:41 +0000] "POST /api/products HTTP/1.1" 201 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:31:41'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:31:41 +0000] "GET /api/products HTTP/1.1" 200 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:31:41'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:31:51 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:31:51'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:31:52 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:31:52'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:31:58 +0000] "GET /api/participants?page=1&limit=100 HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:31:58'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:31:58 +0000] "GET /api/participants?page=1&limit=100 HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:31:58'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:32:20 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 210 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:32:20'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:32:20 +0000] "GET /api/analytics/dashboard HTTP/1.1" 200 210 "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:32:20'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:32:21 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:32:21'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:32:21 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:32:21'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:32:24 +0000] "GET /api/participants?page=1&limit=100 HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:32:24'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:32:24 +0000] "GET /api/participants?page=1&limit=100 HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:32:24'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:32:26 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:32:26'
+}
+{
+  message: '::1 - - [28/Aug/2025:12:32:26 +0000] "GET /api/products HTTP/1.1" 304 - "http://localhost:3001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:32:26'
+}
+{
+  message: 'Server running on port 5003',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:36:51'
+}
+{
+  message: 'API Documentation available at http://localhost:5003/api-docs',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:36:51'
+}
+{
+  message: 'Redis client connected',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:36:51'
+}
+{
+  message: 'Blockchain service initialization failed: request to http://localhost:8545/ failed, reason: ',
+  level: 'error',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:36:51'
+}
+{
+  message: 'Application will continue without blockchain functionality',
+  level: 'warn',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:36:51'
+}
+{
+  message: 'Redis client ready',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:36:51'
+}
+{
+  message: 'MongoDB Connected: localhost',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:36:51'
+}
+{
+  message: 'Redis connection established successfully',
+  level: 'info',
+  service: 'supply-chain-api',
+  timestamp: '2025-08-28 18:36:51'
+}

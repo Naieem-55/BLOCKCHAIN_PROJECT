@@ -50519,12 +50519,12 @@
         }
       },
       "links": {},
-      "address": "0x7c5F36708fFd3841012d78c400a485f46cB4d17a",
-      "transactionHash": "0x1f44c5ce5edc4481af80dc326282b41427345ddfb57e0025028edb33910d91ff"
+      "address": "0x48A777BdA11a3410a8087ed75DD92A271fA41d15",
+      "transactionHash": "0xedc5578661ec01c707d50fe9bf1df7b39d0bc18e8c03f287fdda275cde93a1ed"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-08-28T12:23:35.192Z",
+  "updatedAt": "2025-08-29T04:11:51.257Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "Advanced supply chain traceability system with high efficiency and comprehensive tracking",
